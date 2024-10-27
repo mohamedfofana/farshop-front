@@ -1,0 +1,47 @@
+<div class="container h-100 d-flex justify-content-center align-items-center">
+  <!-- your form container -->
+  <div class="container col-sm-4 p-4 mb-4 shadow-lg rounded-4">
+    <form>
+      <div class="text-center">
+        <a [routerLink]="['/home']"
+          ><img
+            class="mb-2"
+            src="farshop-logo.png"
+            alt=""
+            width="90"
+            height="90"
+        /></a>
+
+        <h3 class="h3 mb-4 fw-normal">
+          {{ "user.signin.form.title" | translate }}
+        </h3>
+      </div>
+
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" />
+        <label for="floatingInput">{{
+          "user.signin.form.email-label" | translate
+        }}</label>
+      </div>
+      <div class="form-floating mt-4">
+        <input type="password" class="form-control" id="floatingPassword" />
+        <label for="floatingPassword">{{
+          "user.signin.form.password-label" | translate
+        }}</label>
+      </div>
+      <div class="mt-4">
+        <button class="btn btn-lg btn-primary btn-block w-100" type="submit">
+          {{ "general.button.signin" | translate }}
+        </button>
+      </div>
+    </form>
+    <div class="mt-4 d-flex justify-content-md-between">
+      <a class="text-decoration-none" [routerLink]="['/forget_password']">
+        {{ "user.signin.forgot-password" | translate }}</a
+      >
+      <a class="text-decoration-none" [routerLink]="['/home']">
+        {{ "home.title" | translate }}</a
+      >
+    </div>
+  </div>
+</div>

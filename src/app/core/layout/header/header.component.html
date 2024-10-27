@@ -1,0 +1,135 @@
+<header
+  class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3"
+>
+  <div
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+  >
+    <a
+      [routerLink]=""
+      class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none"
+    >
+      <img
+        src="farshop-logo.png"
+        width="90"
+        height="90"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+  </div>
+  <div class="nav-scroller">
+    <nav class="nav nav-underline justify-content-center">
+      <a class="nav-item nav-link link-body-emphasis" href="#">{{
+        "header.menu.home" | translate | uppercase
+      }}</a>
+      <a
+        class="nav-item nav-link link-body-emphasis dropdown dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        ><span></span>{{ "header.menu.categories" | translate | uppercase }}</a
+      >
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item text-capitalize"
+            [routerLink]="['product/categorie']"
+            >{{ "Categorie" | translate | uppercase }}</a
+          >
+        </li>
+      </ul>
+      <a
+        class="nav-item nav-link link-body-emphasis"
+        [routerLink]="['promotions']"
+        >{{ "header.menu.promotions" | translate | uppercase }}</a
+      >
+      <a
+        class="nav-item nav-link link-body-emphasis"
+        [routerLink]="['contact']"
+        >{{ "header.menu.contact" | translate | uppercase }}</a
+      >
+    </nav>
+  </div>
+  <div class="dropdown justify-content-end d-flex">
+    <div class="ps-3 mt-1">
+      <a
+        href="javascript:void(0)"
+        data-bs-toggle="modal"
+        data-bs-target="#searchModal"
+      >
+        <i class="bi bi-search h4 text-dark"></i>
+      </a>
+    </div>
+    <div class="ps-3">
+      @if (isLoggedIn()) {
+
+      <a
+        href="#"
+        class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-person-circle h3"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end text-small">
+        <li>
+          <a class="dropdown-item" [routerLink]="['profile']">{{
+            "user.menu.profile" | translate | uppercase
+          }}</a>
+        </li>
+        <li>
+          <a class="dropdown-item" [routerLink]="['settings']">{{
+            "user.menu.settings" | translate | uppercase
+          }}</a>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="javascript:void(0)"
+            (click)="logout()"
+            >{{ "user.signout.link-name" | translate | uppercase }}</a
+          >
+        </li>
+      </ul>
+
+      } @else {
+      <a
+        [routerLink]="['signin']"
+        class="d-block text-decoration-none text-dark"
+      >
+        <i class="bi bi-person-circle h3"></i>
+      </a>
+
+      }
+    </div>
+    <div class="ps-3 mb-1">
+      <a href="#">
+        <i class="bi bi-cart2 h3 text-dark"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="modal" id="searchModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="row g-3">
+          <div class="col-sm">
+            <input
+              type="text"
+              class="form-control"
+              id="staticEmail2"
+              placeholder="Search ..."
+            />
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-light mb-3">
+              <i class="bi bi-search h4 text-dark"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

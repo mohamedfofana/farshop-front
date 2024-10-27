@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "Home"
+  },
+  "header": {
+    "menu": {
+      "home": "Home",
+      "categories": "Categories",
+      "promotions": "Promotions",
+      "contact": "Contact"
+    },
+    "top": {
+      "contact": "Contact",
+      "about": "About"
+    }
+  },
+  "footer": {
+    "menu": {
+      "home": "Home",
+      "categories": "Categories",
+      "contact": "Contact",
+      "about": "About"
+    },
+    "copyright": "©2024 All Rights Reserved. Made by kodakro"
+  },
+  "user": {
+    "signin": {
+      "link-name": "Sign in",
+      "form": {
+        "title": "Se connecter",
+        "email-label": "Courriel",
+        "password-label": "Mot de passe"
+      },
+      "forgot-password": "Forget your password ?"
+    },
+    "signout": {
+      "link-name": "Sign out"
+    },
+    "menu": {
+      "profile": "Profile",
+      "settings": "Settings"
+    }
+  },
+  "general": {
+    "button": {
+      "submit": "Submit",
+      "continue": "Next",
+      "cancel": "Cancel",
+      "signin": "Connexion"
+    }
+  }
+}

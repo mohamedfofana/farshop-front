@@ -1,0 +1,40 @@
+<div class="d-flex">
+  <div class="p-2 flex-grow-1">
+    <ul class="nav col-md-4 justify-content-start list-unstyled d-flex">
+      <li class="ms-3">
+        <a class="text-light" href="#"><i class="bi bi-twitter"></i> </a>
+      </li>
+      <li class="ms-3">
+        <a class="text-light" href="#"><i class="bi bi-instagram"></i> </a>
+      </li>
+      <li class="ms-3">
+        <a class="text-light" href="#"><i class="bi bi-facebook"></i> </a>
+      </li>
+    </ul>
+  </div>
+  <div class="select-language p-1">
+    <select
+      class="form-select form-select-sm"
+      (change)="changeLanguage($event)"
+    >
+      @for (language of languages; track language) {
+      <option
+        value="{{ language.code }}"
+        [selected]="language.code === browserLanguage()"
+      >
+        {{ language.value }}
+      </option>
+      }
+    </select>
+  </div>
+  <div class="p-2">
+    <a [routerLink]="['contact']" class="text-light text-decoration-none">{{
+      "header.top.contact" | translate
+    }}</a>
+  </div>
+  <div class="p-2">
+    <a [routerLink]="['about']" class="text-light text-decoration-none">{{
+      "header.top.about" | translate
+    }}</a>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "Accueil"
+  },
+  "header": {
+    "menu": {
+      "home": "Accueil",
+      "categories": "Categories",
+      "promotions": "Promotions",
+      "contact": "Contact"
+    },
+    "top": {
+      "contact": "Contact",
+      "about": "À propos"
+    }
+  },
+  "footer": {
+    "menu": {
+      "home": "Accueil",
+      "categories": "Categories",
+      "contact": "Contact",
+      "about": "À propos"
+    },
+    "copyright": "©2024 Tous droits réservés. Créé par kodakro"
+  },
+  "user": {
+    "signin": {
+      "link-name": "Se connecter",
+      "form": {
+        "title": "Se connecter",
+        "email-label": "Courriel",
+        "password-label": "Mot de passe"
+      },
+      "forgot-password": "Mot de passe oublié ?"
+    },
+    "signout": {
+      "link-name": "Se déconnecter"
+    },
+    "menu": {
+      "profile": "Profil",
+      "settings": "Paramètres"
+    }
+  },
+  "general": {
+    "button": {
+      "submit": "Soumettre",
+      "continue": "Continuer",
+      "cancel": "Annuler",
+      "signin": "Connexion"
+    }
+  }
+}
