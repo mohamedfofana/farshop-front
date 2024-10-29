@@ -1,4 +1,9 @@
-import { Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { TranslationService } from '../../services/translationService/translation.service';
 import { CodeLanguage } from '../../model/enum/CodeLanguage';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,10 +18,12 @@ type Language = {
   standalone: true,
   imports: [TranslateModule, RouterLink],
   templateUrl: './header-top.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderTopComponent {
   browserLanguage = signal('');
-  selectedLanguage = '';
+  private translationService = inject(TranslationService);
+
   readonly languages: Language[] = [
     {
       code: CodeLanguage.FR,
@@ -28,11 +35,12 @@ export class HeaderTopComponent {
     },
   ];
 
-  constructor(private translationService: TranslationService) {
+  constructor() {
     this.browserLanguage.set(this.translationService.getCurrentLanguage());
   }
 
   changeLanguage(event: any) {
     this.translationService.changeLanguage(event.target.value);
+    this.browserLanguage.set(event.target.value)
   }
 }

@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BaseLayoutComponent } from './base-layout.component';
+import { provideRouter } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { translateServiceStub } from '../../../../tests/stubs/translateServiceStub';
 
 describe('BaseLayoutComponent', () => {
   let component: BaseLayoutComponent;
@@ -8,9 +11,12 @@ describe('BaseLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BaseLayoutComponent]
-    })
-    .compileComponents();
+      imports: [BaseLayoutComponent],
+      providers: [
+        provideRouter([]),
+        { provide: TranslateService, useValue: translateServiceStub },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BaseLayoutComponent);
     component = fixture.componentInstance;

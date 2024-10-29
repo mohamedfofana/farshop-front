@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CodeLanguage } from './core/model/enum/CodeLanguage';
@@ -11,10 +11,10 @@ import { CodeLanguage } from './core/model/enum/CodeLanguage';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  private  translateService = inject(TranslateService)
   title = 'farshop-front';
 
   constructor(
-    private translateService: TranslateService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     let defaultLang = this.translateService.currentLang;

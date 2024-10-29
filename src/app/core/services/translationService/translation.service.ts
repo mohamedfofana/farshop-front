@@ -1,4 +1,4 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CodeLanguage } from '../../model/enum/CodeLanguage';
@@ -9,11 +9,13 @@ import { SessionConstant } from '../../security/constants/SessionConstants';
   providedIn: 'root',
 })
 export class TranslationService {
-  constructor(
-    private localStorageService: LocalStorageService,
-    private translateService: TranslateService,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  private localStorageService = inject(LocalStorageService);
+  private translateService = inject(TranslateService);
+  private readonly defaultLang = navigator.language.split('-')[0];
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.translateService.use(this.defaultLang);
+  }
 
   changeLanguage(lang: string) {
     this.translateService.use(lang);
@@ -23,13 +25,18 @@ export class TranslationService {
   }
 
   getCurrentLanguage(): string {
-    const storedLang = this.localStorageService.getItem(SessionConstant.CURRENT_LANGUAGE);
-    const currentCodeLangue = Object.values(CodeLanguage).find(
-      (s) => s === storedLang
+    const storedLang: string | null = this.localStorageService.getItem(
+      SessionConstant.CURRENT_LANGUAGE
     );
-    if (currentCodeLangue) {
-      return currentCodeLangue;
+
+    if (this.isAppLanguage(storedLang)) {
+      return storedLang!;
     }
-    return this.translateService.currentLang;
+
+    return this.defaultLang;
+  }
+
+  isAppLanguage(lang: string | null) {
+    return Object.values(CodeLanguage).find((s) => s === lang) != undefined;
   }
 }

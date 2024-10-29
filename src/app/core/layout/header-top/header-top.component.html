@@ -18,7 +18,7 @@
       (change)="changeLanguage($event)"
     >
       @for (language of languages; track language) {
-      <option
+      <option class="option-lang"
         value="{{ language.code }}"
         [selected]="language.code === browserLanguage()"
       >

@@ -47,6 +47,14 @@
       "continue": "Continuer",
       "cancel": "Annuler",
       "signin": "Connexion"
+    },
+    "error": {
+      "form": {
+        "required": "Champ obligatoire",
+        "email-invalid": "Email invalide",
+        "a-field": "Une erreur a été detecté sur le champ suivant:{field}.",
+        "all-field": "Une erreur a été detecté sur les champs suivants:{fields}."
+      }
     }
   }
 }
