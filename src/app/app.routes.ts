@@ -1,12 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { BaseLayoutComponent } from './core/layout/base-layout/base-layout.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ROUTE_PATH } from './core/config/routes/routesConfig';
-import { ContactComponent } from './pages/contact/contact.component';
-import { AboutComponent } from './pages/about/about.component';
-import { SigninComponent } from './pages/user/signin/signin.component';
-import { SignupComponent } from './pages/user/signup/signup.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
   {
@@ -16,35 +10,60 @@ export const routes: Routes = [
   },
   {
     path: ROUTE_PATH.SIGNIN,
-    component: SigninComponent,
+    loadComponent: () =>
+      import('./features/customer/signin/signin.component').then(
+        (mod) => mod.SigninComponent
+      ),
   },
   {
     path: '',
-    component: BaseLayoutComponent,
+    loadComponent: () =>
+      import('./shared/navigation/base-layout/base-layout.component').then(
+        (mod) => mod.BaseLayoutComponent
+      ),
     children: [
       {
         path: ROUTE_PATH.HOME,
-        component: HomeComponent,
+        loadComponent: () =>
+          import('./features/home/home.component').then(
+            (mod) => mod.HomeComponent
+          ),
       },
       {
         path: ROUTE_PATH.CONTACT,
-        component: ContactComponent,
-      },
-      {
-        path: ROUTE_PATH.CONTACT,
-        component: ContactComponent,
+        loadComponent: () =>
+          import('./features/contact/contact.component').then(
+            (mod) => mod.ContactComponent
+          ),
       },
       {
         path: ROUTE_PATH.ABOUT,
-        component: AboutComponent,
+        loadComponent: () =>
+          import('./features/about/about.component').then(
+            (mod) => mod.AboutComponent
+          ),
       },
       {
-        path: ROUTE_PATH.SIGNUP,
-        component: SignupComponent,
+        path: ROUTE_PATH.CALLBACK,
+        loadComponent: () =>
+          import('./features/callback/callback.component').then(
+            (mod) => mod.CallbackComponent
+          ),
       },
       {
         path: ROUTE_PATH.PAGE_NOT_FOUND,
-        component: PageNotFoundComponent,
+        loadComponent: () =>
+          import('./features/page-not-found/page-not-found.component').then(
+            (mod) => mod.PageNotFoundComponent
+          ),
+      },
+      {
+        path: ROUTE_PATH.PROFILE,
+        loadComponent: () =>
+          import('./features/customer/profile/profile.component').then(
+            (mod) => mod.ProfileComponent
+          ),
+        canActivate: [AuthGuard],
       },
     ],
   },

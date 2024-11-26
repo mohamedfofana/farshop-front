@@ -24,17 +24,17 @@
     "copyright": "©2024 All Rights Reserved. Made by kodakro"
   },
   "user": {
-    "signin": {
-      "link-name": "Sign in",
-      "form": {
-        "title": "Se connecter",
-        "email-label": "Courriel",
-        "password-label": "Mot de passe"
+    "account": {
+      "title": "My account",
+      "signin": {
+        "title": "Sign in"
       },
-      "forgot-password": "Forget your password ?"
-    },
-    "signout": {
-      "link-name": "Sign out"
+      "logout": {
+        "title": "Log out"
+      },
+      "register": {
+        "title": "Register"
+      }
     },
     "menu": {
       "profile": "Profile",
@@ -46,7 +46,27 @@
       "submit": "Submit",
       "continue": "Next",
       "cancel": "Cancel",
-      "signin": "Connexion"
+      "signin": "Connexion",
+      "register": "Create an account"
+    },
+    "sort": {
+      "title": "Sort by",
+      "price": {
+        "title": "Price",
+        "asc": "Price low to high",
+        "desc": "Price high to low"
+      },
+      "rate": {
+        "title": "Rate",
+        "asc": "Rate low to high",
+        "desc": "Rate high to low"
+      },
+      "most-reviewed": {
+        "title": "Most reviewed",
+        "desc": "Most reviewed"
+      },
+      "asc": "Low to high",
+      "desc": "High to low"
     },
     "error": {
       "form": {

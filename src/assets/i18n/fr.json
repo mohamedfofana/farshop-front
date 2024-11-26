@@ -17,24 +17,24 @@
   "footer": {
     "menu": {
       "home": "Accueil",
-      "categories": "Categories",
+      "categories": "Catégories",
       "contact": "Contact",
       "about": "À propos"
     },
     "copyright": "©2024 Tous droits réservés. Créé par kodakro"
   },
   "user": {
-    "signin": {
-      "link-name": "Se connecter",
-      "form": {
-        "title": "Se connecter",
-        "email-label": "Courriel",
-        "password-label": "Mot de passe"
+    "account": {
+      "title": "Mon compte",
+      "signin": {
+        "title": "Se connecter"
       },
-      "forgot-password": "Mot de passe oublié ?"
-    },
-    "signout": {
-      "link-name": "Se déconnecter"
+      "logout": {
+        "title": "Se déconnecter"
+      },
+      "register": {
+        "title": "Créer un compte"
+      }
     },
     "menu": {
       "profile": "Profil",
@@ -46,10 +46,30 @@
       "submit": "Soumettre",
       "continue": "Continuer",
       "cancel": "Annuler",
-      "signin": "Connexion"
+      "signin": "Connexion",
+      "register": "Créer un compte"
+    },
+    "sort": {
+      "title": "Trier par",
+      "price": {
+        "title": "Prix",
+        "asc": "Prix croisant",
+        "desc": "Prix decroissant"
+      },
+      "rate": {
+        "title": "Note",
+        "asc": "Note croisant",
+        "desc": "Note decroissant"
+      },
+      "most-reviewed": {
+        "title": "Mieux notés",
+        "desc": "Mieux notés"
+      },
+      "asc": "Ordre croissant",
+      "desc": "Ordred décroissant"
     },
     "error": {
-      "form": {
+      "validation": {
         "required": "Champ obligatoire",
         "email-invalid": "Email invalide",
         "a-field": "Une erreur a été detecté sur le champ suivant:{field}.",

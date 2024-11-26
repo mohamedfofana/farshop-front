@@ -7,6 +7,12 @@ export let translateServiceStub: Partial<TranslateService> = {
     return of('');
   },
   get(key, interpolateParams) {
+    if (key.includes('form.required')) {
+      return of('required');
+    }
+    if (key.includes('form.email-invalid')) {
+      return of('invalid email');
+    }
     return of('');
   },
   currentLang: 'en',

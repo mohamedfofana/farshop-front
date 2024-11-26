@@ -1,0 +1,11 @@
+<div class="d-flex">
+  @if (showRatingSize()) {
+  <div>{{ rate() }}</div>
+  }
+  <div [ngClass]="{ 'ps-2': showRatingSize() }">
+    <i attr.data-star="{{ rate() }}"></i>
+  </div>
+  @if (showReviewsNumber() && reviews().length > 0) {
+  <div class="ps-2">{{ reviews().length }}</div>
+  }
+</div>

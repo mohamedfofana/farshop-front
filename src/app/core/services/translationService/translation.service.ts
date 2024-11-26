@@ -11,10 +11,11 @@ import { SessionConstant } from '../../security/constants/SessionConstants';
 export class TranslationService {
   private localStorageService = inject(LocalStorageService);
   private translateService = inject(TranslateService);
+  private platformId = inject(PLATFORM_ID);
   private readonly defaultLang = navigator.language.split('-')[0];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.translateService.use(this.defaultLang);
+  constructor() {
+    this.translateService.use(this.getCurrentLanguage());
   }
 
   changeLanguage(lang: string) {

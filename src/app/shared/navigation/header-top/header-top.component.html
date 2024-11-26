@@ -1,0 +1,54 @@
+<div class="d-flex">
+  <div class="p-3 flex-grow-1">
+    <app-social-media></app-social-media>
+  </div>
+  <div class="select-language">
+    <div class="top_nav_right">
+      <ul class="top_nav_menu">
+        <li class="language justify-content-center">
+          <a href="#">
+            {{ selectedLanguage() }}
+            <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="language_selection ps-0">
+            @for (language of languages; track language) {
+            <li>
+              <a
+                href="javascript:void(0)"
+                (click)="changeLanguage(language.code)"
+                >{{ language.value }}</a
+              >
+            </li>
+            }
+          </ul>
+        </li>
+        <li class="account">
+          <a href="#">
+            {{ "user.account.title" | translate }}
+            <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="account_selection ps-0">
+            <li *ngIf="!(isLoggedIn$ | async)">
+              <a href="javascript:void(0)" (click)="login()"
+                ><i class="bi bi-box-arrow-right" aria-hidden="true"></i
+                >{{ "user.account.signin.title" | translate }}</a
+              >
+            </li>
+            <li *ngIf="!(isLoggedIn$ | async)">
+              <a href="javascript:void(0)" (click)="register()"
+                ><i class="bi bi-person-fill-add" aria-hidden="true"></i
+                >{{ "user.account.register.title" | translate }}</a
+              >
+            </li>
+            <li *ngIf="isLoggedIn$ | async">
+              <a href="javascript:void(0)" (click)="logout()"
+                ><i class="bi bi-box-arrow-left" aria-hidden="true"></i
+                >{{ "user.account.logout.title" | translate }}</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

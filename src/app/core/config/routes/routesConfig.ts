@@ -3,7 +3,8 @@ export enum ROUTE_PATH {
   PROMOTIONS = 'promotions',
   CONTACT = 'contact',
   ABOUT = 'about',
+  CALLBACK = 'callback',
+  PROFILE = 'profile',
   SIGNIN = 'signin',
-  SIGNUP = 'signup',
   PAGE_NOT_FOUND = 'page-not-found',
 }
