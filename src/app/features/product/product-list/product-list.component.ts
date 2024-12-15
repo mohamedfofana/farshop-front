@@ -1,18 +1,18 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { ProductPreviewComponent } from '../../../../shared/components/product-preview/product-preview.component';
-import { Product } from '../../../../core/model/product';
+import { Product } from '../../../core/model/product';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductService } from '../../../../core/services/http/product.service';
-import { PriceRangeComponent } from '../../../../shared/components/price-range/price-range.component';
-import { SelectSortProductsComponent } from '../../../../shared/components/select-sort-products/select-sort-products.component';
-import { CountAvailableDto } from '../../../../core/model/dto/countAvailableDto';
-import { FindByPageDto } from '../../../../core/model/dto/findByPageDto';
+import { ProductService } from '../../../core/services/http/product.service';
+import { PriceRangeComponent } from '../../../shared/components/price-range/price-range.component';
+import { SelectSortProductsComponent } from '../../../shared/components/select-sort-products/select-sort-products.component';
+import { CountAvailableDto } from '../../../core/model/dto/countAvailableDto';
+import { FindByPageDto } from '../../../core/model/dto/findByPageDto';
+import { ProductPreviewComponent } from '../../../shared/components/product/product-preview/product-preview.component';
 
 @Component({
   selector: 'app-product-list',
@@ -58,8 +58,8 @@ export class ProductListComponent {
       const findByPageDto: FindByPageDto = {
         page: this.pageIndex(),
         size: this.pageSize(),
-        field: this.sortField(),
-        direction: this.sortDirection(),
+        sortField: this.sortField(),
+        sortDirection: this.sortDirection(),
         priceMin: this.priceMin(),
         priceMax: this.priceMax(),
       };

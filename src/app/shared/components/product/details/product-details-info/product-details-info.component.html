@@ -1,0 +1,51 @@
+<div class="product_details">
+  <div class="product_details_title">
+    <h2>{{ product().title }}</h2>
+    <p class="text-truncate">
+      {{ product().description }}
+    </p>
+  </div>
+  <div
+    class="free_delivery my-3 d-flex flex-row align-items-center justify-content-center"
+  >
+    <span class="ti-truck"></span><span>free delivery</span>
+  </div>
+
+  <app-product-price-view [product]="product()" [size]="'lg'" />
+
+  <ul class="star_rating">
+    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+  </ul>
+  <div class="product_color">
+    <span>Select Color:</span>
+    <ul>
+      <li style="background: #e54e5d"></li>
+      <li style="background: #252525"></li>
+      <li style="background: #60b3f3"></li>
+    </ul>
+  </div>
+  <div
+    class="quantity d-flex flex-row flex-grow lex-sm-row align-items-sm-center"
+  >
+    <span>Quantity:</span>
+    <div class="quantity_selector">
+      <span class="minus"
+        ><i class="bi bi-dash-lg" aria-hidden="true"></i
+      ></span>
+      <span id="quantity_value">1</span>
+      <span class="plus"><i class="bi bi-plus-lg" aria-hidden="true"></i></span>
+    </div>
+    <div class="red_button add_to_cart_button p-2">
+      <a href="#">add to cart</a>
+    </div>
+    <div
+      class="product_favorite d-flex flex-column align-items-center justify-content-center"
+    >
+      <i class="bi bi-heart product_favorite_heart" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>

@@ -11,13 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Product } from '../../../core/model/product';
-import { LocalStorageService } from '../../../core/services/localStorageService/local-storage.service';
-import { StarRatingComponent } from '../star-rating/star-rating.component';
-import { EmptyImageComponent } from '../empty-image/empty-image.component';
-import { QuantityPreviewInputComponent } from '../quantity-preview-input/quantity-preview-input.component';
-import { ProductPriceRatingComponent } from '../product-price-rating/product-price-rating.component';
+import { ProductPriceViewComponent } from '../product-price-rating/product-price-view.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { StarRatingComponent } from '../../star-rating/star-rating.component';
+import { EmptyImageComponent } from '../../empty-image/empty-image.component';
+import { QuantityPreviewInputComponent } from '../quantity-preview-input/quantity-preview-input.component';
+import { Product } from '../../../../core/model/product';
+import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
 
 @Component({
   selector: 'app-product-preview',
@@ -31,7 +31,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     EmptyImageComponent,
-    ProductPriceRatingComponent,
+    ProductPriceViewComponent,
     ReactiveFormsModule,
   ],
   templateUrl: './product-preview.component.html',
@@ -39,7 +39,6 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class ProductPreviewComponent {
   product = input.required<Product>();
-  storageService = inject(LocalStorageService);
   router = inject(Router);
   discountPercentage = computed(() => this.product().discountPercentage / 100);
   quantity = signal(0);
@@ -123,6 +122,7 @@ export class ProductPreviewComponent {
   }
 
   showDetail(id: number) {
-    //this.router.navigateByUrl(ROUTE_PATH.PRODUCT_DETAIL + '/' + id);
+    const url = ROUTE_PATH.PRODUCT_DETAIL.replace(':id', id.toString());
+    this.router.navigateByUrl(url);
   }
 }

@@ -1,58 +1,60 @@
-import { CommonModule, UpperCasePipe } from '@angular/common';
-import { Component, HostListener, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginButtonComponent } from '../../components/buttons/login-button.component';
-import { SignupButtonComponent } from '../../components/buttons/signup-button.component';
-import { LogoutButtonComponent } from '../../components/buttons/logout-button.component';
-import { SearchComponent } from '../../components/buttons/search/search.component';
 import { HeaderTopComponent } from '../header-top/header-top.component';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { SearchDialogComponent } from '../../components/dialog/search-dialog/search-dialog.component';
+import { HeaderNavComponent } from '../header-nav/header-nav.component';
+import { HeaderButtonsComponent } from '../header-buttons/header-buttons.component';
+import { HeaderLogoComponent } from '../header-logo/header-logo.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
     TranslateModule,
-    UpperCasePipe,
-    LoginButtonComponent,
-    SignupButtonComponent,
-    LogoutButtonComponent,
-    SearchComponent,
     HeaderTopComponent,
+    HeaderNavComponent,
+    HeaderButtonsComponent,
+    HeaderLogoComponent,
   ],
   templateUrl: './header.component.html',
-  animations: [
-    trigger('showHeaderTopTrigger', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('50ms', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [animate('150ms', style({ opacity: 0 }))]),
-    ]),
-  ],
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   private authService = inject(AuthService);
   isLoggedIn$ = this.authService.isAuthenticated$;
   showHeaderTop = true;
-  headerBottomonTop = false;
+  readonly dialog = inject(MatDialog);
+  private document = inject(DOCUMENT);
 
   constructor() {
-    this.showHeaderTop = true;
+    this.setTopHeaders();
+  }
+  ngOnInit(): void {
+    this.setTopHeaders();
+  }
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event: any) {
+    this.setTopHeaders();
   }
 
-  @HostListener('window:scroll', ['$event']) onScrollEvent($event: any) {
-    const scrollPosition =
-      document.documentElement.scrollTop || document.body.scrollTop || 0;
+  setTopHeaders() {
+    if (this.document) {
+      const scrollPosition =
+        this.document.documentElement.scrollTop ||
+        this.document.body.scrollTop ||
+        0;
 
-    if (scrollPosition === 0) {
-      this.showHeaderTop = true;
-    } else {
-      this.showHeaderTop = false;
+      if (scrollPosition === 0) {
+        this.showHeaderTop = true;
+      } else {
+        this.showHeaderTop = false;
+      }
     }
+  }
+  openDialog(): void {
+    this.dialog.open(SearchDialogComponent);
   }
 }

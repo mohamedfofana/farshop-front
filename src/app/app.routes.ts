@@ -23,6 +23,13 @@ export const routes: Routes = [
       ),
     children: [
       {
+        path: ROUTE_PATH.PRODUCT_DETAIL,
+        loadComponent: () =>
+          import(
+            './features/product/product-detail/product-detail.component'
+          ).then((mod) => mod.ProductDetailsComponent),
+      },
+      {
         path: ROUTE_PATH.HOME,
         loadComponent: () =>
           import('./features/home/home.component').then(

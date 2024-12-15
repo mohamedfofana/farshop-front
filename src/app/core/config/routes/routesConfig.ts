@@ -6,5 +6,6 @@ export enum ROUTE_PATH {
   CALLBACK = 'callback',
   PROFILE = 'profile',
   SIGNIN = 'signin',
+  PRODUCT_DETAIL = 'product/detail/:id',
   PAGE_NOT_FOUND = 'page-not-found',
 }

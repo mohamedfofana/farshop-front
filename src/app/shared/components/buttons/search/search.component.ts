@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
     <div class="ps-3 mt-1">
       <a
         href="javascript:void(0)"
+        tabindex="-1"
         data-bs-toggle="modal"
         data-bs-target="#searchModal"
       >

@@ -1,114 +1,26 @@
 <header class="header trans_300">
-  @if (showHeaderTop) {
-  <div @showHeaderTopTrigger class="top_nav">
+  <div class="top_nav">
     <div class="container">
       <div class="row">
         <app-header-top></app-header-top>
       </div>
     </div>
   </div>
-  }
-  <div class="main_nav_container p-2">
-    <div class="container">
-      <div class="row">
+  <div class="main_nav_container p-2" [ngClass]="{ 'top-0': !showHeaderTop }">
+    <div class="row">
+      <div
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between"
+      >
         <div
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between"
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
         >
-          <div
-            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-          >
-            <a
-              [routerLink]=""
-              class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none"
-            >
-              <img
-                src="farshop-logo.png"
-                width="90"
-                height="90"
-                class="d-inline-block align-top"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="nav-scroller">
-            <nav class="nav nav-underline justify-content-center">
-              <a class="nav-item nav-link link-body-emphasis" href="#">{{
-                "header.menu.home" | translate | uppercase
-              }}</a>
-              <a
-                class="nav-item nav-link link-body-emphasis dropdown dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                ><span></span
-                >{{ "header.menu.categories" | translate | uppercase }}</a
-              >
-              <ul class="dropdown-menu">
-                <li>
-                  <a
-                    class="dropdown-item text-capitalize"
-                    [routerLink]="['product/categorie']"
-                    >{{ "Categorie" | translate | uppercase }}</a
-                  >
-                </li>
-              </ul>
-              <a
-                class="nav-item nav-link link-body-emphasis"
-                [routerLink]="['promotions']"
-                >{{ "header.menu.promotions" | translate | uppercase }}</a
-              >
-              <a
-                class="nav-item nav-link link-body-emphasis"
-                [routerLink]="['contact']"
-                >{{ "header.menu.contact" | translate | uppercase }}</a
-              >
-            </nav>
-          </div>
-          <div class="dropdown justify-content-end d-flex">
-            <app-search></app-search>
-
-            <ng-container *ngIf="isLoggedIn$ | async; else unAuthenticated">
-              <div class="ps-3">
-                <a
-                  href="#"
-                  class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bi bi-person-circle h3"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end text-small">
-                  <li>
-                    <a class="dropdown-item" [routerLink]="['profile']">{{
-                      "user.menu.profile" | translate | uppercase
-                    }}</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" [routerLink]="['settings']">{{
-                      "user.menu.settings" | translate | uppercase
-                    }}</a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li class="text-center">
-                    <app-logout-button></app-logout-button>
-                  </li>
-                </ul>
-              </div>
-            </ng-container>
-
-            <ng-template #unAuthenticated>
-              <div class="ps-3 mb-1">
-                <a href="/signin">
-                  <i class="bi bi-person h4 text-dark"></i>
-                </a>
-              </div>
-            </ng-template>
-
-            <div class="ps-3 mb-1">
-              <a href="#">
-                <i class="bi bi-cart2 h4 text-dark"></i>
-              </a>
-            </div>
-          </div>
+          <app-header-logo />
+        </div>
+        <div class="nav-scroller">
+          <app-header-nav />
+        </div>
+        <div class="dropdown justify-content-end d-flex">
+          <app-header-buttons />
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@
             {{ selectedLanguage() }}
             <i class="bi bi-chevron-down"></i>
           </a>
-          <ul class="language_selection ps-0">
+          <ul class="language_selection ps-0 text-start">
             @for (language of languages; track language) {
             <li>
               <a
@@ -27,17 +27,17 @@
             {{ "user.account.title" | translate }}
             <i class="bi bi-chevron-down"></i>
           </a>
-          <ul class="account_selection ps-0">
+          <ul class="account_selection ps-0 text-start">
             <li *ngIf="!(isLoggedIn$ | async)">
               <a href="javascript:void(0)" (click)="login()"
                 ><i class="bi bi-box-arrow-right" aria-hidden="true"></i
-                >{{ "user.account.signin.title" | translate }}</a
+                >{{ "general.button.signin" | translate }}</a
               >
             </li>
             <li *ngIf="!(isLoggedIn$ | async)">
               <a href="javascript:void(0)" (click)="register()"
                 ><i class="bi bi-person-fill-add" aria-hidden="true"></i
-                >{{ "user.account.register.title" | translate }}</a
+                >{{ "general.button.register" | translate }}</a
               >
             </li>
             <li *ngIf="isLoggedIn$ | async">

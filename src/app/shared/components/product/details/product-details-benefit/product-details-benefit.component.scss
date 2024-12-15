@@ -1,0 +1,57 @@
+@import "../../../../../../variables";
+    
+.benefit {
+  margin-top: 74px;
+}
+.benefit_row {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.benefit_col {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.benefit_item {
+  height: 100px;
+  background: #f3f3f3;
+  border-right: solid 1px #ffffff;
+  padding-left: 25px;
+}
+.benefit_col:last-child .benefit_item {
+  border-right: none;
+}
+.benefit_icon i {
+  font-size: 30px;
+  color: $app-fancy-red-color;
+}
+.benefit_content {
+  padding-left: 22px;
+}
+.benefit_content h6 {
+  text-transform: uppercase;
+  line-height: 18px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.benefit_content p {
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 0px;
+  color: #51545f;
+}
+
+@media only screen and (max-width: 991px) {
+  .benefit_col {
+    margin-bottom: 30px;
+  }
+  .benefit_col:last-child {
+    margin-bottom: 0px;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+  .benefit_col {
+    margin-bottom: 15px;
+  }
+}

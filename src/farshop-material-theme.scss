@@ -1,0 +1,196 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "sass:map";
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// $my-primary: mat.m2-define-palette(custom.$m2-primary, 500);
+// $my-accent: mat.m2-define-palette(custom.$m2-accent, A200, A100, A400);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$_palettes: (
+  primary: (
+    0: #000000,
+    10: #151c22,
+    20: #2a3138,
+    25: #353c43,
+    30: #41484e,
+    35: #4c535a,
+    40: #585f66,
+    50: #71787f,
+    60: #8a9199,
+    70: #a5acb4,
+    80: #c0c7cf,
+    90: #dce3ec,
+    95: #ebf1fa,
+    98: #f6f9ff,
+    99: #fcfcff,
+    100: #ffffff,
+  ),
+  secondary: (
+    0: #000000,
+    10: #191c1e,
+    20: #2e3133,
+    25: #393c3f,
+    30: #45474a,
+    35: #505356,
+    40: #5c5e62,
+    50: #75777a,
+    60: #8f9194,
+    70: #aaabaf,
+    80: #c5c6ca,
+    90: #e1e2e6,
+    95: #f0f0f4,
+    98: #f8f9fd,
+    99: #fcfcff,
+    100: #ffffff,
+  ),
+  tertiary: (
+    0: #000000,
+    10: #211922,
+    20: #362e37,
+    25: #423842,
+    30: #4d444e,
+    35: #594f59,
+    40: #665b65,
+    50: #7f747e,
+    60: #998d98,
+    70: #b4a7b3,
+    80: #d0c2ce,
+    90: #eddeeb,
+    95: #fcecf9,
+    98: #fff7fb,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    10: #1b1b1c,
+    20: #303031,
+    25: #3c3b3c,
+    30: #474647,
+    35: #535253,
+    40: #5f5e5e,
+    50: #787777,
+    60: #929090,
+    70: #adabab,
+    80: #c8c6c6,
+    90: #e5e2e2,
+    95: #f3f0f0,
+    98: #fcf9f9,
+    99: #fffbfc,
+    100: #ffffff,
+    4: #0e0e0f,
+    6: #131314,
+    12: #201f20,
+    17: #2a2a2a,
+    22: #353535,
+    24: #393939,
+    87: #dcd9d9,
+    92: #eae7e8,
+    94: #f0eded,
+    96: #f6f3f3,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #191c1f,
+    20: #2e3134,
+    25: #393c3f,
+    30: #44474b,
+    35: #505356,
+    40: #5c5f62,
+    50: #75777b,
+    60: #8e9195,
+    70: #a9abaf,
+    80: #c4c6cb,
+    90: #e1e2e7,
+    95: #eff1f5,
+    98: #f8f9fe,
+    99: #fcfcff,
+    100: #ffffff,
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7e0007,
+    30: #93000a,
+    35: #a80710,
+    40: #ba1a1a,
+    50: #de3730,
+    60: #ff5449,
+    70: #ff897d,
+    80: #ffb4ab,
+    90: #ffdad6,
+    95: #ffedea,
+    98: #fff8f7,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+);
+
+$_rest: (
+  secondary: map.get($_palettes, secondary),
+  neutral: map.get($_palettes, neutral),
+  neutral-variant: map.get($_palettes, neutral-variant),
+  error: map.get($_palettes, error),
+);
+$_primary: map.merge(map.get($_palettes, primary), $_rest);
+$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: $_primary,
+      tertiary: $_tertiary,
+    ),
+  )
+);
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: $_primary,
+      tertiary: $_tertiary,
+    ),
+  )
+);
+
+// Define the theme object.
+$farshop-front-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: (
+      brand-family: "Roboto",
+      bold-weight: 900,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  //@include mat.all-component-themes($farshop-front-theme);
+  @include mat.all-component-themes($light-theme);
+  //@include mat.all-component-themes($dark-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($farshop-front-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($farshop-front-theme);

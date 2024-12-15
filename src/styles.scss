@@ -240,13 +240,7 @@ Account
   margin-right: 10px;
 }
 
-.main_nav_container {
-  position: fixed;
-  width: 100%;
-  background: #ffffff;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-}
+
 
 .pt-6 {
   padding-top: 4rem !important;
@@ -254,4 +248,61 @@ Account
 
 .pt-7 {
   padding-top: 5rem !important;
+}
+
+.red_button {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  background: $app-fancy-red-color;
+  border-radius: 20px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.red_button:hover {
+  background: #fe7c7f !important;
+}
+.red_button a {
+  display: block;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 40px;
+  width: 100%;
+}
+a.red_button,
+a.red_button:hover,
+a.red_button:visited,
+a.red_button:active,
+a.red_button:link {
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
+
+.pt-0-15-rem {
+  padding-top: 0.15rem !important;
+}
+
+/****************************
+  Responsive
+****************************/
+@media only screen and (max-width: 767px) {
+  .red_button a {
+    font-size: 12px;
+  }
 }

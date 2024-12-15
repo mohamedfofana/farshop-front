@@ -13,6 +13,12 @@ export class ProductService {
   private httpClient = inject(HttpClient);
   private productUrl = environment.API_WHITE_LIST_ENDPOINT + '/product';
 
+  getProduct(id: number): Observable<Product> {
+    const endpoint = this.productUrl.concat('/findById');
+
+    return this.httpClient.post<Product>(endpoint, { id: id });
+  }
+
   getProductsByPage(findByPage: FindByPageDto): Observable<Product[]> {
     const endpoint = this.productUrl.concat('/findAllByPage');
 

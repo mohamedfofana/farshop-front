@@ -1,8 +1,8 @@
 export interface FindByPageDto {
   page: number;
   size: number;
-  field: string;
-  direction: string;
+  sortField: string;
+  sortDirection: string;
   priceMin: number;
   priceMax: number;
 }
