@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TranslateService } from '@ngx-translate/core';
 import { translateServiceStub } from '../../../../tests/stubs/translateServiceStub';
-import { CodeLanguage } from '../../model/enum/CodeLanguage';
+import { CodeLanguage } from '../../model/enum/codeLanguage';
 import { LocalStorageService } from '../localStorageService/local-storage.service';
 import { TranslationService } from './translation.service';
 

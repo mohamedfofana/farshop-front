@@ -8,7 +8,7 @@
 [data-star]::before {
   display: block;
   content: "★★★★★";
-  color: #eee;
+  color: #dcd4d4;
 }
 [data-star]::after {
   white-space: nowrap;
@@ -17,7 +17,8 @@
   left: 0;
   content: "★★★★★";
   width: 0;
-  color: #ff8c00;
+  opacity: 1;
+  color: rgb(255 193 7);
   overflow: hidden;
   height: 100%;
 }

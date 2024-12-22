@@ -18,20 +18,21 @@ import { ProductDetailsInfoComponent } from '../../../shared/components/product/
 import { ProductDetailsBenefitComponent } from '../../../shared/components/product/details/product-details-benefit/product-details-benefit.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProductTabReviewsComponent } from '../../../shared/components/product/details/tabs/product-tab-reviews/product-tab-reviews.component';
+import { PageNotFoundComponent } from "../../page-not-found/page-not-found.component";
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
   imports: [
     MatTabsModule,
-    NgIf,
     ProductTabReviewsComponent,
     ProductMoreInformationComponent,
     ProductDescriptionComponent,
     ProductDetailsImagesComponent,
     ProductDetailsInfoComponent,
     ProductDetailsBenefitComponent,
-  ],
+    PageNotFoundComponent
+],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,7 +42,6 @@ export class ProductDetailsComponent {
   utilsService = inject(UtilsService);
   private productService = inject(ProductService);
   id$ = of(this.activatedRoute.snapshot.paramMap.get('id') || '');
-  //id: Signal<string | undefined> = toSignal(this.id$);
 
   product: Signal<Product | undefined> = toSignal(
     this.id$.pipe(

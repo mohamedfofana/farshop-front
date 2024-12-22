@@ -18,8 +18,6 @@ body {
   font-size: 14px;
   line-height: 23px;
   font-weight: 400;
-  // background: #ffffff;
-  // color: #1e1e27;
 }
 ul {
   list-style: none;
@@ -46,7 +44,7 @@ div {
   color: #1e1e27;
 }
 .footer_social ul li a:hover {
-  color: #fe4c50;
+  color: $app-fancy-red-color;
 }
 
 a:hover {
@@ -239,8 +237,6 @@ Account
 .account_selection li a i {
   margin-right: 10px;
 }
-
-
 
 .pt-6 {
   padding-top: 4rem !important;

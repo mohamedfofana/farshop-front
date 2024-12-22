@@ -1,11 +1,26 @@
-<mat-card class="product-card bg-white" (click)="showDetail(product().id)">
+<mat-card class="product-card bg-white">
   <mat-card-header class="product-img" (click)="showDetail(product().id)">
-    <app-empty-image></app-empty-image>
+    <app-empty-image />
     @if (discountPercentage() > 0) {
     <div
       class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
     >
       <span>{{ discountPercentage() | percent : "1.2-2" }}</span>
+    </div>
+    }
+    <!-- @if (product()) { if Favorite
+      <div class="favorite">
+        <span>
+          <i class="bi bi-heart-fill" aria-hidden="true"></i
+        ></span>
+      </div>
+    } -->
+
+    @if (quantity() > 0) {
+    <div
+      class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"
+    >
+      <span>{{ quantity() }}</span>
     </div>
     }
   </mat-card-header>
@@ -22,10 +37,10 @@
       <app-star-rating
         [showReviewsNumber]="true"
         [reviews]="product().reviews ? product().reviews : []"
-      ></app-star-rating>
+      />
     </div>
     <div class="mb-0 pt-2">
-      <app-product-price-view [product]="product()"/>
+      <app-product-price-view [product]="product()" />
     </div>
   </mat-card-content>
   @if (showAddToCartButton) {
@@ -33,14 +48,12 @@
     class="justify-content-center add_to_cart_button_actions mt-3 p-0 rounded-bottom"
   >
     @if (quantity() === 0) {
-    <button mat-icon-button (click)="addInitialToCart()">
+    <button mat-icon-button (click)="initializeInCart()">
       <mat-icon class="white-icon p-0">add_shopping_cart</mat-icon>
     </button>
     }@else {
     <div class="pe-3">
-      <app-quantity-preview-input
-        [(quantity)]="quantity"
-      ></app-quantity-preview-input>
+      <app-quantity-input [(quantity)]="quantity" [idProduct]="product().id" />
     </div>
     }
   </mat-card-actions>

@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   ssrIgnoresSsl: true,
+  CRYPTO_JS_SECRET_KEY: '@for_test_purpose',
   API_AUTH_ENDPOINT: 'https://localhost:8080/api/auth',
   API_WHITE_LIST_ENDPOINT: 'https://localhost:8080/api/wl',
   API_SECURED_ENDPOINT: 'https://localhost:8080/api',

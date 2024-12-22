@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Product } from '../../../../../../core/model/product';
 
 @Component({
   selector: 'app-product-description',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-tab-description.component.scss'
 })
 export class ProductDescriptionComponent {
-
+  product = input.required<Product>();
 }

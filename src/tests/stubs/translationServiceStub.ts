@@ -1,4 +1,4 @@
-import { CodeLanguage } from '../../app/core/model/enum/CodeLanguage';
+import { CodeLanguage } from '../../app/core/model/enum/codeLanguage';
 import { TranslationService } from '../../app/core/services/translationService/translation.service';
 
 export let translationServiceStub: Partial<TranslationService> = {

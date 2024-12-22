@@ -1,28 +1,35 @@
-<div *ngIf="product() as product" class="container single_product_container">
-  <div class="row pt-4">
-    <div class="col-lg-7">
-      <app-product-details-images />
-    </div>
-    <div class="col-lg-5">
-      <app-product-details-info [product]="product" />
-    </div>
-  </div>
-</div>
-
-<div class="tabs_section_container">
-  <div class="container">
-    <div class="row">
-      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-        <mat-tab label="Description">
-          <app-product-description />
-        </mat-tab>
-        <mat-tab label="Additional Information">
-          <app-product-more-information />
-        </mat-tab>
-        <mat-tab label="Reviews (2)"> <app-product-reviews /> </mat-tab>
-      </mat-tab-group>
+@if (product()) {
+  <div class="container single_product_container">
+    <div class="row pt-4">
+      <div class="col-lg-7">
+        <app-product-details-images [product]="product()!" />
+      </div>
+      <div class="col-lg-5">
+        <app-product-details-info [product]="product()!" />
+      </div>
     </div>
   </div>
-</div>
-
-<app-product-details-benefit />
+  
+  <div class="tabs_section_container">
+    <div class="container">
+      <div class="row">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+          <mat-tab label="Description">
+            <app-product-description [product]="product()!" />
+          </mat-tab>
+          <mat-tab label="Additional Information">
+            <app-product-more-information [product]="product()!"/>
+          </mat-tab>
+          <mat-tab label="Reviews (2)">
+            <app-product-reviews [product]="product()!" />
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+  
+  <app-product-details-benefit />
+}
+@else {
+  <app-page-not-found/>
+}

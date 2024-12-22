@@ -1,19 +1,34 @@
-/* .product-card:hover {
-  box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
-  transition: 0.5s;
-}
-.product-card {
-  transition: 0.5s;
-}
-.product-img {
-  overflow: hidden;
-  transition: 0.5s;
-}
-.product-img img:hover {
-  transform: scale(1.3);
-  transition: 0.5s;
-} */
+@import '../../../../../variables';
 
+.favorite {
+  position: absolute;
+  top: 15px;
+  left: 40%;
+  color: $app-fancy-red-color;
+  font-size: 1.5rem;
+  width: 17px;
+  height: 10px;
+  visibility: visible;
+  opacity: 1;
+}
+.favorite_left {
+  left: 15px;
+}
+.favorite.active {
+  visibility: visible;
+  opacity: 1;
+}
+.product-item:hover .favorite {
+  visibility: visible;
+  opacity: 1;
+}
+.favorite.active::after {
+  color: $app-fancy-red-color;
+}
+
+.favorite:hover::after {
+  color: $app-fancy-red-color;
+}
 .product_bubble {
   position: absolute;
   top: 15px;
@@ -49,13 +64,13 @@
   border: 6px solid;
 }
 .product_bubble_red::after {
-  border-color: transparent transparent transparent #fe4c50;
+  border-color: transparent transparent transparent $app-fancy-red-color;
 }
 .product_bubble_left::after {
   border-color: #51a042 #51a042 transparent transparent;
 }
 .product_bubble_red {
-  background: #fe4c50;
+  background: $app-fancy-red-color;
 }
 .product_bubble_green {
   background: #51a042;
@@ -102,13 +117,13 @@
   border: 6px solid;
 }
 .product_bubble_red::after {
-  border-color: transparent transparent transparent #fe4c50;
+  border-color: transparent transparent transparent $app-fancy-red-color;
 }
 .product_bubble_left::after {
   border-color: #51a042 #51a042 transparent transparent;
 }
 .product_bubble_red {
-  background: #fe4c50;
+  background: $app-fancy-red-color;
 }
 .product_bubble_green {
   background: #51a042;
@@ -121,7 +136,7 @@
 }
 
 .add_to_cart_button_actions {
-  background-color: #fe4c50;
+  background-color: $app-fancy-red-color;
 }
 
 .white-icon {

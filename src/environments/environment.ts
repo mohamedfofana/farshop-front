@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   ssrIgnoresSsl: false,
+  CRYPTO_JS_SECRET_KEY: '',
   API_AUTH_ENDPOINT: '',
   API_WHITE_LIST_ENDPOINT: '',
   API_SECURED_ENDPOINT: '',

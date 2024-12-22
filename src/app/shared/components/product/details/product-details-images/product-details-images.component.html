@@ -1,41 +1,64 @@
-<div class="single_product_pics">
+<div class="row">
+  <div class="col-2">
     <div class="row">
-      <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-        <div class="single_product_thumbnails">
-          <ul>
-            <li>
-              <img
-                src="../../../../assets/images/single_1_thumb.jpg"
-                alt=""
-                data-image="../../../../assets/images/single_1.jpg"
-              />
-            </li>
-            <li class="active">
-              <img
-                src="../../../../assets/images/single_2_thumb.jpg"
-                alt=""
-                data-image="../../../../assets/images/single_2.jpg"
-              />
-            </li>
-            <li>
-              <img
-                src="../../../../assets/images/single_3_thumb.jpg"
-                alt=""
-                data-image="../../../../assets/images/single_3.jpg"
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-9 image_col order-lg-2 order-1">
-        <div class="single_product_image">
-          <div
-            class="single_product_image_background"
-            style="
-              background-image: url(../../../../assets/images/single_2.jpg);
-            "
-          ></div>
-        </div>
-      </div>
+      <img
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
+        alt="Thumbnail 1"
+        class="thumbnail object-fit-sm-contain rounded active p-0"
+        (click)="
+          changeImage(
+            $event,
+            'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080'
+          )
+        "
+      />
+    </div>
+    <div class="row pt-3">
+      <img
+        src="https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
+        alt="Thumbnail 2"
+        class="thumbnail object-fit-sm-contain rounded p-0"
+        (click)="
+          changeImage(
+            $event,
+            'https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080'
+          )
+        "
+      />
+    </div>
+    <div class="row pt-3">
+      <img
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
+        alt="Thumbnail 3"
+        class="thumbnail object-fit-sm-contain rounded p-0"
+        (click)="
+          changeImage(
+            $event,
+            'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080'
+          )
+        "
+      />
+    </div>
+    <div class="row pt-3">
+      <img
+        src="https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
+        alt="Thumbnail 4"
+        class="thumbnail object-fit-sm-contain rounded p-0"
+        (click)="
+          changeImage(
+            $event,
+            'https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080'
+          )
+        "
+      />
     </div>
   </div>
+  <div class="col-10">
+    <img
+      [src]="mainImageSrc"
+      alt="Product"
+      class="img-fluid rounded mb-3 product-image"
+      id="mainImage"
+    />
+  </div>
+</div>

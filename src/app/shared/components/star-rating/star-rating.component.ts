@@ -11,6 +11,7 @@ import { Review } from '../../../features/review/model/review';
   styleUrl: './star-rating.component.scss',
 })
 export class StarRatingComponent {
+  size = input<'sm' | 'lg'>('sm');
   showReviewsNumber = input(false);
   showRatingSize = input(false);
   reviews = input<Review[]>([]);

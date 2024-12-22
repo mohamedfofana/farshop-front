@@ -4,6 +4,7 @@ import {
   HostListener,
   inject,
   input,
+  OnInit,
   signal,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,9 +16,10 @@ import { ProductPriceViewComponent } from '../product-price-rating/product-price
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { StarRatingComponent } from '../../star-rating/star-rating.component';
 import { EmptyImageComponent } from '../../empty-image/empty-image.component';
-import { QuantityPreviewInputComponent } from '../quantity-preview-input/quantity-preview-input.component';
 import { Product } from '../../../../core/model/product';
 import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
+import { QuantityInputComponent } from '../quantity-input/quantity-input.component';
+import { StorageService } from '../../../../core/services/storage/storage.service';
 
 @Component({
   selector: 'app-product-preview',
@@ -25,7 +27,6 @@ import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
   imports: [
     StarRatingComponent,
     EmptyImageComponent,
-    QuantityPreviewInputComponent,
     CommonModule,
     MatCardModule,
     MatButtonModule,
@@ -33,19 +34,28 @@ import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
     EmptyImageComponent,
     ProductPriceViewComponent,
     ReactiveFormsModule,
+    QuantityInputComponent,
   ],
   templateUrl: './product-preview.component.html',
   styleUrl: './product-preview.component.scss',
 })
-export class ProductPreviewComponent {
-  product = input.required<Product>();
+export class ProductPreviewComponent implements OnInit {
   router = inject(Router);
+  storageService = inject(StorageService);
+  quantity = signal<number>(0);
+  product = input.required<Product>();
   discountPercentage = computed(() => this.product().discountPercentage / 100);
-  quantity = signal(0);
   selectSortByFieldFormControl = new FormControl<String>('');
   fieldList = ['Price', 'Rate', 'Name'];
   sortByField = signal('');
   showAddToCartButton: boolean = false;
+
+  ngOnInit() {
+    const storedQuantity = this.storageService.getProductQuantity(
+      this.product().id
+    );
+    this.quantity.set(storedQuantity);
+  }
 
   sortByColumnChanged() {
     if (this.selectSortByFieldFormControl.value) {
@@ -67,58 +77,9 @@ export class ProductPreviewComponent {
     this.showAddToCartButton = false;
   }
 
-  //   thumbnail = computed(() =>
-  // //    this.product().imageUrls.find((image) => image.type === ImageUrlTypeEnum.THUMBNAIL)
-  //   );
-
-  //   rate = computed(() => {
-  //     const reviews = this.product()?.reviews;
-  //     if (reviews)
-  //       return (
-  //         reviews.reduce((total, b) => {
-  //           return (total += b.rate);
-  //         }, 0) / reviews.length
-  //       );
-  //     else return 0;
-  //   });
-  //   quantity = signal(0);
-  //   initialQuantity = computed(() => {
-  //     if (this.product()) {
-  //       return this.storageService.cartProductIdList().filter((id) => id === this.product()?.id)
-  //         .length;
-  //     }
-  //     return 0;
-  //   }, {});
-
-  //   constructor() {
-  //     effect(
-  //       () => {
-  //         if (this.product()) {
-  //           this.quantity.set(
-  //             this.storageService.cartProductIdList().filter((id) => id === this.product()?.id).length
-  //           );
-  //         }
-  //         this.quantity.set(this.initialQuantity());
-  //       },
-  //       { allowSignalWrites: true }
-  //     );
-
-  //     effect(
-  //       () => {
-  //         if (this.quantity() >= 0) {
-  //           this.addToCart();
-  //         }
-  //       },
-  //       { allowSignalWrites: true }
-  //     );
-  //   }
-
-  //   addToCart() {
-  //     this.storageService.addToCart(this.product().id, this.quantity());
-  //   }
-
-  addInitialToCart() {
+  initializeInCart() {
     this.quantity.set(1);
+    this.storageService.addSingleProduct(this.product().id);
   }
 
   showDetail(id: number) {

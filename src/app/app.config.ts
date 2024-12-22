@@ -16,6 +16,7 @@ import {
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideNgxWebstorage, withLocalStorage, withNgxWebstorageConfig } from 'ngx-webstorage';
 import { environment } from '../environments/environment.development';
 import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor.interceptor';
 
@@ -43,5 +44,13 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimationsAsync(),
     provideAuth0(environment.auth0),
+    provideNgxWebstorage(
+      withNgxWebstorageConfig({
+        prefix: 'farshop',
+        separator: '.',
+        caseSensitive: true,
+      }),
+      withLocalStorage(),
+    ),
   ],
 };

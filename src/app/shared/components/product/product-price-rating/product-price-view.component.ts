@@ -11,7 +11,7 @@ import { FinalProductpricePipe } from '../../../../core/pipe/final-productprice.
     <div class="d-flex pt-1 pb-2">
       <div class="flex-fill">
         <span
-          class="product_price px-1"
+          class="product_price"
           [ngClass]="{ 'fs-6': size() === 'sm', 'fs-4': size() === 'lg' }"
         >
           {{ finalPrice() | currency : 'CAD' : 'symbol-narrow' : '1.2-2' }}
@@ -27,16 +27,18 @@ import { FinalProductpricePipe } from '../../../../core/pipe/final-productprice.
       </div>
     </div>
   `,
-  styles: `.product_price {
-    color: #fe4c50;
+  styles: `
+  @import '../../../../../_variables.scss';
+  .product_price {
+    color: $app-fancy-red-color;
     font-weight: 600;
-  }
-  .product_old_price {
-    margin-left: 5px;
-    font-weight: 600;
-    color: #b5aec4;
-    text-decoration: line-through;
-}`,
+    }
+    .product_old_price {
+      margin-left: 5px;
+      font-weight: 600;
+      color: #b5aec4;
+      text-decoration: line-through;
+    }`,
 })
 export class ProductPriceViewComponent {
   product = input.required<Product>();

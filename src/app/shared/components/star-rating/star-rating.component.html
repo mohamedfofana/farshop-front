@@ -3,9 +3,14 @@
   <div>{{ rate() }}</div>
   }
   <div [ngClass]="{ 'ps-2': showRatingSize() }">
-    <i attr.data-star="{{ rate() }}"></i>
+    <i
+      attr.data-star="{{ rate() }}"
+      [ngClass]="{ 'fs-5 pb-1': size() === 'lg' }"
+    ></i>
   </div>
   @if (showReviewsNumber() && reviews().length > 0) {
-  <div class="ps-2">{{ reviews().length }}</div>
-  }
+  <span class="ps-2" [ngClass]="{ 'fs-6': size() === 'lg' }">{{ rate() }}</span>
+  @if (size() === 'lg') {
+  <span class="ps-2 fs-6">({{ reviews().length }} reviews)</span>
+  } }
 </div>

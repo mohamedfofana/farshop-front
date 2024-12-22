@@ -1,15 +1,15 @@
-import { Injectable, Inject, PLATFORM_ID, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
-import { CodeLanguage } from '../../model/enum/CodeLanguage';
-import { LocalStorageService } from '../localStorageService/local-storage.service';
-import { SessionConstant } from '../../security/constants/SessionConstants';
+import { CodeLanguage } from '../../model/enum/codeLanguage';
+import { StorageService } from '../storage/storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationService {
-  private localStorageService = inject(LocalStorageService);
+  private storageService = inject(StorageService);
+
   private translateService = inject(TranslateService);
   private platformId = inject(PLATFORM_ID);
   private readonly defaultLang = navigator.language.split('-')[0];
@@ -21,14 +21,12 @@ export class TranslationService {
   changeLanguage(lang: string) {
     this.translateService.use(lang);
     if (isPlatformBrowser(this.platformId)) {
-      this.localStorageService.setItem(SessionConstant.CURRENT_LANGUAGE, lang);
+      this.storageService.changeLanguage(lang);
     }
   }
 
   getCurrentLanguage(): string {
-    const storedLang: string | null = this.localStorageService.getItem(
-      SessionConstant.CURRENT_LANGUAGE
-    );
+    const storedLang = this.storageService.getLanguage();
 
     if (this.isAppLanguage(storedLang)) {
       return storedLang!;
@@ -40,4 +38,5 @@ export class TranslationService {
   isAppLanguage(lang: string | null) {
     return Object.values(CodeLanguage).find((s) => s === lang) != undefined;
   }
+
 }

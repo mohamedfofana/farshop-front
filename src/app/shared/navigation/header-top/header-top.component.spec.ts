@@ -7,7 +7,7 @@ import { TranslationService } from '../../../core/services/translationService/tr
 import { translationServiceStub } from '../../../../tests/stubs/translationServiceStub';
 import { provideRouter } from '@angular/router';
 import { By } from '@angular/platform-browser';
-import { CodeLanguage } from '../../../core/model/enum/CodeLanguage';
+import { CodeLanguage } from '../../../core/model/enum/codeLanguage';
 import { DebugElement } from '@angular/core';
 
 describe('HeaderTopComponent', () => {
