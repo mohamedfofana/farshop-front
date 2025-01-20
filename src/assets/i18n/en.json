@@ -1,0 +1,133 @@
+{
+  "home": {
+    "title": "Home"
+  },
+  "header": {
+    "menu": {
+      "home": "Home",
+      "categories": "Categories",
+      "promotions": "Promotions",
+      "contact": "Contact",
+      "about": "About"
+    }
+  },
+  "footer": {
+    "menu": {
+      "home": "Home",
+      "categories": "Categories",
+      "contact": "Contact",
+      "about": "About"
+    },
+    "copyright": "©2024 All Rights Reserved. Made by kodakro"
+  },
+  "user": {
+    "account": {
+      "title": "My account",
+      "signin": {
+        "title": "Sign in"
+      },
+      "logout": {
+        "title": "Log out"
+      },
+      "register": {
+        "title": "Register"
+      }
+    },
+    "menu": {
+      "profile": "Profile",
+      "settings": "Settings"
+    }
+  },
+  "product": {
+    "section": {
+      "tabs": {
+        "description-title": "Description",
+        "review-title": "Reviews"
+      },
+      "image-preview": {
+        "title": "Placeholder",
+        "content": "No image"
+      },
+      "newsletter": {
+        "title": "Newsletter",
+        "content": "Subscribe to our newsletter and get 20% off your first purchase",
+        "button-label": "Subscribe",
+        "placeholder": "Your email"
+      },
+      "brand": {
+        "title": "Brand:"
+      },
+      "quantity": {
+        "title": "Quantity"
+      },
+      "size": {
+        "title": "Select size:"
+      },
+      "color": {
+        "title": "Select color:"
+      },
+      "search": {
+        "result": "Search results for:"
+      }
+    },
+    "review": {
+      "rating": {
+        "no-review-yet": "No review yet",
+        "reviews-count-label": "reviews"
+      },
+      "form": {
+        "title": "Add Review",
+        "rating": "Your Rating:",
+        "placeholder": "Your review ..."
+      }
+    }
+  },
+  "general": {
+    "input": {
+      "search": {
+        "placeholder": "Search ...",
+        "error": "You must enter at least {{letterCount}} letters! "
+      }
+    },
+    "button": {
+      "submit": "Submit",
+      "continue": "Next",
+      "cancel": "Cancel",
+      "signin": "Sign in",
+      "register": "Sign up",
+      "buy-now": "Checkout",
+      "checkout": "Buy now"
+    },
+    "sort": {
+      "title": "Sort by",
+      "price": {
+        "title": "Price",
+        "asc": "Price low to high",
+        "desc": "Price high to low"
+      },
+      "rate": {
+        "title": "Rate",
+        "asc": "Rate low to high",
+        "desc": "Rate high to low"
+      },
+      "most-reviewed": {
+        "title": "Most reviewed",
+        "desc": "Most reviewed"
+      },
+      "asc": "Low to high",
+      "desc": "High to low"
+    },
+    "error": {
+      "form": {
+        "required": "Champ obligatoire",
+        "email-invalid": "Email invalid",
+        "a-field": "Une erreur a été detecté sur le champ suivant:{field}.",
+        "all-field": "Une erreur a été detecté sur les champs suivants:{fields}."
+      },
+      "image": {
+        "page-not-found": "page_not_found_en.png",
+        "result-not-found": "result_not_found_en.png"
+      }
+    }
+  }
+}

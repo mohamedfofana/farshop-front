@@ -1,0 +1,28 @@
+<div class="newsletter">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div
+          class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+          <h4>{{ 'product.section.newsletter.title' | translate }}</h4>
+          <p>
+            {{ 'product.section.newsletter.content' | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <form action="post">
+          <div
+            class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+            <input id="newsletter_email" type="email" class="rounded-start-pill border-end-0"
+              placeholder="{{ 'product.section.newsletter.placeholder' | translate }}" name="email" required="required"
+              [(ngModel)]="email" />
+            <button id="newsletter_submit" type="button" class="newsletter_submit_btn trans_300" (click)="subscribe()">
+              {{ 'product.section.newsletter.button-label' | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

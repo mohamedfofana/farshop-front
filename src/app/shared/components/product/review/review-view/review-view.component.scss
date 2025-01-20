@@ -1,0 +1,40 @@
+@import "../../../../../../variables";
+
+.user_review_container {
+  background-color: #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+}
+.user_pic {
+  width: 70px;
+  height: 70px;
+  background: #ebebeb;
+  border-radius: 50%;
+}
+.user_rating .star_rating {
+  margin-left: 5px;
+  margin-top: 13px;
+}
+.user_rating .star_rating li {
+  margin-right: -3px;
+}
+.user_rating .star_rating li i {
+  font-size: 12px;
+}
+
+.review {
+  padding-left: 30px;
+}
+.review_date {
+  color: $app-fancy-red-color;
+  margin-top: -4px;
+}
+.user_name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.review p {
+  font-weight: 400;
+}
