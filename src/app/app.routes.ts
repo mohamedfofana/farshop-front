@@ -9,13 +9,6 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: ROUTE_PATH.SIGNIN,
-    loadComponent: () =>
-      import('./features/customer/signin/signin.component').then(
-        (mod) => mod.SigninComponent
-      ),
-  },
-  {
     path: '',
     loadComponent: () =>
       import('./shared/navigation/base-layout/base-layout.component').then(
@@ -30,11 +23,25 @@ export const routes: Routes = [
           ).then((mod) => mod.ProductDetailsComponent),
       },
       {
+        path: ROUTE_PATH.CATEGORY_DETAIL,
+        loadComponent: () =>
+          import(
+            './features/category/category-list/category-list.component'
+          ).then((mod) => mod.CategoryListComponent),
+      },
+      {
         path: ROUTE_PATH.HOME,
         loadComponent: () =>
           import('./features/home/home.component').then(
             (mod) => mod.HomeComponent
           ),
+      },
+      {
+        path: ROUTE_PATH.PRODUCT_SEARCH,
+        loadComponent: () =>
+          import(
+            './features/product/product-search-result/product-search-result.component'
+          ).then((mod) => mod.ProductSearchResultComponent),
       },
       {
         path: ROUTE_PATH.CONTACT,

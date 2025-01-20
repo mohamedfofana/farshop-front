@@ -1,31 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { ProductColor } from '../../../../core/model/db/productColor';
+import { NgStyle } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-color-select',
   standalone: true,
-  imports: [],
-  template: `
-    <div class="product_color pt-2">
-      <span>Select Color:</span>
-      <ul>
-        <li style="background: #e54e5d"></li>
-        <li style="background: #252525"></li>
-        <li style="background: #60b3f3"></li>
-      </ul>
-    </div>
-  `,
-  styles: `
-  .product_color ul {
-  display: inline-block;
-  margin-left: 26px;
-}
-.product_color ul li {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 29px;
-  cursor: pointer;
-}`,
+  imports: [NgStyle, TranslateModule],
+  templateUrl: './product-color-select.component.html',
+  styleUrl: './product-color-select.component.scss',
 })
-export class ProductColorSelectComponent {}
+export class ProductColorSelectComponent {
+  colors = input.required<ProductColor[]>();
+}

@@ -1,10 +1,15 @@
 @import "variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
-$app-text-color: #51545f;
 
 /***********
 Fonts
 ***********/
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  z-index: 1020;
+}
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,900");
 
@@ -14,11 +19,31 @@ Fonts
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  line-height: 23px;
-  font-weight: 400;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-style: $body-font-style;
+  line-height: $body-line-height;
+  font-weight: $body-font-weight;
+  color: $body-text-color;
 }
+.bg-app-theme-color {
+  background: $app-fancy-red-color;
+}
+
+.app-theme-color {
+  color: $app-fancy-red-color;
+}
+
+.button-theme:hover {
+  opacity: 0.9;
+  background: $app-fancy-red-color;
+}
+
+.button-theme:hover {
+  opacity: 1;
+  background: $app-fancy-red-color;
+}
+
 ul {
   list-style: none;
   margin-bottom: 0px;
@@ -39,7 +64,9 @@ div {
   padding-left: 10%;
   padding-right: 10%;
 }
-
+.cursor-hand {
+  cursor: pointer;
+}
 .global-bg-color {
   color: #1e1e27;
 }
@@ -50,10 +77,21 @@ div {
 a:hover {
   --bs-link-color-rgb: var(--bs-link-hover-color);
 }
-.nav-link:hover {
-  color: green;
+.nav-link:hover.nav-underline .nav-link:hover,
+.nav-underline .nav-link:focus {
+  border-bottom-color: $app-fancy-red-color;
 }
-
+.nav-underline .nav-link:hover,
+.nav-underline .nav-link:focus {
+  border-bottom-color: $app-fancy-red-color;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: $app-fancy-red-color;
+}
+.error {
+  color: $app-error-color;
+}
 .trans_300 {
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
@@ -66,16 +104,12 @@ Header
 *********************************/
 
 .header {
-  // position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background: #ffffff;
-  // z-index: 10;
 }
 .top_nav {
-  // width: 100%;
-  // height: 50px;
   background: #1e1e27;
 }
 .top_nav_left {
@@ -95,8 +129,6 @@ Language
   position: relative;
   min-width: 50px;
   border-right: solid 1px #33333b;
-  padding-right: 20px;
-  padding-left: 20px;
   text-align: center;
   vertical-align: middle;
   background: #1e1e27;
@@ -169,7 +201,6 @@ Account
   display: inline-block;
   position: relative;
   min-width: 50px;
-  padding-left: 20px;
   text-align: center;
   vertical-align: middle;
   background: #1e1e27;
@@ -246,7 +277,17 @@ Account
   padding-top: 5rem !important;
 }
 
-.red_button {
+.theme_bg_color {
+  background: $app-fancy-red-color;
+}
+
+.yellow_button {
+  background: $app-button-color-yellow;
+}
+.input_border {
+  border: solid 0.05em #797373;
+}
+.custom_button {
   display: -webkit-inline-box;
   display: -moz-inline-box;
   display: -ms-inline-flexbox;
@@ -256,19 +297,19 @@ Account
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 40px;
-  background: $app-fancy-red-color;
+  padding: 0.3rem;
   border-radius: 20px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  opacity: 0.85;
 }
-.red_button:hover {
-  background: #fe7c7f !important;
+.custom_button:hover {
+  opacity: 1;
 }
-.red_button a {
+.custom_button a {
   display: block;
   color: #ffffff;
   text-transform: uppercase;
@@ -279,11 +320,11 @@ Account
   line-height: 40px;
   width: 100%;
 }
-a.red_button,
-a.red_button:hover,
-a.red_button:visited,
-a.red_button:active,
-a.red_button:link {
+a.custom_button,
+a.custom_button:hover,
+a.custom_button:visited,
+a.custom_button:active,
+a.custom_button:link {
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
   -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
@@ -298,7 +339,7 @@ a.red_button:link {
   Responsive
 ****************************/
 @media only screen and (max-width: 767px) {
-  .red_button a {
+  .custom_button a {
     font-size: 12px;
   }
 }

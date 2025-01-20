@@ -1,35 +1,33 @@
 @if (product()) {
-  <div class="container single_product_container">
-    <div class="row pt-4">
-      <div class="col-lg-7">
-        <app-product-details-images [product]="product()!" />
-      </div>
-      <div class="col-lg-5">
-        <app-product-details-info [product]="product()!" />
-      </div>
+<div class="container single_product_container">
+  <div class="row pt-4">
+    <div class="col-lg-6">
+      <app-product-details-images [product]="product()!" />
+    </div>
+    <div class="col-lg-4">
+      <app-product-details-info [product]="product()!" />
+    </div>
+    <div class="col-lg-2 border-start">
+      <app-product-details-action [product]="product()!" />
     </div>
   </div>
-  
-  <div class="tabs_section_container">
-    <div class="container">
-      <div class="row">
-        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-          <mat-tab label="Description">
-            <app-product-description [product]="product()!" />
-          </mat-tab>
-          <mat-tab label="Additional Information">
-            <app-product-more-information [product]="product()!"/>
-          </mat-tab>
-          <mat-tab label="Reviews (2)">
-            <app-product-reviews [product]="product()!" />
-          </mat-tab>
-        </mat-tab-group>
-      </div>
+</div>
+
+<div class="tabs_section_container">
+  <div class="container">
+    <div class="row">
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="{{ 'product.section.tabs.description-title' | translate }}">
+          <app-product-description [descriptions]="product()!.descriptions" />
+        </mat-tab>
+        <mat-tab label="{{ 'product.section.tabs.review-title' | translate }} ({{ product()!.reviews.length }})">
+          <app-product-reviews [reviews]="product()!.reviews" />
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
-  
-  <app-product-details-benefit />
-}
-@else {
-  <app-page-not-found/>
+</div>
+
+} @else {
+<app-page-not-found />
 }

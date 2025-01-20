@@ -1,0 +1,25 @@
+<div class="user_review_container d-flex p-3 m-1">
+  <div class="user">
+    <div class="user_pic"></div>
+    <div class="user_rating">
+      <app-star-rating [rate]="review().rate.toString()" [size]="'sm'" />
+    </div>
+  </div>
+  <div class="review flex-grow-1">
+    <div class="review_date">{{ timeElapsed() }}</div>
+    <div class="user_name">
+      {{ review().customer.firstname + " " + review().customer.lastname }}
+    </div>
+    <div>
+      <p>
+        {{ review().comment }}
+      </p>
+    </div>
+    <div class="d-flex flex-row">
+      <app-like-dislike-button
+        [likes]="review().likes"
+        [unlikes]="review().unlikes"
+      />
+    </div>
+  </div>
+</div>

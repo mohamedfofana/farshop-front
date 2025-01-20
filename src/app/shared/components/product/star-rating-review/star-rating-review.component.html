@@ -1,0 +1,22 @@
+<div class="d-flex">
+  @if (showRatingSize()) {
+  <div>{{ rate() }}</div>
+  }
+  <div [ngClass]="{ 'ps-2': showRatingSize() }">
+    <app-star-rating [rate]="rate()" [size]="size()" />
+  </div>
+  @if (showReviewsNumber()) {
+  @if (reviews().length === 0 && size() === 'lg') {
+  <span class="ps-2 fs-6">{{'product.section.review.rating.no-review-yet' | translate}}</span>
+  }@else {
+  @if (rate() !== '0') {
+  <span class="ps-2" [ngClass]="{ 'fs-6': size() === 'lg' }">{{ rate() }}</span>
+  }
+  @if (size() === 'lg') {
+  <span class="ps-2 fs-6">({{
+    reviews().length }} {{'product.section.review.rating.reviews-count-label' | translate}})</span>
+  }
+  }
+
+  }
+</div>

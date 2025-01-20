@@ -1,42 +1,23 @@
 <div class="row justify-content-center">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-start">
+  <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5 g-2 g-lg-3 text-center">
     <div>
-      <app-price-range
-        [(priceMin)]="priceMin"
-        [(priceMax)]="priceMax"
-      ></app-price-range>
+      <app-price-range [(priceMin)]="priceMin" [(priceMax)]="priceMax" />
     </div>
 
     <div>
-      <app-select-sort-products
-        [(pageSize)]="pageSize"
-        [(pageIndex)]="pageIndex"
-        [(sortDirection)]="sortDirection"
-        [(sortField)]="sortField"
-      ></app-select-sort-products>
+      <app-select-sort-products [(pageSize)]="pageSize" [(pageIndex)]="pageIndex" [(sortDirection)]="sortDirection"
+        [(sortField)]="sortField" />
+    </div>
+
+    <div>
+      <app-select-sort-category [(pageSize)]="pageSize" [(pageIndex)]="pageIndex" [(sortValue)]="categoryId"
+        [categories]="categories() || []" [defaultField]="categoryIdParam()" />
     </div>
   </div>
-
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-    @for (product of products(); track $index) {
-    <div class="product-item p-1 mt-4">
-      <app-product-preview [product]="product"></app-product-preview>
-    </div>
-    }
-  </div>
-
+  <app-product-list-details [products]="products()" />
   <div class="pt-4 ">
-    <mat-paginator
-      #paginator
-      [pageSizeOptions]="pageSizeOptions"
-      (page)="handlePageEvent($event)"
-      showFirstLastButtons
-      [length]="length()"
-      [pageSize]="pageSize"
-      [pageIndex]="pageIndex"
-      aria-label="Select page of products"
-      class="bg-white"
-    >
-    </mat-paginator>
+    <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" (page)="handlePageEvent($event)" showFirstLastButtons
+      [length]="productCount()" [pageSize]="pageSize" [pageIndex]="pageIndex" aria-label="Select page of products"
+      class="bg-white" />
   </div>
 </div>

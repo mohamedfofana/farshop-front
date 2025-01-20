@@ -1,26 +1,39 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  model,
+  OnInit,
+  Signal,
+  signal,
+} from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { Product } from '../../../core/model/product';
+import { Product } from '../../../core/model/db/product';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductService } from '../../../core/services/http/product.service';
-import { PriceRangeComponent } from '../../../shared/components/price-range/price-range.component';
-import { SelectSortProductsComponent } from '../../../shared/components/select-sort-products/select-sort-products.component';
+import { ProductService } from '../../../core/services/http/product/product.service';
+import { PriceRangeComponent } from '../../../shared/components/common/price-range/price-range.component';
+import { SelectSortProductsComponent } from '../../../shared/components/product/select-sort-products/select-sort-products.component';
 import { CountAvailableDto } from '../../../core/model/dto/countAvailableDto';
 import { FindByPageDto } from '../../../core/model/dto/findByPageDto';
-import { ProductPreviewComponent } from '../../../shared/components/product/product-preview/product-preview.component';
+import { CategoryService } from '../../../core/services/http/category/category.service';
+import { Category } from '../../../core/model/db/category';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
+import { ProductListDetailsComponent } from '../../../shared/components/product/product-list-details/product-list-details.component';
+import { PAGINATION_DEFAULT } from '../../../core/model/enum/paginationConst';
+import { SelectSortCategoryComponent } from '../../../shared/components/product/select-sort-category/select-sort-category.component';
+import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  styleUrl: './product-list.component.scss',
   imports: [
     PriceRangeComponent,
-    ProductPreviewComponent,
     MatPaginatorModule,
     CommonModule,
     MatSelectModule,
@@ -28,31 +41,48 @@ import { ProductPreviewComponent } from '../../../shared/components/product/prod
     ReactiveFormsModule,
     TranslateModule,
     SelectSortProductsComponent,
+    SelectSortCategoryComponent,
+    ProductListDetailsComponent,
   ],
   templateUrl: './product-list.component.html',
 })
-export class ProductListComponent {
-  private productService = inject(ProductService);
-  readonly pageSizeOptions = [5, 10, 15];
-  length = signal(0);
-  pageSize = signal(5);
-  pageIndex = signal(0);
-  sortField = signal('createdAt');
-  sortDirection = signal('desc');
-  priceMin = signal(0);
-  priceMax = signal(2000);
+export class ProductListComponent extends AbstractOnDestroy implements OnInit {
+  readonly productService = inject(ProductService);
+  readonly categoryService = inject(CategoryService);
+  activatedRoute = inject(ActivatedRoute);
+  readonly pageSizeOptions: number[] = [
+    PAGINATION_DEFAULT.pageSize.valueOf(),
+    PAGINATION_DEFAULT.pageSize.valueOf() * 2,
+    PAGINATION_DEFAULT.pageSize.valueOf() * 3,
+  ];
+
+  productCount = signal<number>(0);
+  pageSize = signal<number>(PAGINATION_DEFAULT.pageSize);
+  pageIndex = signal<number>(PAGINATION_DEFAULT.pageIndex);
+  sortField = signal<string>(PAGINATION_DEFAULT.sortField);
+  sortDirection = signal<string>(PAGINATION_DEFAULT.sortDirection);
+  priceMin = signal<number>(PAGINATION_DEFAULT.priceMin);
+  priceMax = signal<number>(PAGINATION_DEFAULT.priceMax);
   products = signal<Product[]>([]);
+  categoryIdParam = model<number>(0);
+  categoryId = signal<number>(PAGINATION_DEFAULT.categoryId);
+  categories: Signal<Category[] | undefined> = toSignal(
+    this.categoryService.findAll()
+  );
 
   constructor() {
+    super();
     effect((cleanUp) => {
       let countSubscription: Subscription;
       const countAvailableDto: CountAvailableDto = {
         priceMin: this.priceMin(),
         priceMax: this.priceMax(),
+        categoryId: this.categoryId(),
       };
+
       countSubscription = this.productService
         .countAvailable(countAvailableDto)
-        .subscribe((count) => this.length.set(count));
+        .subscribe((count) => this.productCount.set(count));
 
       let subscription: Subscription;
       const findByPageDto: FindByPageDto = {
@@ -62,10 +92,11 @@ export class ProductListComponent {
         sortDirection: this.sortDirection(),
         priceMin: this.priceMin(),
         priceMax: this.priceMax(),
+        categoryId: this.categoryId(),
       };
 
       subscription = this.productService
-        .getProductsByPage(findByPageDto)
+        .findAllByPage(findByPageDto)
         .subscribe((products) => this.products.set(products));
 
       cleanUp(() => {
@@ -73,6 +104,14 @@ export class ProductListComponent {
         countSubscription.unsubscribe();
       });
     });
+  }
+
+  ngOnInit(): void {
+    this.subscriptions.push(
+      this.activatedRoute.params.subscribe((params) => {
+        this.categoryId.set(params['id']);
+      })
+    );
   }
 
   handlePageEvent(e: PageEvent) {

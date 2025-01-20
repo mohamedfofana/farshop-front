@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Review } from '../../features/review/model/review';
+import { Review } from '../model/db/review';
 
 @Pipe({
   name: 'reviewSize',

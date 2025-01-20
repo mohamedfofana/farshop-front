@@ -1,7 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { CurrencyPipe, NgClass, NgIf } from '@angular/common';
-import { Product } from '../../../../core/model/product';
 import { FinalProductpricePipe } from '../../../../core/pipe/final-productprice.pipe';
+import { Product } from '../../../../core/model/db/product';
 
 @Component({
   selector: 'app-product-price-view',
@@ -16,6 +16,7 @@ import { FinalProductpricePipe } from '../../../../core/pipe/final-productprice.
         >
           {{ finalPrice() | currency : 'CAD' : 'symbol-narrow' : '1.2-2' }}
         </span>
+        @if(!showFinalPrice()){
         <small
           class="product_old_price"
           *ngIf="this.discountPercentage() !== 0"
@@ -24,6 +25,7 @@ import { FinalProductpricePipe } from '../../../../core/pipe/final-productprice.
             product().price | currency : 'CAD' : 'symbol-narrow' : '1.2-2'
           }}</small
         >
+        }
       </div>
     </div>
   `,
@@ -47,6 +49,7 @@ export class ProductPriceViewComponent {
     new FinalProductpricePipe().transform(this.product())
   );
   showRating = input<boolean>(false);
+  showFinalPrice = input<boolean>(false);
   discountPercentage = computed(() => this.product().discountPercentage / 100);
   finalPrice = computed(() => {
     if (this.discountPercentage() !== 0) {

@@ -16,9 +16,15 @@ import {
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideNgxWebstorage, withLocalStorage, withNgxWebstorageConfig } from 'ngx-webstorage';
+import {
+  provideNgxWebstorage,
+  withLocalStorage,
+  withNgxWebstorageConfig,
+} from 'ngx-webstorage';
 import { environment } from '../environments/environment.development';
 import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor.interceptor';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { StorageConstant } from './core/security/constants/StorageConstants';
 
 export function createHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -46,11 +52,12 @@ export const appConfig: ApplicationConfig = {
     provideAuth0(environment.auth0),
     provideNgxWebstorage(
       withNgxWebstorageConfig({
-        prefix: 'farshop',
+        prefix: StorageConstant.PREFIX,
         separator: '.',
         caseSensitive: true,
       }),
-      withLocalStorage(),
+      withLocalStorage()
     ),
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } },
   ],
 };

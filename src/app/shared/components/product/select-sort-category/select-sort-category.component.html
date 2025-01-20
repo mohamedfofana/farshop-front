@@ -1,0 +1,19 @@
+<mat-form-field [appearance]="'outline'" class="w-autoconfl p-0">
+  <mat-label>{{ 'general.sort.title' | translate }}</mat-label>
+  <mat-select [formControl]="selectSortValueFormControl" (selectionChange)="onSelectFieldChange()"
+    panelClass="sort-select">
+    <mat-select-trigger>
+      <mat-chip [removable]="true" (removed)="onSortByFieldRemoved()">
+        {{ selectedFieldLabel() }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-select-trigger>
+    @for (category of categories(); track $index) {
+    <mat-option [value]="category.id">
+      {{ category.title | translate }}
+    </mat-option>
+    }
+  </mat-select>
+</mat-form-field>

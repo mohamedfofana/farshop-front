@@ -1,8 +1,7 @@
+@import "../../../../variables";
 /*********************************
 Newsletter
 *********************************/
-$app-text-color: #51545f;
-$app-fancy-red-color: #fe4c50;
 
 .newsletter {
   width: 100%;
@@ -18,7 +17,6 @@ $app-fancy-red-color: #fe4c50;
 .newsletter_text p {
   margin-bottom: 0px;
   line-height: 1.7;
-  color: $app-text-color;
 }
 .newsletter_form {
   height: 120px;
@@ -31,7 +29,6 @@ $app-fancy-red-color: #fe4c50;
   padding-left: 20px;
 }
 #newsletter_email:focus {
-  border: solid 1px #7f7f7f !important;
   box-shadow: none !important;
 }
 :focus {
@@ -97,7 +94,6 @@ Footer
 .footer_nav li a,
 .cr {
   font-size: 14px;
-  color: $app-text-color;
   line-height: 30px;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
@@ -121,7 +117,6 @@ Footer
   margin-right: 0px;
 }
 .footer_social ul li a {
-  color: $app-text-color;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
   -ms-transition: all 300ms ease;

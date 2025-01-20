@@ -1,4 +1,4 @@
-@import '../../../../../variables';
+@import "../../../../../variables";
 
 .favorite {
   position: absolute;
@@ -32,15 +32,32 @@
 .product_bubble {
   position: absolute;
   top: 15px;
-  width: 50px;
   height: 22px;
   border-radius: 3px;
   text-transform: uppercase;
 }
-.product_bubble span {
+
+.product_bubble_products_wrapper {
+  width: auto;
+}
+
+.product_bubble_discount_wrapper {
+  width: 50px;
+  background: $app-fancy-red-color;
+}
+.product_bubble_discount {
   font-size: 12px;
   font-weight: 600;
   color: #ffffff;
+}
+
+.product_bubble_icon {
+  font-size: 20px;
+  font-weight: 600;
+  color: #51a042;
+}
+.product_bubble_text {
+  font-size: 10px;
 }
 .product_bubble_right::after {
   content: " ";
@@ -53,90 +70,16 @@
   bottom: -6px;
   border: 6px solid;
 }
-.product_bubble_left::after {
-  content: " ";
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: 6px;
-  bottom: -6px;
-  border: 6px solid;
-}
-.product_bubble_red::after {
+
+.product_bubble_discount_wrapper::after {
   border-color: transparent transparent transparent $app-fancy-red-color;
 }
-.product_bubble_left::after {
+.product_bubble_products_wrapper::after {
   border-color: #51a042 #51a042 transparent transparent;
 }
-.product_bubble_red {
-  background: $app-fancy-red-color;
-}
-.product_bubble_green {
-  background: #51a042;
-}
-.product_bubble_left {
-  left: 15px;
-}
+
 .product_bubble_right {
   right: 15px;
-}
-
-.product_bubble {
-  position: absolute;
-  top: 15px;
-  width: 50px;
-  height: 22px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-.product_bubble span {
-  font-size: 12px;
-  font-weight: 600;
-  color: #ffffff;
-}
-.product_bubble_right::after {
-  content: " ";
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 6px;
-  right: auto;
-  top: auto;
-  bottom: -6px;
-  border: 6px solid;
-}
-.product_bubble_left::after {
-  content: " ";
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: 6px;
-  bottom: -6px;
-  border: 6px solid;
-}
-.product_bubble_red::after {
-  border-color: transparent transparent transparent $app-fancy-red-color;
-}
-.product_bubble_left::after {
-  border-color: #51a042 #51a042 transparent transparent;
-}
-.product_bubble_red {
-  background: $app-fancy-red-color;
-}
-.product_bubble_green {
-  background: #51a042;
-}
-.product_bubble_left {
-  left: 15px;
-}
-.product_bubble_right {
-  right: 15px;
-}
-
-.add_to_cart_button_actions {
-  background-color: $app-fancy-red-color;
 }
 
 .white-icon {

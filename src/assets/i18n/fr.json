@@ -7,9 +7,6 @@
       "home": "Accueil",
       "categories": "Categories",
       "promotions": "Promotions",
-      "contact": "Contact"
-    },
-    "top": {
       "contact": "Contact",
       "about": "À propos"
     }
@@ -17,7 +14,6 @@
   "footer": {
     "menu": {
       "home": "Accueil",
-      "categories": "Catégories",
       "contact": "Contact",
       "about": "À propos"
     },
@@ -41,13 +37,65 @@
       "settings": "Paramètres"
     }
   },
+  "product": {
+    "section": {
+      "tabs": {
+        "description-title": "Description",
+        "review-title": "Revues"
+      },
+      "image-preview": {
+        "title": "Placeholder",
+        "content": "Pas d'image"
+      },
+      "newsletter": {
+        "title": "Actualités",
+        "content": "Abonnez-vous à notre newsletter et profitez des nouveautés",
+        "button-label": "Subscribe",
+        "placeholder":"Votre courriel"
+      },
+      "brand": {
+        "title": "Marque:"
+      },
+      "quantity": {
+        "title": "Quantité"
+      },
+      "size": {
+        "title": "Taille:"
+      },
+      "color": {
+        "title": "Couleur:"
+      },
+      "search": {
+        "result": "Recherche de:"
+      },
+      "review": {
+        "rating": {
+          "no-review-yet": "Pas de revue",
+          "reviews-count-label": "revues"
+        },
+        "form": {
+          "title": "Ajouter une revue",
+          "rating": "Note:",
+          "placeholder": "Votre revue ..."
+        }
+      }
+    }
+  },
   "general": {
+    "input": {
+      "search": {
+        "placeholder": "Rechercher ...",
+        "error": "Vou devez entrer au moins {{letterCount}} lettres! "
+      }
+    },
     "button": {
       "submit": "Soumettre",
       "continue": "Continuer",
       "cancel": "Annuler",
       "signin": "Connexion",
-      "register": "S'incscrire"
+      "register": "S'incscrire",
+      "buy-now": "Achetez maintenant",
+      "checkout": "Passer la commande"
     },
     "sort": {
       "title": "Trier par",
@@ -74,6 +122,10 @@
         "email-invalid": "Email invalide",
         "a-field": "Une erreur a été detecté sur le champ suivant:{field}.",
         "all-field": "Une erreur a été detecté sur les champs suivants:{fields}."
+      },
+      "image": {
+        "page-not-found": "page_not_found_fr.png",
+        "result-not-found": "result_not_found_fr.png"
       }
     }
   }

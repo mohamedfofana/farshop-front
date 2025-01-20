@@ -1,15 +1,18 @@
 import { Component, input, model } from '@angular/core';
 import { QuantityInputComponent } from '../quantity-input/quantity-input.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-quantity-input',
   standalone: true,
-  imports: [QuantityInputComponent],
+  imports: [QuantityInputComponent, TranslateModule],
   template: `
-    <div
-      class="quantity d-flex flex-row flex-grow lex-sm-row align-items-sm-center"
-    >
-      <span class="align-content-center">Quantity:</span>
+    <div class="d-flex justify-content-start quantity">
+      <span class="pb-2">{{
+        'product.section.quantity.title' | translate
+      }}</span>
+    </div>
+    <div class="">
       <app-quantity-input [idProduct]="idProduct()" [quantity]="quantity()" />
     </div>
   `,

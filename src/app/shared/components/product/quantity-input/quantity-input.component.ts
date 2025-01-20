@@ -1,5 +1,4 @@
 import { Component, computed, inject, input, model } from '@angular/core';
-import { LocalStorage } from 'ngx-webstorage';
 import { StorageService as StorageService } from '../../../../core/services/storage/storage.service';
 
 @Component({
@@ -25,11 +24,9 @@ export class QuantityInputComponent {
   idProduct = input.required<number>();
   disableDecrease = computed(() => this.quantity() === 0);
 
-  @LocalStorage()
-  public cartProducts: any;
-
   decrease() {
-    if (this.quantity() > 1) {
+    if (this.quantity() > 0) {
+      this.quantity.set(this.quantity() - 1);
       this.storageService.removeSingleProduct(this.idProduct());
     }
   }

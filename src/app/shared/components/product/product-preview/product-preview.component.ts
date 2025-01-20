@@ -4,8 +4,9 @@ import {
   HostListener,
   inject,
   input,
-  OnInit,
+  OnChanges,
   signal,
+  SimpleChanges,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,18 +15,18 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProductPriceViewComponent } from '../product-price-rating/product-price-view.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { StarRatingComponent } from '../../star-rating/star-rating.component';
-import { EmptyImageComponent } from '../../empty-image/empty-image.component';
-import { Product } from '../../../../core/model/product';
+import { EmptyImageComponent } from '../../common/empty-image/empty-image.component';
 import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
 import { QuantityInputComponent } from '../quantity-input/quantity-input.component';
 import { StorageService } from '../../../../core/services/storage/storage.service';
+import { Product } from '../../../../core/model/db/product';
+import { StarRatingReviewComponent } from '../star-rating-review/star-rating-review.component';
 
 @Component({
   selector: 'app-product-preview',
   standalone: true,
   imports: [
-    StarRatingComponent,
+    StarRatingReviewComponent,
     EmptyImageComponent,
     CommonModule,
     MatCardModule,
@@ -39,7 +40,7 @@ import { StorageService } from '../../../../core/services/storage/storage.servic
   templateUrl: './product-preview.component.html',
   styleUrl: './product-preview.component.scss',
 })
-export class ProductPreviewComponent implements OnInit {
+export class ProductPreviewComponent implements OnChanges {
   router = inject(Router);
   storageService = inject(StorageService);
   quantity = signal<number>(0);
@@ -50,7 +51,11 @@ export class ProductPreviewComponent implements OnInit {
   sortByField = signal('');
   showAddToCartButton: boolean = false;
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.initializeQuantity();
+  }
+
+  private initializeQuantity() {
     const storedQuantity = this.storageService.getProductQuantity(
       this.product().id
     );

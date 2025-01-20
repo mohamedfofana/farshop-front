@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Product } from '../../../../../../core/model/product';
+import { Product } from '../../../../../../core/model/db/product';
+import { ProductDescription } from '../../../../../../core/model/db/productDescription';
 
 @Component({
   selector: 'app-product-description',
@@ -9,5 +10,5 @@ import { Product } from '../../../../../../core/model/product';
   styleUrl: './product-tab-description.component.scss'
 })
 export class ProductDescriptionComponent {
-  product = input.required<Product>();
+  descriptions = input.required<ProductDescription[]>();
 }

@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { ProductSize } from '../../../../core/model/db/productSize';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-size-select',
   standalone: true,
-  imports: [],
-  template: `
-    <p>
-      product-size-select works!
-    </p>
-  `,
-  styles: ``
+  imports: [TranslateModule],
+  templateUrl: './product-size-select.component.html',
+  styleUrl: './product-size-select.component.scss',
 })
 export class ProductSizeSelectComponent {
-
+  sizes = input.required<ProductSize[]>();
 }

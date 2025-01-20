@@ -27,7 +27,7 @@ export class TranslationService {
 
   getCurrentLanguage(): string {
     const storedLang = this.storageService.getLanguage();
-
+    console.info(storedLang);
     if (this.isAppLanguage(storedLang)) {
       return storedLang!;
     }
@@ -38,5 +38,4 @@ export class TranslationService {
   isAppLanguage(lang: string | null) {
     return Object.values(CodeLanguage).find((s) => s === lang) != undefined;
   }
-
 }

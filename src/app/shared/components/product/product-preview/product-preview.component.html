@@ -3,9 +3,10 @@
     <app-empty-image />
     @if (discountPercentage() > 0) {
     <div
-      class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"
-    >
-      <span>{{ discountPercentage() | percent : "1.2-2" }}</span>
+      class="product_bubble product_bubble_discount_wrapper product_bubble_right d-flex flex-column align-items-center">
+      <span class="product_bubble_discount">{{
+        discountPercentage() | percent : "1.2-2"
+        }}</span>
     </div>
     }
     <!-- @if (product()) { if Favorite
@@ -18,11 +19,10 @@
 
     @if (quantity() > 0) {
     <div
-      class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"
-    >
-      <span
-        ><i class="bi bi-basket-fill">{{ quantity() }}</i></span
-      >
+      class="product_bubble product_bubble_products_wrapper product_bubble_left d-flex flex-column align-items-center">
+      <span class="product_bubble_icon"><i class="bi bi-cart-plus"><span
+            class="product_bubble_text position-absolute top-0 translate-middle badge rounded-circle bg-app-theme-color">{{
+            quantity() }}</span></i></span>
     </div>
     }
   </mat-card-header>
@@ -36,25 +36,20 @@
       {{ product().description }}
     </p>
     <div class="mb-0 pt-2 d-flex justify-content-center">
-      <app-star-rating
-        [showReviewsNumber]="true"
-        [reviews]="product().reviews ? product().reviews : []"
-      />
+      <app-star-rating-review [showReviewsNumber]="true" [reviews]="product().reviews ? product().reviews : []" />
     </div>
     <div class="mb-0 pt-2">
       <app-product-price-view [product]="product()" />
     </div>
   </mat-card-content>
   @if (showAddToCartButton) {
-  <mat-card-actions
-    class="justify-content-center add_to_cart_button_actions mt-3 p-0 rounded-bottom"
-  >
+  <mat-card-actions class="justify-content-center bg-app-theme-color mt-3 p-0 rounded-bottom">
     @if (quantity() === 0) {
     <button mat-icon-button (click)="initializeInCart()">
       <mat-icon class="white-icon p-0">add_shopping_cart</mat-icon>
     </button>
     }@else {
-    <div class="pe-3">
+    <div>
       <app-quantity-input [(quantity)]="quantity" [idProduct]="product().id" />
     </div>
     }

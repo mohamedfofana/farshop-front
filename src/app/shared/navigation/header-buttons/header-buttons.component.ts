@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { LogoutButtonComponent } from '../../components/buttons/logout-button.component';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { AsyncPipe, NgIf, UpperCasePipe } from '@angular/common';
 import { SearchDialogComponent } from '../../components/dialog/search-dialog/search-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@auth0/auth0-angular';
+import { AuthenticationService } from '../../../core/services/authenticationService/authentication.service';
+import { LogoutButtonComponent } from '../../components/common/buttons/logout/logout-button.component';
 
 @Component({
   selector: 'app-header-buttons',
@@ -57,7 +58,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
       <ng-template #unAuthenticated>
         <div class="ps-3 mb-1">
-          <a href="/signin">
+          <a href="javascript:void(0)" (click)="login()">
             <i class="bi bi-person h4 text-dark"></i>
           </a>
         </div>
@@ -74,10 +75,15 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class HeaderButtonsComponent {
   readonly dialog = inject(MatDialog);
+  private authenticationService = inject(AuthenticationService);
   private authService = inject(AuthService);
   isLoggedIn$ = this.authService.isAuthenticated$;
 
   openDialog(): void {
     this.dialog.open(SearchDialogComponent);
+  }
+
+  login() {
+    this.authenticationService.login();
   }
 }
