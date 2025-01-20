@@ -1,0 +1,27 @@
+<mat-form-field [appearance]="'outline'" class="w-autoconfl p-0">
+    <mat-label>{{ 'general.sort.title' | translate }}</mat-label>
+    <mat-select [formControl]="selectSortByFieldFormControl" (selectionChange)="onSelectFieldChange()"
+        panelClass="sort-select">
+        <mat-select-trigger>
+            <mat-chip [removable]="true" (removed)="onSortByFieldRemoved()">
+                {{ selectSortByFieldFormControl.value || '' | translate }}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+        </mat-select-trigger>
+        @for (group of sortByFieldGroups; track group) {
+        <mat-optgroup label="{{ group.label | translate }}">
+            @for (sortByField of group.sortByField; track sortByField) {
+            <mat-option [value]="sortByField.value">{{
+                sortByField.label | translate
+                }}</mat-option>
+            }
+        </mat-optgroup>
+        } @for (field of fieldList; track $index) {
+        <mat-option [value]="field.value">
+            {{ field.label | translate }}
+        </mat-option>
+        }
+    </mat-select>
+</mat-form-field>

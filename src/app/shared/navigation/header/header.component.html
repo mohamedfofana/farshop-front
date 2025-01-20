@@ -1,0 +1,26 @@
+<header class="header trans_300">
+  <div class="top_nav">
+    <div class="container">
+      <div class="row">
+        <app-header-top class="ps-0 pe-0" />
+      </div>
+    </div>
+  </div>
+  <div class="main_nav_container p-2" [ngClass]="{ 'sticky-header': !showHeaderTop }">
+    <div class="container">
+      <div class="row">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <app-header-logo />
+          </div>
+          <div class="nav-scroller">
+            <app-header-nav />
+          </div>
+          <div class="dropdown justify-content-end d-flex">
+            <app-header-buttons />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

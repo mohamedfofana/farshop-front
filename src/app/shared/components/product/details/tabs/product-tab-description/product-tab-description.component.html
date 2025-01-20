@@ -1,0 +1,27 @@
+<div class="row pt-5">
+  @for (description of descriptions(); track $index) { @if ($index % 2 === 0) {
+  <div class="col-lg-5 desc_col">
+    <div class="tab_text_block">
+      <h2>{{ description.title }}</h2>
+      <p>
+        {{ description.content }}
+      </p>
+    </div>
+    <div class="tab_image">
+      <img [src]="description.imageUrl" alt="" />
+    </div>
+  </div>
+  }@else {
+  <div class="col-lg-6 offset-lg-1 desc_col">
+    <div class="tab_image">
+      <img [src]="description.imageUrl" alt="" />
+    </div>
+    <div class="tab_text_block">
+      <h2>{{ description.title }}</h2>
+      <p>
+        {{ description.content }}
+      </p>
+    </div>
+  </div>
+  } }
+</div>

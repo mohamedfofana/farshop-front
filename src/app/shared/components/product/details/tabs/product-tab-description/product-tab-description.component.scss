@@ -1,0 +1,36 @@
+@import "../../../../../../../variables";
+
+.tab_title {
+  margin-bottom: 25px;
+}
+.tab_title h4 {
+  display: inline-block;
+  color: $app-fancy-red-color;
+  border-bottom: solid 1px $app-fancy-red-color;
+}
+.tab_text_block {
+  margin-bottom: 33px;
+}
+.tab_text_block p {
+  font-weight: 400;
+  margin-top: 10px;
+}
+.tab_image {
+  width: 100%;
+}
+.tab_image img {
+  width: 100%;
+  margin-bottom: 33px;
+}
+
+@media only screen and (max-width: 767px) {
+  .tab_title {
+    margin-bottom: 78px;
+  }
+  .tab_text_block {
+    margin-bottom: 113px;
+  }
+  .tab_image {
+    margin-bottom: 111px;
+  }
+}

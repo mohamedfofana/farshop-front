@@ -1,0 +1,13 @@
+<div class="row pt-5">
+  <div class="col-lg-6" [hidden]="reviews().length === 0">
+    @for (review of reviews(); track $index){
+    <div class="row mb-5">
+      <app-review-view [review]="review" />
+    </div>
+    }
+  </div>
+
+  <div class="col-lg-6">
+    <app-review-create-form />
+  </div>
+</div>

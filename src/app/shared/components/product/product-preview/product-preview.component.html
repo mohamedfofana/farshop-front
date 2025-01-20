@@ -1,0 +1,58 @@
+<mat-card class="product-card bg-white">
+  <mat-card-header class="product-img" (click)="showDetail(product().id)">
+    <app-empty-image />
+    @if (discountPercentage() > 0) {
+    <div
+      class="product_bubble product_bubble_discount_wrapper product_bubble_right d-flex flex-column align-items-center">
+      <span class="product_bubble_discount">{{
+        discountPercentage() | percent : "1.2-2"
+        }}</span>
+    </div>
+    }
+    <!-- @if (product()) { if Favorite
+      <div class="favorite">
+        <span>
+          <i class="bi bi-heart-fill" aria-hidden="true"></i
+        ></span>
+      </div>
+    } -->
+
+    @if (quantity() > 0) {
+    <div
+      class="product_bubble product_bubble_products_wrapper product_bubble_left d-flex flex-column align-items-center">
+      <span class="product_bubble_icon"><i class="bi bi-cart-plus"><span
+            class="product_bubble_text position-absolute top-0 translate-middle badge rounded-circle bg-app-theme-color">{{
+            quantity() }}</span></i></span>
+    </div>
+    }
+  </mat-card-header>
+  <mat-card-content class="mt-2 text-center" (click)="showDetail(product().id)">
+    <p class="mb-0 text-truncate">
+      <strong>
+        {{ product().title }}
+      </strong>
+    </p>
+    <p class="mb-0 text-truncate global-bg-color">
+      {{ product().description }}
+    </p>
+    <div class="mb-0 pt-2 d-flex justify-content-center">
+      <app-star-rating-review [showReviewsNumber]="true" [reviews]="product().reviews ? product().reviews : []" />
+    </div>
+    <div class="mb-0 pt-2">
+      <app-product-price-view [product]="product()" />
+    </div>
+  </mat-card-content>
+  @if (showAddToCartButton) {
+  <mat-card-actions class="justify-content-center bg-app-theme-color mt-3 p-0 rounded-bottom">
+    @if (quantity() === 0) {
+    <button mat-icon-button (click)="initializeInCart()">
+      <mat-icon class="white-icon p-0">add_shopping_cart</mat-icon>
+    </button>
+    }@else {
+    <div>
+      <app-quantity-input [(quantity)]="quantity" [idProduct]="product().id" />
+    </div>
+    }
+  </mat-card-actions>
+  }
+</mat-card>

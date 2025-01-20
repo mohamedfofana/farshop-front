@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+  <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5 g-2 g-lg-3 text-center">
+    <div>
+      <mat-chip class="pt-4 pb-4 border-0"><span class="fs-5 pt-2 pb-2 ps-0 pe-0">{{'product.section.search.result' |
+          translate}}
+          <span class="app-theme-color">{{searchText()}}</span></span>
+      </mat-chip>
+
+    </div>
+    <div>
+      <app-price-range [(priceMin)]="priceMin" [(priceMax)]="priceMax" />
+    </div>
+
+    <div>
+      <app-select-sort-products [(pageSize)]="pageSize" [(pageIndex)]="pageIndex" [(sortDirection)]="sortDirection"
+        [(sortField)]="sortField" />
+    </div>
+
+    <div>
+      <app-select-sort-category [(pageSize)]="pageSize" [(pageIndex)]="pageIndex" [(sortValue)]="categoryId"
+        [categories]="categories() || []" [defaultField]="0" />
+    </div>
+
+  </div>
+  <app-product-list-details [products]="products()" />
+  <div class="pt-4 ">
+    <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" (page)="handlePageEvent($event)" showFirstLastButtons
+      [length]="productCount()" [pageSize]="pageSize" [pageIndex]="pageIndex" aria-label="Select page of products"
+      class="bg-white" />
+  </div>
+</div>
