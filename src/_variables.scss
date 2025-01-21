@@ -6,8 +6,17 @@ $body-text-color: #0f1111;
 $body-text-color: #0f1111;
 $link-hover-color: $app-fancy-red-color;
 $nav-link-hover-color: $app-fancy-red-color;
-$body-font-family: "Verdana", sans-serif;
+$body-font-family: "Roboto", sans-serif;
 $body-font-size: 14px;
 $body-font-style: "normal";
 $body-line-height: 23px;
 $body-font-weight: 400;
+
+/***
+ Bootstrap
+***/
+// Badge
+$badge-font-size: 0.4em;
+$badge-padding-y: 0.35em;
+$badge-font-weight: 200;
+$badge-padding-x: 0.65em;

@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { LocalStorage, LocalStorageService } from 'ngx-webstorage';
 import { StorageConstant } from '../../security/constants/StorageConstants';
 import { CartProduct } from '../../model/dto/cartProduct';
@@ -8,6 +8,7 @@ import { CartProduct } from '../../model/dto/cartProduct';
 })
 export class StorageService {
   localStorageService = inject(LocalStorageService);
+  productCount = signal<number>(this.getCartProductCount());
 
   @LocalStorage()
   public CartProducts: any;
@@ -96,12 +97,20 @@ export class StorageService {
 
   private setProductList(list: CartProduct[]) {
     this.localStorageService.store(StorageConstant.CART_PRODUCTS, list);
+    this.productCount.set(this.getCartProductCount());
+  }
+
+  getCartProductCount(): number {
+    const productList = this.getCartProductList();
+    if (!productList) {
+      return 0;
+    }
+    return productList.reduce((sum, p) => sum + p.quantity, 0);
   }
 
   getProductQuantity(idProduct: number): number {
-    const productList: CartProduct[] = this.getCartProductList();
+    const productList = this.getCartProductList();
     if (!productList) {
-      // avoid productList.find is not a function error
       return 0;
     }
     const cartProduct = productList.find((p) => p.id === idProduct);

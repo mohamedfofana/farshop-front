@@ -27,7 +27,6 @@ export class TranslationService {
 
   getCurrentLanguage(): string {
     const storedLang = this.storageService.getLanguage();
-    console.info(storedLang);
     if (this.isAppLanguage(storedLang)) {
       return storedLang!;
     }
