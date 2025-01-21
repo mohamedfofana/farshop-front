@@ -2,9 +2,9 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { CodeLanguage } from './core/model/enum/codeLanguage';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { AuthService } from '@auth0/auth0-angular';
+import { CodeLanguage } from './core/model/enum/codeLanguage';
 
 @Component({
   selector: 'app-root',

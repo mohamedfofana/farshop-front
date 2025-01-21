@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { AsyncPipe, NgIf, UpperCasePipe } from '@angular/common';
 import { SearchDialogComponent } from '../../components/dialog/search-dialog/search-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@auth0/auth0-angular';
-import { AuthenticationService } from '../../../core/services/authenticationService/authentication.service';
 import { LogoutButtonComponent } from '../../components/common/buttons/logout/logout-button.component';
+import { StorageService } from '../../../core/services/storage/storage.service';
+import { AuthenticationService } from '../../../core/services/authenticationService/authentication.service';
 
 @Component({
   selector: 'app-header-buttons',
@@ -57,16 +58,22 @@ import { LogoutButtonComponent } from '../../components/common/buttons/logout/lo
       </ng-container>
 
       <ng-template #unAuthenticated>
-        <div class="ps-3 mb-1">
+        <div class="ps-3">
           <a href="javascript:void(0)" (click)="login()">
             <i class="bi bi-person h4 text-dark"></i>
           </a>
         </div>
       </ng-template>
 
-      <div class="ps-3 mb-1">
+      <div class="ps-3">
         <a href="#">
-          <i class="bi bi-cart2 h4 text-dark"></i>
+          <i class="bi bi-cart2 h4 text-dark">
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge badge-lxs rounded-pill bg-app-theme-color"
+            >
+              {{ productCount() }}
+            </span>
+          </i>
         </a>
       </div>
     </div>
@@ -75,9 +82,11 @@ import { LogoutButtonComponent } from '../../components/common/buttons/logout/lo
 })
 export class HeaderButtonsComponent {
   readonly dialog = inject(MatDialog);
-  private authenticationService = inject(AuthenticationService);
+  readonly authenticationService = inject(AuthenticationService);
+  private storageService = inject(StorageService);
   private authService = inject(AuthService);
   isLoggedIn$ = this.authService.isAuthenticated$;
+  productCount = computed(() => this.storageService.productCount());
 
   openDialog(): void {
     this.dialog.open(SearchDialogComponent);
