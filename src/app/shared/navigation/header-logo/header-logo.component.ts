@@ -13,8 +13,8 @@ import { ROUTE_PATH } from '../../../core/config/routes/routesConfig';
     >
       <img
         src="farshop-logo.png"
-        width="90"
-        height="90"
+        width="105"
+        height="100"
         class="d-inline-block align-top"
         alt=""
       />
