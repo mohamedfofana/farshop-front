@@ -4,7 +4,7 @@
   position: absolute;
   top: 15px;
   left: 40%;
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
   font-size: 1.5rem;
   width: 17px;
   height: 10px;
@@ -23,11 +23,11 @@
   opacity: 1;
 }
 .favorite.active::after {
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
 }
 
 .favorite:hover::after {
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
 }
 .product_bubble {
   position: absolute;
@@ -43,7 +43,7 @@
 
 .product_bubble_discount_wrapper {
   width: 50px;
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }
 .product_bubble_discount {
   font-size: 12px;
@@ -72,7 +72,7 @@
 }
 
 .product_bubble_discount_wrapper::after {
-  border-color: transparent transparent transparent $app-fancy-red-color;
+  border-color: transparent transparent transparent $app-theme-color;
 }
 .product_bubble_products_wrapper::after {
   border-color: #51a042 #51a042 transparent transparent;

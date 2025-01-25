@@ -37,6 +37,17 @@
       "settings": "Paramètres"
     }
   },
+  "contact": {
+    "form": {
+      "title": "Contactez-nous",
+      "input": {
+        "name": "Nom",
+        "email": "Courriel",
+        "message": "Message"
+      },
+      "success": "Message emvoyé avec succès"
+    }
+  },
   "product": {
     "section": {
       "tabs": {
@@ -51,7 +62,7 @@
         "title": "Actualités",
         "content": "Abonnez-vous à notre newsletter et profitez des nouveautés",
         "button-label": "Subscribe",
-        "placeholder":"Votre courriel"
+        "placeholder": "Votre courriel"
       },
       "brand": {
         "title": "Marque:"
@@ -82,6 +93,9 @@
     }
   },
   "general": {
+    "form": {
+      "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
+    },
     "input": {
       "search": {
         "placeholder": "Rechercher ...",
@@ -118,8 +132,11 @@
     },
     "error": {
       "validation": {
-        "required": "Champ obligatoire",
-        "email-invalid": "Email invalide",
+        "title": "Les erreurs suivantes ont été detéctés:",
+        "required": "{{field}} est obligatoire",
+        "invalid": "{{field}} est invalide",
+        "minlength": "{{field}} doit avoir la taille minimale",
+        "maxlength": "{{field}} ne doit pas dépasser la taille maximale",
         "a-field": "Une erreur a été detecté sur le champ suivant:{field}.",
         "all-field": "Une erreur a été detecté sur les champs suivants:{fields}."
       },

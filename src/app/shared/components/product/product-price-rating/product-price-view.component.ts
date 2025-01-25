@@ -32,7 +32,7 @@ import { Product } from '../../../../core/model/db/product';
   styles: `
   @import '../../../../../_variables.scss';
   .product_price {
-    color: $app-fancy-red-color;
+    color: $app-theme-color;
     font-weight: 600;
     }
     .product_old_price {

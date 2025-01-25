@@ -60,7 +60,7 @@
   width: 160px;
   height: 46px;
   border: none;
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
@@ -68,5 +68,5 @@
   cursor: pointer;
 }
 .newsletter_submit_btn:hover {
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }

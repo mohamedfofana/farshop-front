@@ -8,7 +8,7 @@
 
 ::ng-deep {
   .mdc-tab-indicator--active {
-    color: $app-fancy-red-color;
+    color: $app-theme-color;
   }
 
   .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active
@@ -20,7 +20,7 @@
   .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
     .mdc-tab__content
     .mdc-tab__text-label {
-    color: $app-fancy-red-color;
+    color: $app-theme-color;
   }
 
   .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab-indicator--active
@@ -29,7 +29,7 @@
   .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
     .mdc-tab-indicator
     .mdc-tab-indicator__content--underline {
-    border-color: $app-fancy-red-color;
+    border-color: $app-theme-color;
   }
 }
 

@@ -63,7 +63,7 @@ Newsletter
   width: 160px;
   height: 46px;
   border: none;
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
@@ -71,7 +71,7 @@ Newsletter
   cursor: pointer;
 }
 .newsletter_submit_btn:hover {
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }
 
 /*********************************
@@ -104,7 +104,7 @@ Footer
 .footer_nav li a:hover,
 .cr a,
 .cr i {
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
 }
 .footer_social {
   height: 130px;

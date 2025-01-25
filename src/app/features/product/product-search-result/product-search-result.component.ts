@@ -34,15 +34,15 @@ import { TranslateModule } from '@ngx-translate/core';
     SelectSortProductsComponent,
     SelectSortCategoryComponent,
     ProductListDetailsComponent,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './product-search-result.component.html',
   styles: ``,
 })
 export class ProductSearchResultComponent extends AbstractOnDestroy {
-  readonly productService = inject(ProductService);
-  readonly categoryService = inject(CategoryService);
-  readonly activatedRoute = inject(ActivatedRoute);
+  private readonly productService = inject(ProductService);
+  private readonly categoryService = inject(CategoryService);
+  private readonly activatedRoute = inject(ActivatedRoute);
   readonly searchText = signal<string>('');
   readonly products = signal<Product[]>([]);
 
@@ -66,7 +66,6 @@ export class ProductSearchResultComponent extends AbstractOnDestroy {
 
   constructor() {
     super();
-    const categoryId = 0;
 
     effect((cleanUp) => {
       let subscription: Subscription;

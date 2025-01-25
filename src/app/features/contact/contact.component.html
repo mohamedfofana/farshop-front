@@ -1,1 +1,67 @@
-<p>contact works!</p>
+<div class="row">
+    <div class="col"></div>
+    <div class="col-6">
+        <form [formGroup]="contactForm" (submit)="submit()">
+            <h2 class="mt-4 mb-4 text-center">{{'contact.form.title' | translate}}</h2>
+            @if(hasHttpError()){
+            <app-form-error />
+            }
+            @if(hasInputError()){
+            <app-form-input-error [errors]="errors()" />
+            }
+            <div class="p pb-2">
+                <mat-form-field class="w-100">
+                    <mat-label>{{'contact.form.input.name' | translate}}</mat-label>
+                    <input id="name" type="text" matInput [formControl]="nameFormControl" required>
+                    @if (nameFormControl.hasError('required')) {
+                    <mat-error><app-mat-input-error
+                            [inputError]="
+                           'general.error.validation.required' | translate : { field: 'contact.form.input.name' | translate } " /></mat-error>
+                    }
+                    @else if (nameFormControl.hasError('minlength') || nameFormControl.hasError('maxlength')) {
+                    <mat-error><app-mat-input-error
+                            [inputError]="
+                           'general.error.validation.invalid' | translate : { field: 'contact.form.input.name' | translate } " /></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div class="p pb-2">
+                <mat-form-field class="w-100">
+                    <mat-label>{{'contact.form.input.email' | translate}}</mat-label>
+                    <input id="email" type="email" matInput [formControl]="emailFormControl" required>
+                    @if (emailFormControl.hasError('required')) {
+                    <mat-error><app-mat-input-error
+                            [inputError]="
+                           'general.error.validation.required' | translate : { field: 'contact.form.input.email' | translate } " /></mat-error>
+                    }
+                    @else if (emailFormControl.hasError('invalid') ) {
+                    <mat-error><app-mat-input-error
+                            [inputError]="
+                           'general.error.validation.invalid' | translate : { field: 'contact.form.input.email' | translate } " /></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div class="p pb-2">
+                <mat-form-field class="w-100">
+                    <mat-label>{{'contact.form.input.message' | translate}}</mat-label>
+                    <textarea id="message" matInput [formControl]="messageFormControl" required></textarea>
+                    @if (messageFormControl.hasError('required')) {
+                    <mat-error><app-mat-input-error
+                            [inputError]="
+                               'general.error.validation.required' | translate : { field: 'contact.form.input.message' | translate } " /></mat-error>
+                    }
+                    @else if (messageFormControl.hasError('minlength')) {
+                    <mat-error><app-mat-input-error
+                            [inputError]="
+                               'general.error.validation.invalid' | translate : { field: 'contact.form.input.message' | translate } " /></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div class="p d-flex justify-content-end">
+                <button mat-flat-button type="submit">{{'general.button.submit' |
+                    translate}}</button>
+            </div>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
