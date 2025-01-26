@@ -1,12 +1,12 @@
 import { Component, input } from '@angular/core';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
-import { NoDataFoundComponent } from '../../../../features/no-data-found/no-data-found.component';
 import { Product } from '../../../../core/model/db/product';
+import { LoaderComponent } from '../../common/loader/loader.component';
 
 @Component({
   selector: 'app-product-list-details',
   standalone: true,
-  imports: [ProductPreviewComponent, NoDataFoundComponent],
+  imports: [ProductPreviewComponent, LoaderComponent],
   template: `
     @if (products() && products().length > 0) {
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
@@ -18,7 +18,7 @@ import { Product } from '../../../../core/model/db/product';
     </div>
 
     }@else {
-    <app-no-data-found />
+    <app-loader />
     }
   `,
   styleUrl: './product-list-details.component.scss',
