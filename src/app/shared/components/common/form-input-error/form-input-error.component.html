@@ -1,0 +1,14 @@
+<div class="alert alert-danger" role="alert">
+    <i class="bi bi-exclamation-circle-fill fs-5 pe-1 text-danger"></i><span
+        class="text-dark">{{'general.error.validation.title' | translate}}</span>
+    <ul class="list-group list-group-flush ">
+        @for (error of errors(); track $index) {
+        <li class="list-group-item list-group-item-danger ps-4 border-0"> <i class="bi bi-dot"></i>
+            <a class="cursor-hand link-underline-danger" routerLink="." [fragment]="error.control" skipLocationChange>
+                <span class="ps-1 text-danger">{{'general.error.validation.'+ error.error |
+                    translate : { field: 'contact.form.input.' + error.control | translate } }}</span>
+            </a>
+        </li>
+        }
+    </ul>
+</div>

@@ -38,6 +38,17 @@
       "settings": "Settings"
     }
   },
+  "contact": {
+    "form": {
+      "title": "Contact us",
+      "input": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message"
+      },
+      "success":"Message sent successfully"
+    }
+  },
   "product": {
     "section": {
       "tabs": {
@@ -83,6 +94,9 @@
     }
   },
   "general": {
+    "form": {
+      "error": "An error occurred while processing. Please try again later."
+    },
     "input": {
       "search": {
         "placeholder": "Search ...",
@@ -118,9 +132,12 @@
       "desc": "High to low"
     },
     "error": {
-      "form": {
-        "required": "Champ obligatoire",
-        "email-invalid": "Email invalid",
+      "validation": {
+        "title": "The following errors were found:",
+        "required": "{{field}} is required",
+        "invalid": "{{field}} is invalid",
+        "minlength": "{{field}} must have minimum size",
+        "maxlength": "{{field}} exceeds maximum size",
         "a-field": "Une erreur a été detecté sur le champ suivant:{field}.",
         "all-field": "Une erreur a été detecté sur les champs suivants:{fields}."
       },

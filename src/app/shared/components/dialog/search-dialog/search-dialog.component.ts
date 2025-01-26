@@ -9,8 +9,9 @@ import { MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
 import { FormsModule } from '@angular/forms';
-import { FormInputErrorComponent } from '../../common/form-input-error/form-input-error.component';
+import { MatInputErrorComponent } from '../../common/form/mat-input-error/mat-input-error.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatError } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-search-dialog',
@@ -19,7 +20,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     MatDialogContent,
     FormsModule,
-    FormInputErrorComponent,
+    MatInputErrorComponent,
+    MatError,
     TranslateModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,11 +48,14 @@ import { TranslateModule } from '@ngx-translate/core';
         </button>
       </div>
       @if(hasError()){
-      <app-form-input-error
-        [inputError]="
-          'general.input.search.error' | translate : { letterCount: MIN_LENGTH }
-        "
-      />
+      <mat-error
+        ><app-mat-input-error
+          [inputError]="
+            'general.input.search.error'
+              | translate : { letterCount: MIN_LENGTH }
+          "
+        />
+      </mat-error>
       }
     </mat-dialog-content>
   `,

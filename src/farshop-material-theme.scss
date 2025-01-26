@@ -12,6 +12,8 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+@import "./variables";
+
 $_palettes: (
   primary: (
     0: #000000,
@@ -20,7 +22,9 @@ $_palettes: (
     25: #353c43,
     30: #41484e,
     35: #4c535a,
-    40: #585f66,
+    // Button
+    40: $app-theme-color,
+    // Button
     50: #71787f,
     60: #8a9199,
     70: #a5acb4,

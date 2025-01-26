@@ -47,9 +47,9 @@ import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstrac
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent extends AbstractOnDestroy implements OnInit {
-  readonly productService = inject(ProductService);
-  readonly categoryService = inject(CategoryService);
-  activatedRoute = inject(ActivatedRoute);
+  private readonly productService = inject(ProductService);
+  private readonly categoryService = inject(CategoryService);
+  private readonly activatedRoute = inject(ActivatedRoute);
   readonly pageSizeOptions: number[] = [
     PAGINATION_DEFAULT.pageSize.valueOf(),
     PAGINATION_DEFAULT.pageSize.valueOf() * 2,

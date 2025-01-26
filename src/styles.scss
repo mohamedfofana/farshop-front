@@ -1,6 +1,32 @@
 @import "variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+/**
+
+**/
+
+.mat-error {
+  display: flex;
+  align-items: center;
+}
+
+.mat-error:before {
+  /* If Font Awesome Icon font */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  content: "\f071";
+
+  /* If Material Icon font */
+  /*
+  font-family: "Material Icons";
+  content: "warning"
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  */
+
+  color: #f00;
+  margin-right: 0.5rem;
+}
 /***********
 Fonts
 ***********/
@@ -27,21 +53,21 @@ body {
   color: $body-text-color;
 }
 .bg-app-theme-color {
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }
 
 .app-theme-color {
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
 }
 
 .button-theme:hover {
   opacity: 0.9;
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }
 
 .button-theme:hover {
   opacity: 1;
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }
 
 ul {
@@ -67,11 +93,12 @@ div {
 .cursor-hand {
   cursor: pointer;
 }
+
 .global-bg-color {
   color: #1e1e27;
 }
 .footer_social ul li a:hover {
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
 }
 
 a:hover {
@@ -79,15 +106,15 @@ a:hover {
 }
 .nav-link:hover.nav-underline .nav-link:hover,
 .nav-underline .nav-link:focus {
-  border-bottom-color: $app-fancy-red-color;
+  border-bottom-color: $app-theme-color;
 }
 .nav-underline .nav-link:hover,
 .nav-underline .nav-link:focus {
-  border-bottom-color: $app-fancy-red-color;
+  border-bottom-color: $app-theme-color;
 }
 .dropdown-item:hover,
 .dropdown-item:focus {
-  color: $app-fancy-red-color;
+  color: $app-theme-color;
 }
 .error {
   color: $app-error-color;
@@ -278,7 +305,7 @@ Account
 }
 
 .theme_bg_color {
-  background: $app-fancy-red-color;
+  background: $app-theme-color;
 }
 
 .yellow_button {
@@ -335,6 +362,43 @@ a.custom_button:link {
   padding-top: 0.15rem !important;
 }
 
+/****************************
+  Angular Material
+****************************/
+.success-snackbar {
+  .mdc-snackbar__surface {
+    background: radial-gradient(
+      circle at 10% 20%,
+      rgb(15, 213, 172) 0%,
+      rgb(34, 182, 198) 100.2%
+    );
+  }
+
+  .mdc-snackbar__label {
+    color: white !important;
+  }
+
+  .mdc-button__label {
+    color: white !important;
+  }
+}
+
+.error-snackbar {
+  .mdc-snackbar__surface {
+    background: linear-gradient(
+      102.2deg,
+      rgb(250, 45, 66) 9.6%,
+      rgb(245, 104, 104) 96.1%
+    );
+  }
+
+  .mdc-snackbar__label {
+    color: white !important;
+  }
+  .mdc-button__label {
+    color: white !important;
+  }
+}
 /****************************
   Responsive
 ****************************/

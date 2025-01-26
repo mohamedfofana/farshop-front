@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { LocalStorage, LocalStorageService } from 'ngx-webstorage';
 import { StorageConstant } from '../../security/constants/StorageConstants';
-import { CartProduct } from '../../model/dto/cartProduct';
+import { CartProductDto } from '../../model/dto/cartProduct';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class StorageService {
     return this.findValue(StorageConstant.CURRENT_LANGUAGE);
   }
 
-  removeProduct(cartProduct: CartProduct) {
+  removeProduct(cartProduct: CartProductDto) {
     this.removeProductFromStorage(cartProduct);
   }
 
@@ -33,11 +33,11 @@ export class StorageService {
     this.removeProduct({ id: id, quantity: 1 });
   }
 
-  addProduct(cartProduct: CartProduct) {
+  addProduct(cartProduct: CartProductDto) {
     this.addProductToStorage(cartProduct);
   }
 
-  private addProductToStorage(cartProduct: CartProduct) {
+  private addProductToStorage(cartProduct: CartProductDto) {
     const oldQuantity = this.getProductQuantity(cartProduct.id);
     const quantity =
       oldQuantity === 0
@@ -50,17 +50,17 @@ export class StorageService {
     });
   }
 
-  private getCartProductList(): CartProduct[] {
+  private getCartProductList(): CartProductDto[] {
     const list = this.findValueObject(StorageConstant.CART_PRODUCTS);
     if (!list) {
       return [];
     }
-    const cartList: CartProduct[] = JSON.parse(list);
+    const cartList: CartProductDto[] = JSON.parse(list);
 
     return cartList;
   }
 
-  private removeProductFromStorage(cartProduct: CartProduct) {
+  private removeProductFromStorage(cartProduct: CartProductDto) {
     const oldQuantity = this.getProductQuantity(cartProduct.id);
     const quantity = oldQuantity === 0 ? 0 : oldQuantity - cartProduct.quantity;
 
@@ -70,7 +70,7 @@ export class StorageService {
     });
   }
 
-  private updateCartProduct(cartProduct: CartProduct) {
+  private updateCartProduct(cartProduct: CartProductDto) {
     let cartProductList = this.getCartProductList();
     if (cartProductList.length === 0) {
       cartProductList = [cartProduct];
@@ -95,7 +95,7 @@ export class StorageService {
     this.setProductList(cartProductList);
   }
 
-  private setProductList(list: CartProduct[]) {
+  private setProductList(list: CartProductDto[]) {
     this.localStorageService.store(StorageConstant.CART_PRODUCTS, list);
     this.productCount.set(this.getCartProductCount());
   }
@@ -138,7 +138,7 @@ export class StorageService {
 
   private decryptCartList(value: string) {
     const decryptedValue = this.decrypt(value);
-    const cartList: CartProduct[] = JSON.parse(decryptedValue);
+    const cartList: CartProductDto[] = JSON.parse(decryptedValue);
     return;
   }
 

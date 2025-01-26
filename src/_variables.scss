@@ -1,11 +1,11 @@
-$app-fancy-red-color: #fe4c50;
+$app-theme-color: #fe4c50;
 $app-error-color: #f2545b;
 $app-button-color-yellow: #ffa41c;
 $body-bg: #ffffff;
 $body-text-color: #0f1111;
 $body-text-color: #0f1111;
-$link-hover-color: $app-fancy-red-color;
-$nav-link-hover-color: $app-fancy-red-color;
+$link-hover-color: $app-theme-color;
+$nav-link-hover-color: $app-theme-color;
 $body-font-family: "Roboto", sans-serif;
 $body-font-size: 14px;
 $body-font-style: "normal";
@@ -16,7 +16,7 @@ $body-font-weight: 400;
  Bootstrap
 ***/
 // Primary
-$primary: $app-fancy-red-color;
+$primary: $app-theme-color;
 
 // Badge
 $badge-font-size: 0.4em;
