@@ -56,14 +56,18 @@ export class ContactComponent extends AbstractOnDestroy {
   private readonly contactService = inject(ContactService);
   private readonly notifier = inject(NotifierService);
   private readonly formBuilder = inject(FormBuilder);
+  readonly MIN_LENGTH_NAME: number = 3;
+  readonly MAX_LENGTH_NAME: number = 50;
+  readonly MIN_LENGTH_MESSAGE: number = 10;
+
   contactForm!: FormGroup;
   hasInputError = signal<boolean>(false);
   hasHttpError = signal<boolean>(false);
   errors = signal<ControlError[]>([]);
   nameFormControl = new FormControl('', [
     Validators.required,
-    Validators.minLength(3),
-    Validators.maxLength(50),
+    Validators.minLength(this.MIN_LENGTH_NAME),
+    Validators.maxLength(this.MAX_LENGTH_NAME),
   ]);
   emailFormControl = new FormControl<string>('', [
     Validators.required,
@@ -71,7 +75,7 @@ export class ContactComponent extends AbstractOnDestroy {
   ]);
   messageFormControl = new FormControl('', [
     Validators.required,
-    Validators.minLength(3),
+    Validators.minLength(this.MIN_LENGTH_MESSAGE),
   ]);
 
   constructor() {
@@ -103,7 +107,10 @@ export class ContactComponent extends AbstractOnDestroy {
             return this.httpErrorHandlerService.handle(error);
           })
         )
-        .subscribe(() => this.notifier.success(successMessage));
+        .subscribe(() => {
+          this.notifier.success(successMessage);
+          this.router.navigateByUrl('home');
+        });
       this.subscriptions.push(subSend);
     } else {
       this.hasInputError.set(true);
