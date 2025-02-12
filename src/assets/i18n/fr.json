@@ -23,10 +23,10 @@
     "account": {
       "title": "Mon compte",
       "signin": {
-        "title": "Se connecter"
+        "title": "Connexion"
       },
       "logout": {
-        "title": "Se déconnecter"
+        "title": "Déconnexion"
       },
       "register": {
         "title": "Créer un compte"
@@ -92,7 +92,59 @@
       }
     }
   },
+  "profile": {
+    "tabs": {
+      "personal-info": {
+        "title": "Informations personnelles",
+        "form": {
+          "input": {
+            "firstname": "Prénom",
+            "lastname": "Nom",
+            "birthdate": "Date de naissance",
+            "email": "Courriel"
+          },
+          "success": "Votre profil a été mis à jour!"
+        }
+      },
+      "address": {
+        "title": "Adresses",
+        "title-update": "Modifier une adresse",
+        "title-add": "Ajouter une adresse",
+        "form": {
+          "input": {
+            "name": "Nom",
+            "addressLine1": "Adresse",
+            "addressLine2": "Complément",
+            "state": "Province ou État",
+            "city": "Ville",
+            "postal-code": "Code postal",
+            "country": "Pays",
+            "type": "Type"
+          },
+          "type": {
+            "residential": "Résidentielle",
+            "delivery": "Livraison",
+            "billing": "Paiement"
+          },
+          "successful": {
+            "update": "L'adresse a été mise à jour!",
+            "add": "L'adresse a été ajoutée!",
+            "delete": "L'adresse a été supprimée!"
+          },
+          "failure": {
+            "delete": "Impossible de supprimer l'adresse!"
+          }
+        }
+      }
+    }
+  },
   "general": {
+    "label": {
+      "profile": {
+        "expand-all": "Tout afficher",
+        "collapse-all": "Tout cacher"
+      }
+    },
     "form": {
       "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
     },
@@ -102,10 +154,17 @@
         "error": "Vou devez entrer au moins {{letterCount}} lettres! "
       }
     },
+    "dialog": {
+      "message": {
+        "remove": "Voulez-vous supprimer cette adresse?"
+      },
+      "confirm": "Confirmation"
+    },
     "button": {
       "submit": "Soumettre",
       "continue": "Continuer",
       "cancel": "Annuler",
+      "delete": "Supprimer",
       "signin": "Connexion",
       "register": "S'incscrire",
       "buy-now": "Achetez maintenant",
@@ -133,6 +192,7 @@
     "error": {
       "validation": {
         "title": "Les erreurs suivantes ont été detéctés:",
+        "single": "Une erreur a été détecté sur le champ suivant:",
         "required": "{{field}} est obligatoire",
         "invalid": "{{field}} est invalide",
         "minlength": "{{field}} doit avoir la taille minimale",

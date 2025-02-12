@@ -1,0 +1,8 @@
+<div class="row">
+  @for (address of addresses(); track $index) {
+  <div class="col-3 mb-2">
+    <app-address-view [address]="address" (reloadData)="reloadData.emit()"></app-address-view>
+
+  </div>
+  }
+</div>

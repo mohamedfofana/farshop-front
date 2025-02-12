@@ -10,7 +10,7 @@ import { ProductService } from '../../../core/services/http/product/product.serv
 import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FindByPageDto } from '../../../core/model/dto/findByPageDto';
+import { FindByPageDto } from '../../../core/model/dto/product/findByPageDto';
 import { Product } from '../../../core/model/db/product';
 import { PriceRangeComponent } from '../../../shared/components/common/price-range/price-range.component';
 import { SelectSortProductsComponent } from '../../../shared/components/product/select-sort-products/select-sort-products.component';

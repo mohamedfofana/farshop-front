@@ -1,0 +1,71 @@
+<div class="row">
+    <form [formGroup]="profileForm" class="profileForm" (submit)="submit()">
+        @if(sumbitSuccessful()){
+        <app-form-success [message]="'profile.tabs.personal-info.form.success' | translate " />
+        }
+        @if(hasHttpError()){
+        <app-form-error />
+        }
+        @if(hasInputError()){
+        <app-form-input-error [errorPrefix]="'profile.tabs.personal-info.form.input'" [errors]="errors()" />
+        }
+        <div class="p pb-3">
+            <mat-form-field class="w-50">
+                <mat-label>{{'profile.tabs.personal-info.form.input.firstname' | translate}}</mat-label>
+                <input id="firstname" type="text" matInput [formControl]="firstnameFormControl" required>
+                @if (firstnameFormControl.hasError('required')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                           'general.error.validation.required' | translate : { field: 'profile.tabs.personal-info.form.input.firstname' | translate } " /></mat-error>
+                }
+                @else if (firstnameFormControl.hasError('minlength') || firstnameFormControl.hasError('maxlength') ||
+                firstnameFormControl.hasError('invalid')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                           'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.firstname' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="p pb-3">
+            <mat-form-field class="w-50">
+                <mat-label>{{'profile.tabs.personal-info.form.input.lastname' | translate}}</mat-label>
+                <input id="lastname" matInput [formControl]="lastnameFormControl" required>
+                @if (lastnameFormControl.hasError('required')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                           'general.error.validation.required' | translate : { field: 'profile.tabs.personal-info.form.input.lastname' | translate } " /></mat-error>
+                }
+                @else if (lastnameFormControl.hasError('minlength') || lastnameFormControl.hasError('maxlength') ||
+                lastnameFormControl.hasError('invalid')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                           'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.lastname' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="p pb-3">
+            <mat-form-field>
+                <mat-label>{{'profile.tabs.personal-info.form.input.birthdate' | translate}}</mat-label>
+                <input id="birthdate" matInput [formControl]="birthdateFormControl" [matDatepicker]="picker" required>
+                <mat-datepicker-toggle matIconSuffix [for]="picker" />
+                <mat-datepicker #picker />
+                @if (birthdateFormControl.hasError('invalid')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                           'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.birthdate' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="p pb-3">
+            <mat-form-field class="w-50">
+                <mat-label>{{'profile.tabs.personal-info.form.input.email' | translate}}</mat-label>
+                <input id="email" matInput [formControl]="emailFormControl" readonly>
+            </mat-form-field>
+        </div>
+
+        <p class="text-end w-50">
+            <button mat-flat-button type="submit">{{'general.button.submit' |
+                translate}}</button>
+        </p>
+    </form>
+</div>

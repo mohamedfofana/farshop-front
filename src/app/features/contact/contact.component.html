@@ -7,12 +7,12 @@
             <app-form-error />
             }
             @if(hasInputError()){
-            <app-form-input-error [errors]="errors()" />
+            <app-form-input-error [errorPrefix]="'contact.form.input'" [errors]="errors()" />
             }
-            <div class="p pb-2">
+            <div class="p pb-3">
                 <mat-form-field class="w-100">
                     <mat-label>{{'contact.form.input.name' | translate}}</mat-label>
-                    <input id="name" type="text" matInput [formControl]="nameFormControl" required>
+                    <input id="name" matInput [formControl]="nameFormControl" required>
                     @if (nameFormControl.hasError('required')) {
                     <mat-error><app-mat-input-error
                             [inputError]="
@@ -25,7 +25,7 @@
                     }
                 </mat-form-field>
             </div>
-            <div class="p pb-2">
+            <div class="p pb-3">
                 <mat-form-field class="w-100">
                     <mat-label>{{'contact.form.input.email' | translate}}</mat-label>
                     <input id="email" type="email" matInput [formControl]="emailFormControl" required>
@@ -41,7 +41,7 @@
                     }
                 </mat-form-field>
             </div>
-            <div class="p pb-2">
+            <div class="p pb-3">
                 <mat-form-field class="w-100">
                     <mat-label>{{'contact.form.input.message' | translate}}</mat-label>
                     <textarea id="message" matInput [formControl]="messageFormControl" required></textarea>
