@@ -1,47 +1,14 @@
 @import "variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
-
-/**
-
-**/
-
-.mat-error {
-  display: flex;
-  align-items: center;
-}
-
-.mat-error:before {
-  /* If Font Awesome Icon font */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 600;
-  content: "\f071";
-
-  /* If Material Icon font */
-  /*
-  font-family: "Material Icons";
-  content: "warning"
-  -webkit-font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-  */
-
-  color: #f00;
-  margin-right: 0.5rem;
-}
-/***********
-Fonts
-***********/
-
-.sticky-header {
-  position: fixed;
-  top: 0;
-  z-index: 1020;
-}
-
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,900");
 
 * {
   margin: 0;
   padding: 0;
+}
+
+.app-theme-color {
+  color: $app-theme-color;
 }
 
 body {
@@ -52,14 +19,13 @@ body {
   font-weight: $body-font-weight;
   color: $body-text-color;
 }
+
 .bg-app-theme-color {
   background: $app-theme-color;
 }
 
-.app-theme-color {
-  color: $app-theme-color;
-}
-
+/*** Button **/
+/*** Button **/
 .button-theme:hover {
   opacity: 0.9;
   background: $app-theme-color;
@@ -129,6 +95,12 @@ a:hover {
 /*********************************
 Header
 *********************************/
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  z-index: 1020;
+}
 
 .header {
   top: 0;
@@ -257,7 +229,7 @@ Account
   right: 0;
   top: 120%;
   margin: 0;
-  width: 100%;
+  width: max-content;
   background: #ffffff;
   visibility: hidden;
   opacity: 0;
@@ -365,6 +337,22 @@ a.custom_button:link {
 /****************************
   Angular Material
 ****************************/
+
+.mat-error {
+  display: flex;
+  align-items: center;
+}
+
+.mat-error:before {
+  /* If Font Awesome Icon font */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  content: "\f071";
+
+  color: #f00;
+  margin-right: 0.5rem;
+}
+
 .success-snackbar {
   .mdc-snackbar__surface {
     background: radial-gradient(
@@ -399,6 +387,7 @@ a.custom_button:link {
     color: white !important;
   }
 }
+
 /****************************
   Responsive
 ****************************/

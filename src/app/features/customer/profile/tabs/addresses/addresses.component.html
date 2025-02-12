@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="address-action-buttons">
+    <button mat-button (click)="accordion.openAll()">{{'general.label.profile.expand-all' | translate}}</button>
+    <button mat-button (click)="accordion.closeAll()">{{'general.label.profile.collapse-all' | translate}}</button>
+    <button mat-mini-fab color="accent" class="ms-2" (click)="addNewAdress()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-accordion class="address-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'profile.tabs.address.form.type.residential' | translate}}</mat-panel-title>
+        <mat-panel-description>
+          &nbsp;&nbsp;&nbsp;
+          <mat-icon>house</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-address-list [addresses]="(residentialAddresses$ | async) || [] "
+        (reloadData)="reloadData()"></app-address-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'profile.tabs.address.form.type.delivery' | translate}}</mat-panel-title>
+        <mat-panel-description>
+          &nbsp;&nbsp;&nbsp;
+          <mat-icon>local_shipping</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-address-list [addresses]="(deliveryAddresses$ | async) || [] "
+        (reloadData)="reloadData()"></app-address-list>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'profile.tabs.address.form.type.billing' | translate}}</mat-panel-title>
+        <mat-panel-description>
+          &nbsp;&nbsp;&nbsp;
+          <mat-icon>payments</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-address-list [addresses]="(billingAddresses$ | async) || [] " (reloadData)="reloadData()"></app-address-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

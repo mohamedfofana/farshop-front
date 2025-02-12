@@ -1,0 +1,143 @@
+<div class="text-center" matDialogTitle>{{'profile.tabs.address.title'+ suffix() | translate}}</div>
+<div class="row" matDialogContent>
+  <form [formGroup]="addressForm" class="pt-2" (submit)="submit()" novalidate>
+    @if(hasHttpError()){
+    <app-form-error #formHttpErrorElt />
+    }
+    @if(hasInputError()){
+    <app-form-input-error [errorPrefix]="'profile.tabs.address.form.input'" [errors]="errors()" #formErrorElt />
+    }
+    @if(dialogFormData.new){
+    <div class="p pb-3 w-50">
+      <mat-form-field>
+        <mat-label>{{'profile.tabs.address.form.input.type' | translate}}</mat-label>
+        <mat-select id="type" [formControl]="typeFormControl">
+          @for (type of addressTypes; track $index) {
+          <mat-option [value]="type.value">
+            {{'profile.tabs.address.form.type.' + type.value | translate}}
+          </mat-option>
+          }
+        </mat-select>
+        @if (typeFormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                      'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.type' | translate } " /></mat-error>
+        }
+        @else if (typeFormControl.hasError('minlength') || typeFormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                      'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.type' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    }
+    <div class="p">
+      <mat-form-field class="w-100">
+        <mat-label>{{'profile.tabs.address.form.input.name' | translate}}</mat-label>
+        <input id="name" matInput [formControl]="nameFormControl" />
+        @if (nameFormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                 'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.name' | translate } " /></mat-error>
+        }
+        @else if (nameFormControl.hasError('minlength') || nameFormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                 'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.name' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="p pb-3">
+      <mat-form-field class="w-100">
+        <mat-label>{{'profile.tabs.address.form.input.addressLine1' | translate}}</mat-label>
+        <input id="addressLine1" matInput [formControl]="addressLine1FormControl" />
+        @if (addressLine1FormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                 'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.addressLine1' | translate } " /></mat-error>
+        }
+        @else if (addressLine1FormControl.hasError('minlength') || addressLine1FormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                 'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.addressLine1' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="p pb-3">
+      <mat-form-field class="w-100">
+        <mat-label>{{'profile.tabs.address.form.input.addressLine2' | translate}}</mat-label>
+        <input matInput [formControl]="addressLine2FormControl" />
+      </mat-form-field>
+    </div>
+    <div class="p pb-3">
+      <mat-form-field class="w-50">
+        <mat-label>{{'profile.tabs.address.form.input.city' | translate}}</mat-label>
+        <input id="city" matInput [formControl]="cityFormControl" />
+        @if (cityFormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.city' | translate } " /></mat-error>
+        }
+        @else if (cityFormControl.hasError('minlength') || cityFormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.city' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="p  pb-3 w-100 d-inline-flex justify-content-between">
+      <mat-form-field>
+        <mat-label>{{'profile.tabs.address.form.input.state' | translate}}</mat-label>
+        <input id="state" matInput [formControl]="stateFormControl" />
+        @if (stateFormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.state' | translate } " /></mat-error>
+        }
+        @else if (stateFormControl.hasError('minlength') || stateFormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.state' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="ms-2">
+        <mat-label>{{'profile.tabs.address.form.input.postal-code' | translate}}</mat-label>
+        <input id="postal-code" matInput [formControl]="postalCodeFormControl" />
+        @if (postalCodeFormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.postal-code' | translate } " /></mat-error>
+        }
+        @else if (postalCodeFormControl.hasError('minlength') || postalCodeFormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.postal-code' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="p pb-3 w-50">
+      <mat-form-field>
+        <mat-label>{{'profile.tabs.address.form.input.country' | translate}}</mat-label>
+        <input id="country" matInput [formControl]="countryFormControl" />
+        @if (countryFormControl.hasError('required')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.country' | translate } " /></mat-error>
+        }
+        @else if (countryFormControl.hasError('minlength') || countryFormControl.hasError('maxlength')) {
+        <mat-error><app-mat-input-error
+            [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.country' | translate } " /></mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <p class="justify-content-end w-100" matDialogActions>
+      <button mat-raised-button type="submit">{{'general.button.submit' |
+        translate}}</button>
+      <button mat-button mat-dialog-close>{{'general.button.cancel' |
+        translate}}</button>
+    </p>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { ContactDto } from '../../../model/dto/contactDto';
+import { ContactDto } from '../../../model/dto/contact/contactDto';
 
 @Injectable({
   providedIn: 'root',

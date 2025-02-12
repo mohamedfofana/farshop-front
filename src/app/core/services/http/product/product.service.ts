@@ -3,8 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { Product } from '../../../model/db/product';
 import { Observable } from 'rxjs';
-import { FindByPageDto } from '../../../model/dto/findByPageDto';
-import { CountAvailableDto } from '../../../model/dto/countAvailableDto';
+import { CountAvailableDto } from '../../../model/dto/product/countAvailableDto';
+import { FindByPageDto } from '../../../model/dto/product/findByPageDto';
 
 @Injectable({
   providedIn: 'root',

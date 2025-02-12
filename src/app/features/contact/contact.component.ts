@@ -56,6 +56,7 @@ export class ContactComponent extends AbstractOnDestroy {
   private readonly contactService = inject(ContactService);
   private readonly notifier = inject(NotifierService);
   private readonly formBuilder = inject(FormBuilder);
+
   readonly MIN_LENGTH_NAME: number = 3;
   readonly MAX_LENGTH_NAME: number = 50;
   readonly MIN_LENGTH_MESSAGE: number = 10;

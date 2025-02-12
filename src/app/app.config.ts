@@ -1,3 +1,4 @@
+import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -47,6 +48,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'YYYY-MM-DD',
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -83,6 +96,7 @@ export const appConfig: ApplicationConfig = {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
     },
+    provideMomentDateAdapter(MY_FORMATS),
     { provide: ErrorStateMatcher, useClass: MyErrorStateMatcher },
   ],
 };

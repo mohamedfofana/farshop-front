@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { TranslationService } from '../translationService/translation.service';
 import { DOCUMENT } from '@angular/common';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthenticationService {
   login(): void {
     this.auth.loginWithRedirect({
       appState: {
-        target: '/profile',
+        target: window.location.pathname,
       },
       authorizationParams: {
         ui_locales: this.translationService.getCurrentLanguage(),
@@ -33,11 +34,42 @@ export class AuthenticationService {
   signup(): void {
     this.auth.loginWithRedirect({
       appState: {
-        target: '/profile',
+        target: window.location.pathname,
       },
       authorizationParams: {
         screen_hint: 'signup',
+        ui_locales: this.translationService.getCurrentLanguage(),
       },
     });
+  }
+
+  hasRole(role: string): Observable<boolean> {
+    return this.auth.idTokenClaims$.pipe(
+      map((idToken) =>
+        {
+          if (idToken) {
+            const roleToken = idToken['https://farshop.com/roles'][0];
+            if (roleToken && roleToken === role) {
+              return true;
+            }
+          }
+          return false;
+        }
+      )
+    );
+  }
+
+  isNewCustomer(): Observable<boolean> {
+    return this.auth.idTokenClaims$.pipe(
+      map((idToken) => {
+        if (idToken) {
+          const newCustomer = idToken['https://farshop.com/newCustomer'];
+          if (newCustomer && newCustomer === true) {
+            return true;
+          }
+        }
+        return false;
+      })
+    );
   }
 }

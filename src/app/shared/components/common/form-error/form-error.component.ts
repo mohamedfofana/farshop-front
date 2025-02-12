@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, effect, ElementRef, viewChild } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -9,4 +9,11 @@ import { TranslateModule } from '@ngx-translate/core';
   styles: ``,
 })
 export class FormErrorComponent {
+  formError = viewChild.required<ElementRef<HTMLInputElement>>('formError');
+
+  constructor() {
+    effect(() => {
+      this.formError().nativeElement.focus();
+    });
+  }
 }

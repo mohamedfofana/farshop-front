@@ -1,20 +1,22 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { map } from 'rxjs';
-import { CodeSnippetComponent } from '../../../shared/components/code-snippet.component';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { switchMap } from 'rxjs';
+import { CustomerService } from '../../../core/services/http/customer/customer.service';
+import { ProfileTabsComponent } from './profile-tabs/profile-tabs.component';
+import { LoaderComponent } from "../../../shared/components/common/loader/loader.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, CodeSnippetComponent],
+  imports: [CommonModule, ProfileTabsComponent, LoaderComponent],
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
-  title = 'Decoded ID Token';
+  private readonly auth0Service = inject(AuthService);
+  private readonly customerService = inject(CustomerService);
 
-  private auth = inject(AuthService);
-
-  user$ = this.auth.user$;
-  code$ = this.user$.pipe(map((user) => JSON.stringify(user, null, 2)));
+  customer$ = this.auth0Service.user$.pipe(
+    switchMap((user) => this.customerService.findByEmail(user?.email!)),
+  );
 }

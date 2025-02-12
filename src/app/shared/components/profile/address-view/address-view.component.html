@@ -1,0 +1,17 @@
+<mat-card class="shadow-lg cursor-hand">
+  <mat-card-content>
+    <p class="mb-0 pb-1">{{ address().name }}</p>
+    <p class="mb-0 pb-1">{{ address().addressLine1}} <span *ngIf="address().addressLine2">,
+        {{address().addressLine2}}</span></p>
+    <p class="mb-0 pb-1">
+      {{ address().city + ", " + address().state + " " + address().postalCode }}
+    </p>
+    <p>{{ address().country }}</p>
+  </mat-card-content>
+  <mat-card-actions class="justify-content-end">
+    <button mat-icon-button (click)="edit()"><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button color="warn" (click)="remove()" class="ms-1">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

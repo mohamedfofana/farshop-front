@@ -1,0 +1,55 @@
+<div class="dropdown justify-content-end d-flex">
+  <div class="ps-3 mb-1 pt-0-15-rem">
+    <a href="javascript:void(0)" (click)="openDialog()">
+      <i class="bi bi-search h5 text-dark"></i>
+    </a>
+  </div>
+
+  <ng-container *ngIf="isLoggedIn$ | async; else unAuthenticated">
+    <div class="ps-3">
+      <ng-container *ngIf="user$ | async as user">
+        <a [routerLink]="['profile']" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img [src]="user.picture" class="rounded-circle" width="24" height="24" alt="Profile Picture">
+        </a>
+      </ng-container>
+      <ul class="dropdown-menu dropdown-menu-end text-small">
+        <li>
+          <a class="dropdown-item" [routerLink]="['profile']">{{
+            'user.menu.profile' | translate
+            }}</a>
+        </li>
+        <li>
+          <a class="dropdown-item" [routerLink]="['settings']">{{
+            'user.menu.settings' | translate
+            }}</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li class="text-center">
+          <app-logout-button></app-logout-button>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+
+  <ng-template #unAuthenticated>
+    <div class="ps-3">
+      <a href="javascript:void(0)" (click)="login()">
+        <i class="bi bi-person h4 text-dark"></i>
+      </a>
+    </div>
+  </ng-template>
+
+  <div class="ps-3">
+    <a href="#">
+      <i class="bi bi-cart2 h4 text-dark">
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge badge-lxs rounded-pill bg-app-theme-color">
+          {{ productCount() }}
+        </span>
+      </i>
+    </a>
+  </div>
+</div>

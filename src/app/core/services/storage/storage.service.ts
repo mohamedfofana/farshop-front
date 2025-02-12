@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { LocalStorage, LocalStorageService } from 'ngx-webstorage';
 import { StorageConstant } from '../../security/constants/StorageConstants';
-import { CartProductDto } from '../../model/dto/cartProduct';
+import { CartProductDto } from '../../model/dto/product/cartProduct';
 
 @Injectable({
   providedIn: 'root',
