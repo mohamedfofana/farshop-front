@@ -39,7 +39,7 @@ export class HeaderComponent extends AbstractOnDestroy implements OnInit {
   constructor() {
     super();
     this.setTopHeaders();
-    this.authenticationService.isNewCustomer().subscribe((isNew) => {
+    this.authenticationService.isNewCustomer$().subscribe((isNew) => {
       if (isNew) {
         this.createProfile();
       }

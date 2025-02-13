@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ROUTE_PATH } from './core/config/routes/routesConfig';
 import { AuthGuard } from '@auth0/auth0-angular';
+import { RoleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -77,7 +78,7 @@ export const routes: Routes = [
           import('./features/customer/profile/profile.component').then(
             (mod) => mod.ProfileComponent
           ),
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, RoleGuard],
       },
     ],
   },
