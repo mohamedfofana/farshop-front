@@ -1,8 +1,10 @@
+import { toSignal } from '@angular/core/rxjs-interop';
 import { inject, Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { TranslationService } from '../translationService/translation.service';
 import { DOCUMENT } from '@angular/common';
 import { map, Observable } from 'rxjs';
+import { CustomerRole } from '../../model/enum/customerRole';
 
 @Injectable({
   providedIn: 'root',
@@ -43,23 +45,22 @@ export class AuthenticationService {
     });
   }
 
-  hasRole(role: string): Observable<boolean> {
+  hasRole$(role: string): Observable<boolean> {
     return this.auth.idTokenClaims$.pipe(
-      map((idToken) =>
-        {
-          if (idToken) {
-            const roleToken = idToken['https://farshop.com/roles'][0];
-            if (roleToken && roleToken === role) {
-              return true;
-            }
+      map((idToken) => {
+        if (idToken) {
+          const roles: [string] = idToken['https://farshop.com/roles'];         
+          const roleAuth0 = roles.find((r) => r === role);
+          if (roleAuth0) {
+            return true;
           }
-          return false;
         }
-      )
+        return false;
+      })
     );
   }
 
-  isNewCustomer(): Observable<boolean> {
+  isNewCustomer$(): Observable<boolean> {
     return this.auth.idTokenClaims$.pipe(
       map((idToken) => {
         if (idToken) {

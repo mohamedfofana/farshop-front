@@ -31,16 +31,11 @@ export class FormInputErrorComponent implements AfterViewInit {
 
   constructor() {
     effect(() => {
-      console.log(this.formError().nativeElement);
-      console.log(this.formError().nativeElement.focus());
       this.formError().nativeElement.focus();
     });
   }
 
   ngAfterViewInit(): void {
-    console.log(this.formError().nativeElement);
-    console.log(this.formError().nativeElement.focus());
-    console.log(this.searchField.nativeElement.focus());
     this.formError().nativeElement.focus();
     this.searchField.nativeElement.focus();
   }

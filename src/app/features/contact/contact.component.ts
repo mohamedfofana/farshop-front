@@ -30,6 +30,7 @@ import { catchError } from 'rxjs';
 import { FormInputErrorComponent } from '../../shared/components/common/form-input-error/form-input-error.component';
 import { FormErrorComponent } from '../../shared/components/common/form-error/form-error.component';
 import { AbstractOnDestroy } from '../../core/directives/unsubscriber/abstract.ondestroy';
+import { ROUTE_PATH } from '../../core/config/routes/routesConfig';
 
 @Component({
   selector: 'app-contact',
@@ -110,7 +111,7 @@ export class ContactComponent extends AbstractOnDestroy {
         )
         .subscribe(() => {
           this.notifier.success(successMessage);
-          this.router.navigateByUrl('home');
+          this.router.navigateByUrl(ROUTE_PATH.HOME);
         });
       this.subscriptions.push(subSend);
     } else {

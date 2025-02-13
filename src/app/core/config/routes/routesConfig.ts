@@ -9,4 +9,5 @@ export enum ROUTE_PATH {
   PRODUCT_SEARCH = 'product/search/:text',
   CATEGORY_DETAIL = 'category/:id',
   PAGE_NOT_FOUND = 'page-not-found',
+  ACCESS_DENIED = 'access-denied',
 }
