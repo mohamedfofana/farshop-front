@@ -23,13 +23,13 @@ import {
 import { emailInputValidator } from '../../../../../core/validators/emailInputValidator';
 import { catchError } from 'rxjs';
 import { HttpErrorHandlerService } from '../../../../../core/services/http/httpErrorHandler/http-error-handler.service';
-import { FormErrorComponent } from '../../../../../shared/components/common/form-error/form-error.component';
-import { FormInputErrorComponent } from '../../../../../shared/components/common/form-input-error/form-input-error.component';
+import { FormErrorComponent } from '../../../../../shared/components/common/form/form-error/form-error.component';
+import { FormInputErrorComponent } from '../../../../../shared/components/common/form/form-input-error/form-input-error.component';
 import { MatInputErrorComponent } from '../../../../../shared/components/common/form/mat-input-error/mat-input-error.component';
 import { birthdateValidator } from '../../../../../core/validators/birthdateValidator';
 import { nameInputPatternValidator } from '../../../../../core/validators/nameInputPatternValidator';
 import { CustomerUpdateDto } from '../../../../../core/model/dto/customer/customerUpdateDto';
-import { FormSuccessComponent } from '../../../../../shared/components/common/form-success/form-success.component';
+import { FormSuccessComponent } from '../../../../../shared/components/common/form/form-success/form-success.component';
 import { Constants } from '../../../../../core/model/enum/constants';
 
 @Component({

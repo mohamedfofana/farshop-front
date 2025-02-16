@@ -91,6 +91,16 @@
         "rating": "Your Rating:",
         "placeholder": "Your review ..."
       }
+    },
+    "cart": {
+      "title": "Shopping cart",
+      "summary": {
+        "title": "Order summary",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "shipping": "Shipping",
+        "total": "Total"
+      }
     }
   },
   "profile": {
@@ -144,7 +154,8 @@
       "profile": {
         "expand-all": "Expand All",
         "collapse-all": "Collapse All"
-      }
+      },
+      "secure-checkout": "Secure checkout"
     },
     "form": {
       "error": "An error occurred while processing. Please try again later."
@@ -168,8 +179,8 @@
       "delete": "Delete",
       "signin": "Sign in",
       "register": "Sign up",
-      "buy-now": "Checkout",
-      "checkout": "Buy now"
+      "buy-now": "Buy now",
+      "checkout": "Proceed to checkout"
     },
     "sort": {
       "title": "Sort by",

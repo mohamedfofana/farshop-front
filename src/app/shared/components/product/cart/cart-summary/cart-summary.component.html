@@ -1,30 +1,28 @@
 <div class="summary-card p-4 shadow-sm">
-    <h5 class="mb-4">Order Summary</h5>
+    <h5 class="mb-4">{{'product.cart.summary.title' | translate}}</h5>
 
     <div class="d-flex justify-content-between mb-3">
-        <span class="text-muted">Subtotal</span>
+        <span class="text-muted">{{'product.cart.summary.subtotal' | translate}}</span>
         <span>{{totalAmountToPay() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
     </div>
     <div class="d-flex justify-content-between mb-3">
-        <span class="text-muted">Discount</span>
+        <span class="text-muted">{{'product.cart.summary.discount' | translate}}</span>
         <span class="text-success">-{{totalSaved() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
     </div>
     <div class="d-flex justify-content-between mb-3">
-        <span class="text-muted">Shipping</span>
+        <span class="text-muted">{{'product.cart.summary.shipping' | translate}}</span>
         <span>{{shippingAmount() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
     </div>
     <hr>
     <div class="d-flex justify-content-between mb-4">
-        <span class="fw-bold">Total</span>
+        <span class="fw-bold">{{'product.cart.summary.total' | translate}}</span>
         <span class="fw-bold">{{totalAmount() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
     </div>
 
-    <button class="btn btn-primary checkout-btn w-100 mb-3">
-        Proceed to Checkout
-    </button>
+    <app-theme-button title="{{'general.button.checkout' | translate}}" />
 
-    <div class="d-flex justify-content-center gap-2">
+    <div class="d-flex justify-content-center gap-2 mt-2">
         <i class="bi bi-shield-check text-success"></i>
-        <small class="text-muted">Secure checkout</small>
+        <small class="text-muted">{{'general.label.secure-checkout' | translate}}</small>
     </div>
 </div>

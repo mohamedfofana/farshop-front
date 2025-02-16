@@ -90,6 +90,16 @@
           "placeholder": "Votre revue ..."
         }
       }
+    },
+    "cart": {
+      "title":"Mon Panier",
+      "summary": {
+        "title": "Sommaire",
+        "subtotal": "Sous total",
+        "discount": "Réduction",
+        "shipping": "Livraison",
+        "total": "Total"
+      }
     }
   },
   "profile": {
@@ -143,7 +153,8 @@
       "profile": {
         "expand-all": "Tout afficher",
         "collapse-all": "Tout cacher"
-      }
+      },
+      "secure-checkout": "Paiement sécurisé"
     },
     "form": {
       "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"

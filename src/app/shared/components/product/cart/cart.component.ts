@@ -6,14 +6,15 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { CartProductComponent } from '../cart-product/cart-product.component';
-import { CartSummaryComponent } from '../cart-summary/cart-summary.component';
+import { CartProductComponent } from './cart-product/cart-product.component';
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { StorageService } from '../../../../core/services/storage/storage.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartProductComponent, CartSummaryComponent],
+  imports: [CartProductComponent, CartSummaryComponent, TranslateModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })

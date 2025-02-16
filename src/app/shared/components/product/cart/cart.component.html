@@ -5,8 +5,7 @@
         <div class="row g-4">
             <div class="col-lg-8">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="mb-0">Shopping Cart</h4>
-                    <span class="text-muted">{{cartProductCount()}} items</span>
+                    <h4 class="mb-0">{{'product.cart.title' | translate}}</h4>
                 </div>
                 <div class="d-flex flex-column gap-3">
                     @for (cartProduct of cartProducts(); track $index) {
@@ -14,7 +13,6 @@
                     }
                 </div>
             </div>
-
             <div class="col-lg-4">
                 <app-cart-summary />
             </div>

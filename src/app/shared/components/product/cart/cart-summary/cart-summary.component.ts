@@ -6,16 +6,18 @@ import {
   signal,
   effect,
 } from '@angular/core';
-import { StorageService } from '../../../../core/services/storage/storage.service';
-import { ProductService } from '../../../../core/services/http/product/product.service';
-import { ProductPricesPipe } from '../../../../core/pipe/product-prices.pipe';
-import { AbstractOnDestroy } from '../../../../core/directives/unsubscriber/abstract.ondestroy';
+import { StorageService } from '../../../../../core/services/storage/storage.service';
+import { ProductService } from '../../../../../core/services/http/product/product.service';
+import { ProductPricesPipe } from '../../../../../core/pipe/product-prices.pipe';
+import { AbstractOnDestroy } from '../../../../../core/directives/unsubscriber/abstract.ondestroy';
 import { CurrencyPipe } from '@angular/common';
+import { ThemeButtonComponent } from '../../../common/buttons/theme-button/theme-button.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart-summary',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, ThemeButtonComponent, TranslateModule],
   templateUrl: './cart-summary.component.html',
   styleUrl: './cart-summary.component.scss',
 })

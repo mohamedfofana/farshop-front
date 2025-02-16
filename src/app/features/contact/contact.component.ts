@@ -27,8 +27,8 @@ import { NotifierService } from '../../core/services/utils/notifier/notifier.ser
 import { ContactService } from '../../core/services/http/contact/contact.service';
 import { HttpErrorHandlerService } from '../../core/services/http/httpErrorHandler/http-error-handler.service';
 import { catchError } from 'rxjs';
-import { FormInputErrorComponent } from '../../shared/components/common/form-input-error/form-input-error.component';
-import { FormErrorComponent } from '../../shared/components/common/form-error/form-error.component';
+import { FormInputErrorComponent } from '../../shared/components/common/form/form-input-error/form-input-error.component';
+import { FormErrorComponent } from '../../shared/components/common/form/form-error/form-error.component';
 import { AbstractOnDestroy } from '../../core/directives/unsubscriber/abstract.ondestroy';
 import { ROUTE_PATH } from '../../core/config/routes/routesConfig';
 

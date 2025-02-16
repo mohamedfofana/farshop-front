@@ -6,7 +6,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { AddressListComponent } from './address-list/address-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { AddressAddEditDialogComponent } from '../../../../../shared/dialog/address-add-edit-dialog/address-add-edit-dialog.component';
 import { Customer } from '../../../../../core/model/db/customer';
 import { AddressService } from '../../../../../core/services/http/addresses/address.service';
 import { AddressTypeEnum } from '../../../../../core/model/enum/addressTypeEnum';
@@ -15,6 +14,7 @@ import { of } from 'rxjs';
 import { IDialogFormData } from '../../../../../core/model/dto/common/dialog-form-data.model';
 import { AbstractOnDestroy } from '../../../../../core/directives/unsubscriber/abstract.ondestroy';
 import { TranslateModule } from '@ngx-translate/core';
+import { AddressAddEditDialogComponent } from '../../../../../shared/components/dialog/address-add-edit-dialog/address-add-edit-dialog.component';
 
 @Component({
   selector: 'app-addresses',

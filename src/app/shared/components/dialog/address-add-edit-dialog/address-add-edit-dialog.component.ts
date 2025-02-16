@@ -1,10 +1,8 @@
-import { FormInputErrorComponent } from './../../components/common/form-input-error/form-input-error.component';
-import { AddressDto } from './../../../core/model/dto/address/addressDto';
+
 import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
 import {
   FormBuilder,
   FormControl,
@@ -21,25 +19,25 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { Address } from '../../../core/model/db/address';
-import { AddressTypeEnum } from '../../../core/model/enum/addressTypeEnum';
 import { MatOption } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { AddressService } from '../../../core/services/http/addresses/address.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { FormSuccessComponent } from '../../components/common/form-success/form-success.component';
-import {
-  ControlError,
-  UtilsService,
-} from '../../../core/services/utils/utils/utils.service';
+
 import { catchError } from 'rxjs';
-import { HttpErrorHandlerService } from '../../../core/services/http/httpErrorHandler/http-error-handler.service';
-import { FormErrorComponent } from '../../components/common/form-error/form-error.component';
-import { MatInputErrorComponent } from '../../components/common/form/mat-input-error/mat-input-error.component';
 import { AuthService } from '@auth0/auth0-angular';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NotifierService } from '../../../core/services/utils/notifier/notifier.service';
-import { IDialogFormData } from '../../../core/model/dto/common/dialog-form-data.model';
+import { FormErrorComponent } from '../../common/form/form-error/form-error.component';
+import { FormInputErrorComponent } from '../../common/form/form-input-error/form-input-error.component';
+import { MatInputErrorComponent } from '../../common/form/mat-input-error/mat-input-error.component';
+import { AddressTypeEnum } from '../../../../core/model/enum/addressTypeEnum';
+import { AddressService } from '../../../../core/services/http/addresses/address.service';
+import { AbstractOnDestroy } from '../../../../core/directives/unsubscriber/abstract.ondestroy';
+import { HttpErrorHandlerService } from '../../../../core/services/http/httpErrorHandler/http-error-handler.service';
+import { NotifierService } from '../../../../core/services/utils/notifier/notifier.service';
+import { Address } from '../../../../core/model/db/address';
+import { IDialogFormData } from '../../../../core/model/dto/common/dialog-form-data.model';
+import { ControlError, UtilsService } from '../../../../core/services/utils/utils/utils.service';
+import { AddressDto } from '../../../../core/model/dto/address/addressDto';
 
 @Component({
   selector: 'app-address-add-editdialog',
