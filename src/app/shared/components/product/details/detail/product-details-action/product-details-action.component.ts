@@ -1,9 +1,9 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { Product } from '../../../../core/model/db/product';
-import { StorageService } from '../../../../core/services/storage/storage.service';
-import { ProductPriceViewComponent } from '../product-price-rating/product-price-view.component';
-import { ProductQuantityInputComponent } from '../product-quantity-input/product-quantity-input.component';
-import { ThemeButtonComponent } from '../../common/buttons/theme-button/theme-button.component';
+import { Product } from '@core/model/db/product';
+import { StorageService } from '@core/services/storage/storage.service';
+import { ProductPriceViewComponent } from '../../../product-price-rating/product-price-view.component';
+import { ProductQuantityInputComponent } from '../../../product-quantity-input/product-quantity-input.component';
+import { ThemeButtonComponent } from '../../../../common/buttons/theme-button/theme-button.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

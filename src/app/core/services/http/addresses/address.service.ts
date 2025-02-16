@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { Address } from '../../../model/db/address';
 import { FindByTypeDto } from '../../../model/dto/address/findByTypeDto';

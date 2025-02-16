@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthenticationService } from '../../../../../core/services/authenticationService/authentication.service';
+import { AuthenticationService } from '@core/services/authenticationService/authentication.service';
 
 @Component({
   selector: 'app-logout-button',

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '@env/environment';
 import { Product } from '../../../model/db/product';
 import { Observable } from 'rxjs';
 import { CountAvailableDto } from '../../../model/dto/product/countAvailableDto';

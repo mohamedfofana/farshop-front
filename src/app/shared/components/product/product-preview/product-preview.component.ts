@@ -17,10 +17,10 @@ import { Router } from '@angular/router';
 import { ProductPriceViewComponent } from '../product-price-rating/product-price-view.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { EmptyImageComponent } from '../../common/empty-image/empty-image.component';
-import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
+import { ROUTE_PATH } from '@core/config/routes/routesConfig';
 import { QuantityInputComponent } from '../quantity-input/quantity-input.component';
-import { StorageService } from '../../../../core/services/storage/storage.service';
-import { Product } from '../../../../core/model/db/product';
+import { StorageService } from '@core/services/storage/storage.service';
+import { Product } from '@core/model/db/product';
 import { StarRatingReviewComponent } from '../star-rating-review/star-rating-review.component';
 
 @Component({

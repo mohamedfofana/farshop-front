@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ProductColor } from '../../../../core/model/db/productColor';
+import { ProductColor } from '@core/model/db/productColor';
 import { NgStyle } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 

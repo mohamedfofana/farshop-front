@@ -79,19 +79,20 @@
       },
       "search": {
         "result": "Search results for:"
-      }
-    },
-    "review": {
-      "rating": {
-        "no-review-yet": "No review yet",
-        "reviews-count-label": "reviews"
       },
-      "form": {
-        "title": "Add Review",
-        "rating": "Your Rating:",
-        "placeholder": "Your review ..."
+      "review": {
+        "rating": {
+          "no-review-yet": "No review yet",
+          "reviews-count-label": "reviews"
+        },
+        "form": {
+          "title": "Add Review",
+          "rating": "Your Rating:",
+          "placeholder": "Your review ..."
+        }
       }
     },
+
     "cart": {
       "title": "Shopping cart",
       "summary": {

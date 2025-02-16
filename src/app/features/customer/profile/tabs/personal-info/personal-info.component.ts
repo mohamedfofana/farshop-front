@@ -12,25 +12,25 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import moment from 'moment';
-import { Customer } from '../../../../../core/model/db/customer';
-import { CustomerService } from '../../../../../core/services/http/customer/customer.service';
-import { AbstractOnDestroy } from '../../../../../core/directives/unsubscriber/abstract.ondestroy';
+import { Customer } from '@core/model/db/customer';
+import { CustomerService } from '@core/services/http/customer/customer.service';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   ControlError,
   UtilsService,
-} from '../../../../../core/services/utils/utils/utils.service';
-import { emailInputValidator } from '../../../../../core/validators/emailInputValidator';
+} from '@core/services/utils/utils/utils.service';
+import { emailInputValidator } from '@core/validators/emailInputValidator';
 import { catchError } from 'rxjs';
-import { HttpErrorHandlerService } from '../../../../../core/services/http/httpErrorHandler/http-error-handler.service';
-import { FormErrorComponent } from '../../../../../shared/components/common/form/form-error/form-error.component';
-import { FormInputErrorComponent } from '../../../../../shared/components/common/form/form-input-error/form-input-error.component';
-import { MatInputErrorComponent } from '../../../../../shared/components/common/form/mat-input-error/mat-input-error.component';
-import { birthdateValidator } from '../../../../../core/validators/birthdateValidator';
-import { nameInputPatternValidator } from '../../../../../core/validators/nameInputPatternValidator';
-import { CustomerUpdateDto } from '../../../../../core/model/dto/customer/customerUpdateDto';
-import { FormSuccessComponent } from '../../../../../shared/components/common/form/form-success/form-success.component';
-import { Constants } from '../../../../../core/model/enum/constants';
+import { HttpErrorHandlerService } from '@core/services/http/httpErrorHandler/http-error-handler.service';
+import { birthdateValidator } from '@core/validators/birthdateValidator';
+import { nameInputPatternValidator } from '@core/validators/nameInputPatternValidator';
+import { CustomerUpdateDto } from '@core/model/dto/customer/customerUpdateDto';
+import { Constants } from '@core/model/enum/constants';
+import { FormErrorComponent } from '@shared/components/common/form/form-error/form-error.component';
+import { FormInputErrorComponent } from '@shared/components/common/form/form-input-error/form-input-error.component';
+import { MatInputErrorComponent } from '@shared/components/common/form/mat-input-error/mat-input-error.component';
+import { FormSuccessComponent } from '@shared/components/common/form/form-success/form-success.component';
 
 @Component({
   selector: 'app-personal-info',

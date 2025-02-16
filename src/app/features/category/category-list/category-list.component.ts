@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProductListComponent } from '../../product/product-list/product-list.component';
 import { ActivatedRoute } from '@angular/router';
-import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 
 @Component({
   selector: 'app-category-list',

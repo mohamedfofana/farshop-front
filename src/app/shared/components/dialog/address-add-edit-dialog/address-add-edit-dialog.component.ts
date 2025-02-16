@@ -1,4 +1,3 @@
-
 import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,15 +28,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { FormErrorComponent } from '../../common/form/form-error/form-error.component';
 import { FormInputErrorComponent } from '../../common/form/form-input-error/form-input-error.component';
 import { MatInputErrorComponent } from '../../common/form/mat-input-error/mat-input-error.component';
-import { AddressTypeEnum } from '../../../../core/model/enum/addressTypeEnum';
-import { AddressService } from '../../../../core/services/http/addresses/address.service';
-import { AbstractOnDestroy } from '../../../../core/directives/unsubscriber/abstract.ondestroy';
-import { HttpErrorHandlerService } from '../../../../core/services/http/httpErrorHandler/http-error-handler.service';
-import { NotifierService } from '../../../../core/services/utils/notifier/notifier.service';
-import { Address } from '../../../../core/model/db/address';
-import { IDialogFormData } from '../../../../core/model/dto/common/dialog-form-data.model';
-import { ControlError, UtilsService } from '../../../../core/services/utils/utils/utils.service';
-import { AddressDto } from '../../../../core/model/dto/address/addressDto';
+import { AddressTypeEnum } from '@core/model/enum/addressTypeEnum';
+import { AddressService } from '@core/services/http/addresses/address.service';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
+import { HttpErrorHandlerService } from '@core/services/http/httpErrorHandler/http-error-handler.service';
+import { NotifierService } from '@core/services/utils/notifier/notifier.service';
+import { Address } from '@core/model/db/address';
+import { IDialogFormData } from '@core/model/dto/common/dialog-form-data.model';
+import {
+  ControlError,
+  UtilsService,
+} from '@core/services/utils/utils/utils.service';
+import { AddressDto } from '@core/model/dto/address/addressDto';
 
 @Component({
   selector: 'app-address-add-editdialog',

@@ -5,8 +5,8 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { SearchDialogComponent } from '../../components/dialog/search-dialog/search-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@auth0/auth0-angular';
-import { StorageService } from '../../../core/services/storage/storage.service';
-import { AuthenticationService } from '../../../core/services/authenticationService/authentication.service';
+import { StorageService } from '@core/services/storage/storage.service';
+import { AuthenticationService } from '@core/services/authenticationService/authentication.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CartComponent } from '../../components/product/cart/cart.component';
 import { LogoutButtonComponent } from '../../components/common/buttons/logout/logout-button.component';
@@ -57,7 +57,6 @@ export class HeaderNavButtonsComponent {
 
   openCloseCart() {
     if (this.productCount() > 0) {
-
       this.openCart.set(!this.openCart());
     } else {
       this.openCart.set(false);

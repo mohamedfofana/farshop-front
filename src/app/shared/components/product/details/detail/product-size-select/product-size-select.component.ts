@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ProductSize } from '../../../../core/model/db/productSize';
+import { ProductSize } from '@core/model/db/productSize';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

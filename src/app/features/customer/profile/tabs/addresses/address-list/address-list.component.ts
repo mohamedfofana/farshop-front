@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
-import { AddressViewComponent } from '../../../../../../shared/components/profile/address-view/address-view.component';
-import { Address } from '../../../../../../core/model/db/address';
+import { AddressViewComponent } from '@shared/components/profile/address-view/address-view.component';
+import { Address } from '@core/model/db/address';
 
 @Component({
   selector: 'app-address-list',

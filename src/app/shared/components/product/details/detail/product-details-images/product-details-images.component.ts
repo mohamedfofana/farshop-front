@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
-import { Product } from '../../../../../core/model/db/product';
+import { Product } from '@core/model/db/product';
 
 @Component({
   selector: 'app-product-details-images',

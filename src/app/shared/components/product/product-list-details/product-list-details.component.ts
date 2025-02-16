@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
-import { Product } from '../../../../core/model/db/product';
+import { Product } from '@core/model/db/product';
 import { LoaderComponent } from '../../common/loader/loader.component';
 
 @Component({

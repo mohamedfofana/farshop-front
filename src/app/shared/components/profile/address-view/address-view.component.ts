@@ -4,17 +4,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MatIconModule } from '@angular/material/icon';
-import { Address } from '../../../../core/model/db/address';
+import { Address } from '@core/model/db/address';
 import { NgIf } from '@angular/common';
-import { IDialogFormData } from '../../../../core/model/dto/common/dialog-form-data.model';
-import { IDialogConfirmData } from '../../../../core/model/dto/common/dialog-confirm-data.model';
+import { IDialogFormData } from '@core/model/dto/common/dialog-form-data.model';
+import { IDialogConfirmData } from '@core/model/dto/common/dialog-confirm-data.model';
 import { ConfirmPopupComponent } from '../../dialog/confirm-popup/confirm-popup.component';
-import { AbstractOnDestroy } from '../../../../core/directives/unsubscriber/abstract.ondestroy';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 import { catchError, take } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { AddressService } from '../../../../core/services/http/addresses/address.service';
-import { NotifierService } from '../../../../core/services/utils/notifier/notifier.service';
-import { HttpErrorHandlerService } from '../../../../core/services/http/httpErrorHandler/http-error-handler.service';
+import { AddressService } from '@core/services/http/addresses/address.service';
+import { NotifierService } from '@core/services/utils/notifier/notifier.service';
+import { HttpErrorHandlerService } from '@core/services/http/httpErrorHandler/http-error-handler.service';
 import { AddressAddEditDialogComponent } from '../../dialog/address-add-edit-dialog/address-add-edit-dialog.component';
 
 @Component({

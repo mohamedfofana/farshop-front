@@ -1,5 +1,5 @@
 import { Component, computed, inject, input, model } from '@angular/core';
-import { StorageService as StorageService } from '../../../../core/services/storage/storage.service';
+import { StorageService as StorageService } from '@core/services/storage/storage.service';
 
 @Component({
   selector: 'app-quantity-input',

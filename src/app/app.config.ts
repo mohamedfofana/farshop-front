@@ -22,7 +22,7 @@ import {
   withLocalStorage,
   withNgxWebstorageConfig,
 } from 'ngx-webstorage';
-import { environment } from '../environments/environment.development';
+import { environment } from '@env/environment.development';
 import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor.interceptor';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { StorageConstant } from './core/security/constants/StorageConstants';

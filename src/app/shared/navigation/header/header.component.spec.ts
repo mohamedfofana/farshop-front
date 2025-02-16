@@ -4,7 +4,7 @@ import { HeaderComponent } from './header.component';
 import { provideRouter } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { translateServiceStub } from '../../../../tests/stubs/translateServiceStub';
-import { TranslationService } from '../../../core/services/translationService/translation.service';
+import { TranslationService } from '@core/services/translationService/translation.service';
 import { translationServiceStub } from '../../../../tests/stubs/translationServiceStub';
 
 describe('HeaderComponent', () => {

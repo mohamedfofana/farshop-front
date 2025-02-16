@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { CommonModule } from '@angular/common';
 import { catchError, switchMap } from 'rxjs';
-import { CustomerService } from '../../../core/services/http/customer/customer.service';
+import { CustomerService } from '@core/services/http/customer/customer.service';
 import { ProfileTabsComponent } from './profile-tabs/profile-tabs.component';
-import { LoaderComponent } from '../../../shared/components/common/loader/loader.component';
-import { HttpErrorHandlerService } from '../../../core/services/http/httpErrorHandler/http-error-handler.service';
+import { HttpErrorHandlerService } from '@core/services/http/httpErrorHandler/http-error-handler.service';
 import { Router } from '@angular/router';
-import { ROUTE_PATH } from '../../../core/config/routes/routesConfig';
+import { ROUTE_PATH } from '@core/config/routes/routesConfig';
+import { LoaderComponent } from '@shared/components/common/loader/loader.component';
 
 @Component({
   selector: 'app-profile',

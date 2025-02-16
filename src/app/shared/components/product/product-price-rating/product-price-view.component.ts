@@ -1,9 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { CurrencyPipe, NgClass, NgIf } from '@angular/common';
-import { FinalProductPricePipe } from '../../../../core/pipe/final-product-price.pipe';
-import { Product } from '../../../../core/model/db/product';
-import { ProductPricesPipe } from '../../../../core/pipe/product-prices.pipe';
-import { ProductPrices } from '../../../../core/model/types/productPrices';
+import { Product } from '@core/model/db/product';
+import { ProductPricesPipe } from '@core/pipe/product-prices.pipe';
 
 @Component({
   selector: 'app-product-price-view',

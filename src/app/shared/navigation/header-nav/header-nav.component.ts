@@ -2,9 +2,9 @@ import { UpperCasePipe } from '@angular/common';
 import { Component, inject, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { ROUTE_PATH } from '../../../core/config/routes/routesConfig';
-import { CategoryService } from '../../../core/services/http/category/category.service';
-import { Category } from '../../../core/model/db/category';
+import { ROUTE_PATH } from '@core/config/routes/routesConfig';
+import { CategoryService } from '@core/services/http/category/category.service';
+import { Category } from '@core/model/db/category';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({

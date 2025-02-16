@@ -7,7 +7,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
+import { ROUTE_PATH } from '@core/config/routes/routesConfig';
 import { FormsModule } from '@angular/forms';
 import { MatInputErrorComponent } from '../../common/form/mat-input-error/mat-input-error.component';
 import { TranslateModule } from '@ngx-translate/core';

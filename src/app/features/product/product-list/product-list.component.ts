@@ -8,26 +8,26 @@ import {
   signal,
 } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { Product } from '../../../core/model/db/product';
+import { Product } from '@core/model/db/product';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductService } from '../../../core/services/http/product/product.service';
-import { PriceRangeComponent } from '../../../shared/components/common/price-range/price-range.component';
-import { SelectSortProductsComponent } from '../../../shared/components/product/select-sort-products/select-sort-products.component';
-import { CountAvailableDto } from '../../../core/model/dto/product/countAvailableDto';
-import { FindByPageDto } from '../../../core/model/dto/product/findByPageDto';
-import { CategoryService } from '../../../core/services/http/category/category.service';
-import { Category } from '../../../core/model/db/category';
+import { ProductService } from '@core/services/http/product/product.service';
+import { CountAvailableDto } from '@core/model/dto/product/countAvailableDto';
+import { FindByPageDto } from '@core/model/dto/product/findByPageDto';
+import { CategoryService } from '@core/services/http/category/category.service';
+import { Category } from '@core/model/db/category';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { ProductListDetailsComponent } from '../../../shared/components/product/product-list-details/product-list-details.component';
-import { PAGINATION_DEFAULT } from '../../../core/model/enum/paginationConst';
-import { SelectSortCategoryComponent } from '../../../shared/components/product/select-sort-category/select-sort-category.component';
-import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
+import { PAGINATION_DEFAULT } from '@core/model/enum/paginationConst';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
+import { PriceRangeComponent } from '@shared/components/common/price-range/price-range.component';
+import { SelectSortProductsComponent } from '@shared/components/product/select-sort-products/select-sort-products.component';
+import { SelectSortCategoryComponent } from '@shared/components/product/select-sort-category/select-sort-category.component';
+import { ProductListDetailsComponent } from '@shared/components/product/product-list-details/product-list-details.component';
 
 @Component({
   selector: 'app-product-list',

@@ -1,5 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { TranslationService } from '../../core/services/translationService/translation.service';
+import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -8,6 +7,4 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [TranslateModule],
   templateUrl: './no-data-found.component.html',
 })
-export class NoDataFoundComponent {
-
-}
+export class NoDataFoundComponent {}

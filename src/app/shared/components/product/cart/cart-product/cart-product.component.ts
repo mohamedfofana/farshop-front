@@ -7,15 +7,15 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { CartProductDto } from '../../../../../core/model/dto/product/cartProductDto';
-import { ProductService } from '../../../../../core/services/http/product/product.service';
-import { Product } from '../../../../../core/model/db/product';
+import { CartProductDto } from '@core/model/dto/product/cartProductDto';
+import { ProductService } from '@core/services/http/product/product.service';
+import { Product } from '@core/model/db/product';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf, PercentPipe } from '@angular/common';
 import { QuantityInputComponent } from '../../quantity-input/quantity-input.component';
 import { ProductPriceViewComponent } from '../../product-price-rating/product-price-view.component';
 import { LoaderComponent } from '../../../common/loader/loader.component';
-import { StorageService } from '../../../../../core/services/storage/storage.service';
+import { StorageService } from '@core/services/storage/storage.service';
 
 @Component({
   selector: 'app-cart-product',

@@ -15,8 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
-import { Category } from '../../../../core/model/db/category';
-import { AbstractOnDestroy } from '../../../../core/directives/unsubscriber/abstract.ondestroy';
+import { Category } from '@core/model/db/category';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 
 interface SortByField {
   label: string;

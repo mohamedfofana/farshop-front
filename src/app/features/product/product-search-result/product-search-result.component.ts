@@ -6,23 +6,23 @@ import {
   Signal,
   signal,
 } from '@angular/core';
-import { ProductService } from '../../../core/services/http/product/product.service';
-import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
+import { ProductService } from '@core/services/http/product/product.service';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FindByPageDto } from '../../../core/model/dto/product/findByPageDto';
-import { Product } from '../../../core/model/db/product';
-import { PriceRangeComponent } from '../../../shared/components/common/price-range/price-range.component';
-import { SelectSortProductsComponent } from '../../../shared/components/product/select-sort-products/select-sort-products.component';
-import { ProductListDetailsComponent } from '../../../shared/components/product/product-list-details/product-list-details.component';
-import { PAGINATION_DEFAULT } from '../../../core/model/enum/paginationConst';
-import { CategoryService } from '../../../core/services/http/category/category.service';
-import { Category } from '../../../core/model/db/category';
+import { FindByPageDto } from '@core/model/dto/product/findByPageDto';
+import { Product } from '@core/model/db/product';
+import { PAGINATION_DEFAULT } from '@core/model/enum/paginationConst';
+import { CategoryService } from '@core/services/http/category/category.service';
+import { Category } from '@core/model/db/category';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatChip } from '@angular/material/chips';
-import { SelectSortCategoryComponent } from '../../../shared/components/product/select-sort-category/select-sort-category.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { PriceRangeComponent } from '@shared/components/common/price-range/price-range.component';
+import { SelectSortProductsComponent } from '@shared/components/product/select-sort-products/select-sort-products.component';
+import { SelectSortCategoryComponent } from '@shared/components/product/select-sort-category/select-sort-category.component';
+import { ProductListDetailsComponent } from '@shared/components/product/product-list-details/product-list-details.component';
 
 @Component({
   selector: 'app-product-search-result',
