@@ -41,5 +41,5 @@ export class ProductDetailsComponent {
   private readonly productService = inject(ProductService);
   reviewsCount = signal<number>(0);
   id$ = this.activatedRoute.params.pipe(map((params) => params['id']));
-  product$ = this.id$.pipe(switchMap((id) => this.productService.find(id)));
+  product$ = this.id$.pipe(switchMap((id) => this.productService.findById(id)));
 }

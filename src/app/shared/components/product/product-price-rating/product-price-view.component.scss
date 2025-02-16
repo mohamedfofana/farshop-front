@@ -1,0 +1,11 @@
+@import "../../../../../variables";
+.product_price {
+  color: $app-theme-color;
+  font-weight: 600;
+}
+
+.product_old_price {
+  font-weight: 600;
+  color: #b5aec4;
+  text-decoration: line-through;
+}

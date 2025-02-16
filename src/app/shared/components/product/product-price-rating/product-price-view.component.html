@@ -1,0 +1,13 @@
+<div class="d-flex pt-1 pb-2">
+  <div class="flex-fill">
+    <span class="product_price" [ngClass]="{ 'fs-6': size() === 'sm', 'fs-4': size() === 'lg' }">
+      {{ productPrices().finalPrice | currency : 'CAD' : 'symbol-narrow' : '1.2-2' }}
+    </span>
+    @if(!showFinalPrice()){
+    <small class="product_old_price ms-1" *ngIf="productPrices().discountPercentagePercent !== 0"
+      [ngClass]="{ 'fs-6': size() === 'lg' }">{{
+      product().price | currency : 'CAD' : 'symbol-narrow' : '1.2-2'
+      }}</small>
+    }
+  </div>
+</div>

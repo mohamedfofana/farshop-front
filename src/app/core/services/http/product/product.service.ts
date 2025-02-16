@@ -19,7 +19,7 @@ export class ProductService {
     return this.httpClient.post<Product[]>(endpoint, findByPage);
   }
 
-  find(id: number): Observable<Product> {
+  findById(id: number): Observable<Product> {
     const endpoint = this.productUrl.concat('/findById');
 
     return this.httpClient.post<Product>(endpoint, { id: id });

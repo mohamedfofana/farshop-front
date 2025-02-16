@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  effect,
   HostListener,
   inject,
   input,
@@ -50,6 +51,34 @@ export class ProductPreviewComponent implements OnChanges {
   fieldList = ['Price', 'Rate', 'Name'];
   sortByField = signal('');
   showAddToCartButton: boolean = false;
+  cartProducts = computed(() => this.storageService.cartProducts());
+  cartProductCount = computed(() => this.storageService.cartProductCount());
+
+  constructor() {
+    effect(
+      () => {
+        // reset quantity when cart is empty
+        if (this.cartProductCount() === 0) {
+          this.quantity.set(0);
+          return;
+        }
+
+        if (this.product() && this.storageService.getCartProductCount()) {
+          const cartProduct = this.cartProducts().find(
+            (p) => p.id === this.product().id
+          );
+
+          if (!cartProduct) {
+            // reset quantity product is not in cart no more
+            this.quantity.set(0);
+            return;
+          }
+          this.quantity.set(cartProduct!.quantity);
+        }
+      },
+      { allowSignalWrites: true }
+    );
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.initializeQuantity();
