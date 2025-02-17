@@ -7,7 +7,11 @@
         </div>
     </div>
     <div class="mt-3">
-        <app-product-quantity-input [(quantity)]="quantity" [idProduct]="product().id" />
+        <app-quantity-input-custom [(quantity)]="quantity" />
+    </div>
+
+    <div class="justify-content-star mt-4">
+        <app-theme-button title="{{'general.button.add-to-cart' | translate}}" [buttonColor]="'green_button'" (click)="addToCart()"/>
     </div>
 
     <div class="justify-content-star mt-4">

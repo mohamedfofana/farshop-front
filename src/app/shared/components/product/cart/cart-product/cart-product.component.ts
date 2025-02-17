@@ -16,6 +16,7 @@ import { QuantityInputComponent } from '../../quantity-input/quantity-input.comp
 import { ProductPriceViewComponent } from '../../product-price-rating/product-price-view.component';
 import { LoaderComponent } from '../../../common/loader/loader.component';
 import { StorageService } from '@core/services/storage/storage.service';
+import { AbstractOnDestroy } from '@app/core/directives/unsubscriber/abstract.ondestroy';
 
 @Component({
   selector: 'app-cart-product',
@@ -31,7 +32,7 @@ import { StorageService } from '@core/services/storage/storage.service';
   templateUrl: './cart-product.component.html',
   styleUrl: './cart-product.component.scss',
 })
-export class CartProductComponent implements OnInit {
+export class CartProductComponent extends AbstractOnDestroy implements OnInit {
   cartProduct = input.required<CartProductDto>();
   refreshCart = output();
   productService = inject(ProductService);
@@ -41,6 +42,7 @@ export class CartProductComponent implements OnInit {
   hide = false;
 
   constructor() {
+    super();
     effect(() => {
       if (this.quantity() === 0) {
         this.hide = true;
@@ -53,9 +55,11 @@ export class CartProductComponent implements OnInit {
   }
 
   removeFromCart() {
-    for (let index = 0; index < this.quantity(); index++) {
-      this.storageService.removeSingleProduct(this.cartProduct().id);
-    }
+    const cartProductDto: CartProductDto = {
+      id: this.cartProduct().id,
+      quantity: this.quantity(),
+    };
+    this.storageService.removeProduct(cartProductDto);
     this.hide = true;
   }
 }

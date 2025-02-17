@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, model, OnInit, signal } from '@angular/core';
 import { Product } from '@core/model/db/product';
 import { StorageService } from '@core/services/storage/storage.service';
 import { ProductPriceViewComponent } from '../../../product-price-rating/product-price-view.component';
@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProductColorSelectComponent } from '../product-color-select/product-color-select.component';
 import { ProductSizeSelectComponent } from '../product-size-select/product-size-select.component';
 import { ProductCharacteristicsComponent } from '../product-characteristics/product-characteristics.component';
+import { ProductColor } from '@app/core/model/db/productColor';
+import { ProductSize } from '@app/core/model/db/productSize';
 
 @Component({
   selector: 'app-product-details-info',
@@ -25,6 +27,8 @@ import { ProductCharacteristicsComponent } from '../product-characteristics/prod
 export class ProductDetailsInfoComponent implements OnInit {
   storageService = inject(StorageService);
   product = input.required<Product>();
+  selectedColor = model<ProductColor>();
+  selectedSize = model<ProductSize>();
   quantity = signal(1);
 
   ngOnInit() {

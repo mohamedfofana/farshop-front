@@ -22,11 +22,13 @@
   </div>
   @if (product().category.colors && product().category.colors.length !== 0) {
   <div class="pt-4">
-    <app-product-color-select [colors]="product().category.colors" />
+    <app-product-color-select [colors]="product().category.colors" [productId]="product().id"
+      [(selectedColor)]="selectedColor" />
   </div>
   } @if (product().category.sizes && product().category.sizes.length !== 0) {
   <div class="pt-4">
-    <app-product-size-select [sizes]="product().category.sizes" />
+    <app-product-size-select [sizes]="product().category.sizes" [productId]="product().id"
+      [(selectedSize)]="selectedSize" />
   </div>
   }
   @if (product().details && product().details.length !== 0) {
@@ -34,5 +36,4 @@
     <app-product-characteristics [details]="product().details" />
   </div>
   }
-
 </div>

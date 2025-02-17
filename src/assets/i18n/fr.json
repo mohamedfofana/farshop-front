@@ -92,7 +92,7 @@
       }
     },
     "cart": {
-      "title":"Mon Panier",
+      "title": "Mon Panier",
       "summary": {
         "title": "Sommaire",
         "subtotal": "Sous total",
@@ -172,6 +172,7 @@
       "confirm": "Confirmation"
     },
     "button": {
+      "add-to-cart": "Ajouter au panier",
       "submit": "Soumettre",
       "continue": "Continuer",
       "cancel": "Annuler",

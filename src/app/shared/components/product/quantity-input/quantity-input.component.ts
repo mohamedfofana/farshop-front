@@ -1,4 +1,6 @@
+import { CartProductDto } from './../../../../core/model/dto/product/cartProductDto';
 import { Component, computed, inject, input, model } from '@angular/core';
+import { Product } from '@app/core/model/db/product';
 import { StorageService as StorageService } from '@core/services/storage/storage.service';
 
 @Component({
@@ -21,17 +23,27 @@ import { StorageService as StorageService } from '@core/services/storage/storage
 export class QuantityInputComponent {
   storageService = inject(StorageService);
   quantity = model.required<number>();
-  idProduct = input.required<number>();
+  product = input.required<Product>();
   disableDecrease = computed(() => this.quantity() === 0);
 
   decrease() {
     if (this.quantity() > 0) {
-      this.quantity.set(this.quantity() - 1);
-      this.storageService.removeSingleProduct(this.idProduct());
+      this.quantity.update((value) => value - 1);
+      const cartProductDto: CartProductDto = {
+        id: this.product().id,
+        quantity: this.quantity(),
+      };
+      this.storageService.removeProduct(cartProductDto);
     }
   }
+
   increase() {
-    this.quantity.set(this.quantity() + 1);
-    this.storageService.addSingleProduct(this.idProduct());
+    this.quantity.update((value) => value + 1);
+
+    const cartProductDto = this.storageService.updateQuantity(this.product(), {
+      id: this.product().id,
+      quantity: this.quantity(),
+    });
+    this.storageService.addProduct(cartProductDto);
   }
 }

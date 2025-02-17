@@ -3,7 +3,7 @@
   <div>
     @for (size of sizes(); track $index) {
     <label>
-      <input type="radio" name="radio" [checked]="$index === 0" />
+      <input type="radio" name="radio" [checked]="size.title === selectedSize()?.title" (click)="changeSize(size)" />
       <span>{{ size.title }}</span>
     </label>
     }

@@ -113,7 +113,12 @@ export class ProductPreviewComponent implements OnChanges {
 
   initializeInCart() {
     this.quantity.set(1);
-    this.storageService.addSingleProduct(this.product().id);
+
+    const cartProductDto = this.storageService.updateQuantity(this.product(), {
+      id: this.product().id,
+      quantity: 1,
+    });
+    this.storageService.addProduct(cartProductDto);
   }
 
   showDetail(id: number) {
