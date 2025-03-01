@@ -11,7 +11,14 @@ import { AddressDto } from '../../../model/dto/address/addressDto';
 })
 export class AddressService {
   private httpClient = inject(HttpClient);
-  private addressUrl = environment.API_WHITE_LIST_ENDPOINT + '/address';
+  private addressUrl = environment.API_PUBLIC_ENDPOINT + '/address';
+
+  findAll(): Observable<Address[]> {
+    const endpoint =
+      environment.API_SECURED_ENDPOINT + '/address'.concat('/findAll');
+
+    return this.httpClient.get<Address[]>(endpoint);
+  }
 
   findByCustomerAndType(findByTypeDto: FindByTypeDto): Observable<Address[]> {
     const endpoint = this.addressUrl.concat('/findByCustomerIdAndType');

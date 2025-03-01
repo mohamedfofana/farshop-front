@@ -19,10 +19,9 @@
         <span class="fw-bold">{{totalAmount() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
     </div>
 
-    <app-theme-button title="{{'general.button.checkout' | translate}}" />
+    @if (mode() === 'cart') {
+    <app-theme-button title="{{'general.button.checkout' | translate}}" (click)="checkout()" />
+    <app-secure-checkout />
+    }
 
-    <div class="d-flex justify-content-center gap-2 mt-2">
-        <i class="bi bi-shield-check text-success"></i>
-        <small class="text-muted">{{'general.label.secure-checkout' | translate}}</small>
-    </div>
 </div>

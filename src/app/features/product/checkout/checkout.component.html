@@ -1,0 +1,79 @@
+<div class="row mb-3">
+    <div class="col-6">
+        <mat-stepper #stepper>
+            <mat-step [stepControl]="conatctFormGroup" state="information">
+                <ng-template matStepLabel>Informations</ng-template>
+                <app-checkout-contact-step [stepper]="stepper" [(orderDto)]="orderDto" />
+            </mat-step>
+            <mat-step [stepControl]="deliveryFormGroup" state="delivery">
+                <ng-template matStepLabel>Delivery</ng-template>
+                @defer () {
+                <app-checkout-delivery-step [stepper]="stepper" [(orderDto)]="orderDto" />
+                }
+
+            </mat-step>
+            <mat-step [stepControl]="paymentFormGroup" state="payment">
+                <ng-template matStepLabel>Payment</ng-template>
+                @defer () {
+                <app-checkout-payment-step [stepper]="stepper" [(orderDto)]="orderDto" />
+                }
+            </mat-step>
+            <mat-step state="confirmation">
+                <ng-template matStepLabel>Confirmation</ng-template>
+                @defer () {
+                <app-checkout-confirmation-step [stepper]="stepper" [(orderDto)]="orderDto" />
+                }
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+
+            <!-- Icon overrides. -->
+            <ng-template matStepperIcon="information">
+                <mat-icon>infos</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="delivery">
+                <mat-icon>local_shipping</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="payment">
+                <mat-icon>payments</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="confirmation">
+                <mat-icon>check_circle</mat-icon>
+            </ng-template>
+        </mat-stepper>
+    </div>
+    <div class="col-6 border-start">
+        <div class="row">
+            <div class="row text-center">
+                <div class="col"></div>
+                <div class="col">
+                    <app-theme-button title="{{'general.button.order' | translate}}" />
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row text-center">
+                <app-secure-checkout />
+            </div>
+        </div>
+        <div class="row">
+            <app-cart mode="checkout" />
+        </div>
+
+        <div class="row">
+            <div class="row text-center pt-4">
+                <div class="col"></div>
+                <div class="col">
+                    <app-theme-button title="{{'general.button.order' | translate}}" />
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row  text-center">
+                <app-secure-checkout />
+            </div>
+        </div>
+
+    </div>

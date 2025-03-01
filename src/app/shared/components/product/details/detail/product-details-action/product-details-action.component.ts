@@ -7,6 +7,8 @@ import { ThemeButtonComponent } from '../../../../common/buttons/theme-button/th
 import { TranslateModule } from '@ngx-translate/core';
 import { QuantityInputCustomComponent } from '../../../quantity-input-custom/quantity-input-custom.component';
 import { ProductColor } from '@core/model/db/productColor';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from '@app/core/config/routes/routesConfig';
 
 @Component({
   selector: 'app-product-details-action',
@@ -21,7 +23,8 @@ import { ProductColor } from '@core/model/db/productColor';
   styleUrl: './product-details-action.component.scss',
 })
 export class ProductDetailsActionComponent {
-  storageService = inject(StorageService);
+  private readonly route = inject(Router);
+  private readonly storageService = inject(StorageService);
   product = input.required<Product>();
   selectedColor = input<ProductColor>();
   selectedSize = input<ProductSize>();
@@ -42,6 +45,9 @@ export class ProductDetailsActionComponent {
       selectedSize: this.selectedSize(),
     });
     this.storageService.addProduct(cartProductDto);
+  }
 
+  checkout() {
+    this.route.navigateByUrl(ROUTE_PATH.CHECKOUT);
   }
 }

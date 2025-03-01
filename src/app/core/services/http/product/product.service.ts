@@ -11,7 +11,7 @@ import { FindByPageDto } from '../../../model/dto/product/findByPageDto';
 })
 export class ProductService {
   private httpClient = inject(HttpClient);
-  private productUrl = environment.API_WHITE_LIST_ENDPOINT + '/product';
+  private productUrl = environment.API_PUBLIC_ENDPOINT + '/product';
 
   search(findByPage: FindByPageDto): Observable<Product[]> {
     const endpoint = this.productUrl.concat('/search');

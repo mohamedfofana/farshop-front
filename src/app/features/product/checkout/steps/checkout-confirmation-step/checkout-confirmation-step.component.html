@@ -1,0 +1,11 @@
+@if (!isLoading()) {
+<div class="row p-1">
+    <p>checkout-confirmation-step works!</p>
+    <div class="d-flex justify-content-end">
+        <button mat-button (click)="back()">Back</button>
+        <button mat-button (click)="confirm()">Next</button>
+    </div>
+</div>
+}@else {
+<app-loader />
+}

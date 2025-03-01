@@ -3,7 +3,7 @@ import { AuthenticationService } from '../services/authenticationService/authent
 import { inject } from '@angular/core';
 import { CustomerRole } from '../model/enum/customerRole';
 
-export const RoleGuard: CanActivateFn = (route, state) => {
+export const UserGuard: CanActivateFn = (route, state) => {
   const authenticationService = inject(AuthenticationService);
 
   return authenticationService.hasRole$(CustomerRole.USER);

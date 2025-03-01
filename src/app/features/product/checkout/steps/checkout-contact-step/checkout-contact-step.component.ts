@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, model, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -8,35 +8,28 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import moment from 'moment';
-import { Customer } from '@core/model/db/customer';
-import { CustomerService } from '@core/services/http/customer/customer.service';
-import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
-import { TranslateModule } from '@ngx-translate/core';
+import { CustomerService } from '@app/core/services/http/customer/customer.service';
+import { emailInputValidator } from '@app/core/validators/emailInputValidator';
 import {
   ControlError,
   UtilsService,
-} from '@core/services/utils/utils/utils.service';
-import { emailInputValidator } from '@core/validators/emailInputValidator';
-import { catchError } from 'rxjs';
-import { HttpErrorHandlerService } from '@core/services/http/httpErrorHandler/http-error-handler.service';
-import { birthdateValidator } from '@core/validators/birthdateValidator';
-import { nameInputPatternValidator } from '@core/validators/nameInputPatternValidator';
-import { CustomerUpdateDto } from '@core/model/dto/customer/customerUpdateDto';
-import { Constants } from '@core/model/enum/constants';
-import { FormErrorComponent } from '@shared/components/common/form/form-error/form-error.component';
-import { FormInputErrorComponent } from '@shared/components/common/form/form-input-error/form-input-error.component';
-import { MatInputErrorComponent } from '@shared/components/common/form/mat-input-error/mat-input-error.component';
-import { FormSuccessComponent } from '@shared/components/common/form/form-success/form-success.component';
+} from '@app/core/services/utils/utils/utils.service';
+import { nameInputPatternValidator } from '@app/core/validators/nameInputPatternValidator';
+import { TranslateModule } from '@ngx-translate/core';
+import { OrderDto } from '@app/core/model/dto/order/orderDto';
+import { AuthService } from '@auth0/auth0-angular';
+import { switchMap } from 'rxjs';
+import { MatStepper } from '@angular/material/stepper';
 import { phonenumberInputPatternValidator } from '@app/core/validators/phonenumberInputPatternValidator';
+import { LoaderComponent } from '../../../../../shared/components/common/loader/loader.component';
+import { FormInputErrorComponent } from '../../../../../shared/components/common/form/form-input-error/form-input-error.component';
+import { MatInputErrorComponent } from '../../../../../shared/components/common/form/mat-input-error/mat-input-error.component';
 
 @Component({
-  selector: 'app-personal-info',
+  selector: 'app-checkout-contact-step',
   standalone: true,
-  providers: [],
   imports: [
     ReactiveFormsModule,
     FormsModule,
@@ -44,20 +37,21 @@ import { phonenumberInputPatternValidator } from '@app/core/validators/phonenumb
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDatepickerModule,
     TranslateModule,
-    FormErrorComponent,
+    LoaderComponent,
     FormInputErrorComponent,
     MatInputErrorComponent,
-    FormSuccessComponent,
   ],
-  templateUrl: './personal-info.component.html',
+  templateUrl: './checkout-contact-step.component.html',
+  styleUrl: './checkout-contact-step.component.css',
 })
-export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
-  customer = input.required<Customer>();
-  private readonly formBuilder = inject(FormBuilder);
+export class CheckoutContactStepComponent implements OnInit {
+  isLoading = signal(false);
+  stepper = input.required<MatStepper>();
+  orderDto = model.required<OrderDto>();
+  private readonly auth0Service = inject(AuthService);
   private readonly customerService = inject(CustomerService);
-  private readonly httpErrorHandlerService = inject(HttpErrorHandlerService);
+  private readonly formBuilder = inject(FormBuilder);
   private readonly utilsService = inject(UtilsService);
   readonly startDate = new Date(1925, 0, 1);
 
@@ -78,7 +72,6 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
     Validators.maxLength(this.MAX_LENGTH_NAME),
     nameInputPatternValidator,
   ]);
-  birthdateFormControl = new FormControl(moment(), [birthdateValidator]);
   emailFormControl = new FormControl<string>('', [
     Validators.required,
     emailInputValidator,
@@ -92,8 +85,11 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
   hasHttpError = signal<boolean>(false);
   errors = signal<ControlError[]>([]);
 
+  customer$ = this.auth0Service.user$.pipe(
+    switchMap((user) => this.customerService.findByEmail(user?.email!))
+  );
+
   constructor() {
-    super();
     this.initForm();
   }
 
@@ -101,36 +97,49 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
     this.profileForm = this.formBuilder.group({
       firstname: this.firstnameFormControl,
       lastname: this.lastnameFormControl,
-      birthdate: this.birthdateFormControl,
       email: this.emailFormControl,
       phonenumber: this.phonenumberFormControl,
     });
   }
 
   ngOnInit(): void {
-    const birthdate = moment(this.customer().birthdate, Constants.DATE_FORMAT);
-
-    this.firstnameFormControl.setValue(this.customer().firstname);
-    this.lastnameFormControl.setValue(this.customer().lastname);
-    this.birthdateFormControl.setValue(birthdate);
-    this.emailFormControl.setValue(this.customer().email);
-    if (this.customer().phoneNumber) {
-      this.phonenumberFormControl.setValue(this.customer().phoneNumber!);
+    if (!this.orderDto().email) {
+      // Order is not initialized yet
+      this.isLoading.set(true);
+      this.customer$.subscribe((customer) => {
+        this.firstnameFormControl.setValue(customer.firstname);
+        this.lastnameFormControl.setValue(customer.lastname);
+        this.emailFormControl.setValue(customer.email);
+        this.phonenumberFormControl.setValue(customer.phoneNumber || '');
+        this.isLoading.set(false);
+        this.orderDto.update((value) => {
+          return {
+            ...value,
+            firstname: customer.firstname,
+            lastname: customer.lastname,
+            email: customer.email,
+            phonenumber: customer.phoneNumber,
+          };
+        });
+      });
+    } else {
+      this.firstnameFormControl.setValue(this.orderDto().firstname!);
+      this.lastnameFormControl.setValue(this.orderDto().lastname!);
+      this.emailFormControl.setValue(this.orderDto().email!);
+      this.phonenumberFormControl.setValue(this.orderDto().phonenumber!);
     }
   }
 
-  submit(): void {
+  next(): void {
     this.hasInputError.set(false);
     this.hasHttpError.set(false);
     this.sumbitSuccessful.set(false);
     if (this.profileForm.valid) {
-      let customerDto: CustomerUpdateDto = {
+      let order: OrderDto = {
         firstname: this.firstnameFormControl.value!,
         lastname: this.lastnameFormControl.value!,
-        birthdate: moment(this.birthdateFormControl.value).format(
-          Constants.DATE_FORMAT
-        ),
         email: this.emailFormControl.value!,
+        phonenumber: this.phonenumberFormControl.value!,
       };
       const phonenumber = this.phonenumberFormControl.value;
       if (phonenumber && phonenumber !== '') {
@@ -138,9 +147,10 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
           phonenumberInputPatternValidator
         );
         this.phonenumberFormControl.updateValueAndValidity();
+
         if (this.phonenumberFormControl.valid) {
-          customerDto = {
-            ...customerDto,
+          order = {
+            ...order,
             phonenumber: phonenumber,
           };
         } else {
@@ -151,24 +161,14 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
           return;
         }
       }
-
-      const subSend = this.customerService
-        .update(customerDto)
-        .pipe(
-          catchError((error) => {
-            this.hasHttpError.set(true);
-            return this.httpErrorHandlerService.handle(error);
-          })
-        )
-        .subscribe(() => {
-          this.sumbitSuccessful.set(true);
-        });
-      this.subscriptions.push(subSend);
+      this.orderDto.update((value) => {
+        return { ...value, order };
+      });
+      this.stepper().next();
     } else {
       this.handleInputError();
     }
   }
-
   private handleInputError() {
     this.hasInputError.set(true);
 

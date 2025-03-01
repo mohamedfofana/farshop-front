@@ -5,6 +5,8 @@ import {
   OnInit,
   signal,
   effect,
+  input,
+  output,
 } from '@angular/core';
 import { StorageService } from '@core/services/storage/storage.service';
 import { ProductService } from '@core/services/http/product/product.service';
@@ -13,17 +15,28 @@ import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondest
 import { CurrencyPipe } from '@angular/common';
 import { ThemeButtonComponent } from '../../../common/buttons/theme-button/theme-button.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SecureCheckoutComponent } from '../../../common/secure-checkout/secure-checkout.component';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from '@app/core/config/routes/routesConfig';
 
 @Component({
   selector: 'app-cart-summary',
   standalone: true,
-  imports: [CurrencyPipe, ThemeButtonComponent, TranslateModule],
+  imports: [
+    CurrencyPipe,
+    ThemeButtonComponent,
+    TranslateModule,
+    SecureCheckoutComponent,
+  ],
   templateUrl: './cart-summary.component.html',
   styleUrl: './cart-summary.component.scss',
 })
 export class CartSummaryComponent extends AbstractOnDestroy implements OnInit {
-  storageService = inject(StorageService);
-  productService = inject(ProductService);
+  mode = input<'checkout' | 'cart'>('cart');
+  closeCart = output();
+  private readonly route = inject(Router);
+  private readonly storageService = inject(StorageService);
+  private readonly productService = inject(ProductService);
   cartProducts = computed(() => this.storageService.cartProducts());
   totalAmountToPay = signal(0);
   totalSaved = signal(0);
@@ -70,5 +83,12 @@ export class CartSummaryComponent extends AbstractOnDestroy implements OnInit {
         this.subscriptions.push(sub);
       });
     }
+  }
+
+  checkout() {
+    if (this.mode() === 'cart') {
+      this.closeCart.emit();
+    }
+    this.route.navigateByUrl(ROUTE_PATH.CHECKOUT);
   }
 }

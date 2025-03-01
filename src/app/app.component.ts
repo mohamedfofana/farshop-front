@@ -15,7 +15,7 @@ import { CodeLanguage } from './core/model/enum/codeLanguage';
 export class AppComponent {
   private translateService = inject(TranslateService);
   private cookieService = inject(SsrCookieService);
-  private authService = inject(AuthService);
+  private auth0 = inject(AuthService);
   title = 'farshop-front';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -39,13 +39,21 @@ export class AppComponent {
   }
 
   private initToken() {
-    if (this.authService.idTokenClaims$) {
-      this.authService.idTokenClaims$.subscribe((token) => {
-        const jwt = token?.__raw;
-        if (jwt) {
-          this.cookieService.set('jwt', jwt);
-        }
-      });
+    if (this.auth0.idTokenClaims$) {
+      // Add audience to make access token decodable    
+      // Token is initialized here instead of http interceptor because of ssr
+      this.setAccessToken();
     }
+  }
+
+  private setAccessToken() {
+    this.auth0.getAccessTokenSilently().subscribe((token) => {
+      const jwt = token;
+      const oldJwt = this.cookieService.get('jwt');
+
+      if (jwt && jwt !== oldJwt) {
+        this.cookieService.set('jwt', jwt);
+      }
+    });
   }
 }

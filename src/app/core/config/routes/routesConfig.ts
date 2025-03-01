@@ -4,6 +4,7 @@ export enum ROUTE_PATH {
   CONTACT = 'contact',
   ABOUT = 'about',
   CALLBACK = 'callback',
+  CHECKOUT = 'checkout',
   PROFILE = 'profile',
   PRODUCT_DETAIL = 'product/detail/:id',
   PRODUCT_SEARCH = 'product/search/:text',

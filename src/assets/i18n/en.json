@@ -113,7 +113,8 @@
             "firstname": "Firstname",
             "lastname": "Lastname",
             "birthdate": "Date of Birth",
-            "email": "Email"
+            "email": "Email",
+            "phonenumber": "Phone number"
           },
           "success": "Profile information is updated!"
         }
@@ -174,6 +175,7 @@
       "confirm": "Confirm"
     },
     "button": {
+      "order": "Order",
       "add-to-cart": "Add to cart",
       "submit": "Submit",
       "continue": "Next",

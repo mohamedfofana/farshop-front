@@ -22,13 +22,14 @@ import {
   withLocalStorage,
   withNgxWebstorageConfig,
 } from 'ngx-webstorage';
-import { environment } from '@env/environment.development';
-import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor.interceptor';
+import { environment } from '@env/environment';
+import { authInterceptorInterceptor } from '@app/core/interceptors/auth-interceptor.interceptor';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { StorageConstant } from './core/security/constants/StorageConstants';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { Constants } from './core/model/enum/constants';
 
 export function createHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -50,10 +51,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'YYYY-MM-DD',
+    dateInput: Constants.DATE_FORMAT,
   },
   display: {
-    dateInput: 'YYYY-MM-DD',
+    dateInput: Constants.DATE_FORMAT,
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',

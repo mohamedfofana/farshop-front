@@ -111,7 +111,8 @@
             "firstname": "Prénom",
             "lastname": "Nom",
             "birthdate": "Date de naissance",
-            "email": "Courriel"
+            "email": "Courriel",
+            "phonenumber": "Numéro de téléphone"
           },
           "success": "Votre profil a été mis à jour!"
         }
@@ -172,6 +173,7 @@
       "confirm": "Confirmation"
     },
     "button": {
+      "order": "Commander",
       "add-to-cart": "Ajouter au panier",
       "submit": "Soumettre",
       "continue": "Continuer",

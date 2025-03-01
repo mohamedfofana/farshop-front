@@ -7,7 +7,7 @@ import { environment } from '@env/environment';
 })
 export class NewsletterService {
   private httpClient = inject(HttpClient);
-  private productUrl = environment.API_WHITE_LIST_ENDPOINT + '/newsletter';
+  private productUrl = environment.API_PUBLIC_ENDPOINT + '/newsletter';
 
   subscribe(email: string) {
     const endpoint = this.productUrl.concat('/subscribe');

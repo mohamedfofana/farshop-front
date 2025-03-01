@@ -3,7 +3,7 @@
         (click)="closeCart()"></button>
     <div class="container">
         <div class="row g-4">
-            <div class="col-lg-8">
+            <div [ngClass]="{ 'col-lg-8': mode() === 'cart' }">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="mb-0">{{'product.cart.title' | translate}}</h4>
                 </div>
@@ -13,8 +13,8 @@
                     }
                 </div>
             </div>
-            <div class="col-lg-4">
-                <app-cart-summary />
+            <div [ngClass]="mode() === 'cart'? 'col-lg-4': 'pt-2'">
+                <app-cart-summary [mode]="mode()" (closeCart)="closeCart()" />
             </div>
         </div>
     </div>

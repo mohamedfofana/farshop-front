@@ -8,8 +8,7 @@ import { ContactDto } from '../../../model/dto/contact/contactDto';
 })
 export class ContactService {
   private readonly httpClient = inject(HttpClient);
-  private readonly productUrl =
-    environment.API_WHITE_LIST_ENDPOINT + '/contact';
+  private readonly productUrl = environment.API_PUBLIC_ENDPOINT + '/contact';
 
   send(contact: ContactDto) {
     const endpoint = this.productUrl;

@@ -9,7 +9,7 @@ import { Review } from '../../../model/db/review';
 })
 export class ReviewService {
   private httpClient = inject(HttpClient);
-  private reviewUrl = environment.API_WHITE_LIST_ENDPOINT + '/review';
+  private reviewUrl = environment.API_PUBLIC_ENDPOINT + '/review';
 
   findAllByProduct(idProduct: number): Observable<Review[]> {
     const endpoint = this.reviewUrl.concat('/findAllByProduct');
