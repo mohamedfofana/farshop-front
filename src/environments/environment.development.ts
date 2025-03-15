@@ -15,4 +15,10 @@ export const environment = {
     },
     errorPath: '/callback',
   },
+  stripe: {
+    PUBLIC_KEY:
+      'pk_test_51QySW9DA6ks8j7NZx1B635WkMePpC1o4HjVnjFWB8Qkl4m29CRYamxVySHLfL6rgNFUslXmd5V3dl0hP8tHZuM8T009Z5YNMLs',
+    CLIENT_SECRET:
+      'sk_test_51QySW9DA6ks8j7NZ7brcM3mVlZltIC4HExHEft1QjVzyO0agyOwTPC7QAMICNifB4WzTTjGvQOmBoq9FgIxVii52007NMLor2c',
+  },
 };

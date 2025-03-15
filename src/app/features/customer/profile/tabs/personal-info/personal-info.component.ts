@@ -59,7 +59,6 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
   private readonly customerService = inject(CustomerService);
   private readonly httpErrorHandlerService = inject(HttpErrorHandlerService);
   private readonly utilsService = inject(UtilsService);
-  readonly startDate = new Date(1925, 0, 1);
 
   profileForm!: FormGroup;
   readonly MIN_LENGTH_PHONENUMBER: number = 10;

@@ -1,4 +1,5 @@
 import { Address } from '../../db/address';
+import { OrderProductDto } from '../orderproduct/orderProductDto';
 
 export interface OrderDto {
   firstname?: string;
@@ -6,4 +7,8 @@ export interface OrderDto {
   email?: string;
   phonenumber?: string;
   deliveryAddress?: Address;
+  billingAddress?: Address;
+  amount?: number;
+  currency?: string;
+  orderProducts?: OrderProductDto[];
 }

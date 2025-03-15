@@ -52,12 +52,12 @@ import { AddressDto } from '@core/model/dto/address/addressDto';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
+    TranslateModule,
     MatDialogTitle,
     MatDialogContent,
     MatDialogClose,
     MatDialogActions,
     MatOption,
-    TranslateModule,
     FormErrorComponent,
     FormInputErrorComponent,
     MatInputErrorComponent,
@@ -176,10 +176,6 @@ export class AddressAddEditDialogComponent extends AbstractOnDestroy {
     if (this.addressForm.valid) {
       let addressDto: AddressDto = this.addressForm.value;
       if (this.dialogFormData.new) {
-        addressDto = {
-          ...addressDto,
-          customerEmail: this.customer()?.email,
-        };
         this.add(addressDto);
       } else {
         addressDto = { ...addressDto, id: this.dialogFormData.entity!.id };

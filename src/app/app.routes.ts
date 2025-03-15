@@ -43,6 +43,7 @@ export const routes: Routes = [
           import('./features/product/checkout/checkout.component').then(
             (mod) => mod.CheckoutComponent
           ),
+        canActivate: [AuthGuard, UserGuard],
       },
       {
         path: ROUTE_PATH.PRODUCT_SEARCH,

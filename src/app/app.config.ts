@@ -22,6 +22,7 @@ import {
   withLocalStorage,
   withNgxWebstorageConfig,
 } from 'ngx-webstorage';
+import { provideNgxStripe } from 'ngx-stripe';
 import { environment } from '@env/environment';
 import { authInterceptorInterceptor } from '@app/core/interceptors/auth-interceptor.interceptor';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
@@ -82,6 +83,7 @@ export const appConfig: ApplicationConfig = {
         },
       })
     ),
+    provideNgxStripe(),
     provideAnimationsAsync(),
     provideAuth0(environment.auth0),
     provideNgxWebstorage(

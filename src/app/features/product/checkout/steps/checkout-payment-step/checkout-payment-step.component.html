@@ -1,11 +1,49 @@
-@if (!isLoading()) {
-<div class="row p-1">
-    <p>checkout-payment-step works!</p>
-    <div class="d-flex justify-content-end">
-        <button mat-button (click)="back()">Back</button>
-        <button mat-button (click)="next()">Next</button>
+<div class="pt-3">
+  @if (!isLoading()) {
+  @if(hasPaymentError()){
+  <app-form-error [message]="'checkout.step.payment.error.payment' | translate" />
+  }
+  @if(hasInputError()){
+  <app-form-input-error [errorPrefix]="'checkout.step.payment.error'" [errors]="errors()" />
+  }
+  @if (orderDto().firstname && orderDto().lastname && orderDto().email) {
+  <div class="pb-3">
+    <mat-card class="shadow-sm">
+      <mat-card-content>
+        <span class="fs-7 position-absolute top-0 end-0 badge rounded-pill bg-success">
+          {{'checkout.step.contact.badge-title' | translate}}</span>
+        <p class="mb-0 pb-1">{{ orderDto().firstname + " " + orderDto().lastname }}</p>
+        <p class="mb-0 pb-1">{{ orderDto().email }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  }
+  @if (orderDto().deliveryAddress) {
+  <div class="pb-3">
+    <app-address-preview [address]="orderDto().deliveryAddress!"
+      [badgeTitle]="'checkout.step.addresses.delivery.badge-title' | translate" />
+  </div>
+  }
+  @if (orderDto().billingAddress) {
+  <div class="pb-3">
+    <app-address-preview [address]="orderDto().billingAddress!"
+      [badgeTitle]="'checkout.step.addresses.billing.badge-title' | translate" />
+  </div>
+  }
+  <div class="row p-1 pb-3">
+    <div [formGroup]="paymentElementForm">
+      @if (elementsOptions.clientSecret) {
+      <ngx-stripe-elements [stripe]="stripe" [elementsOptions]="elementsOptions">
+        <ngx-stripe-payment [options]="paymentElementOptions" />
+      </ngx-stripe-elements>
+      }
     </div>
+    <div class="d-flex flex-row justify-content-end pt-4">
+      <button mat-stroked-button (click)="back()">{{'general.button.back' | translate}}</button>
+      <button class="ms-2" mat-flat-button (click)="pay()">{{'general.button.payment' | translate}}</button>
+    </div>
+  </div>
+  }@else {
+  <app-loader />
+  }
 </div>
-}@else {
-<app-loader />
-}

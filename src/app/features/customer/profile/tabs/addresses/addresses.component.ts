@@ -44,7 +44,7 @@ export class AddressesComponent extends AbstractOnDestroy {
     this.reloadData();
   }
 
-  addNewAdress() {
+  addAdress() {
     const dialogData: IDialogFormData<Address> = {
       new: true,
     };

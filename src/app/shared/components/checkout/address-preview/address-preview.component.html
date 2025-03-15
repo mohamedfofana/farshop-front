@@ -1,0 +1,10 @@
+<mat-card class="shadow-sm">
+  <mat-card-content>
+    <span *ngIf="badgeTitle()"
+      class="fs-7 position-absolute top-0 end-0 badge rounded-pill bg-success">{{badgeTitle()}}</span>
+    <p class="mb-0 pb-1">{{ address().name }}</p>
+    <p class="mb-0 pb-1">{{ address().addressLine1}} <span *ngIf="address().addressLine2">,
+        {{address().addressLine2}}</span>
+      {{ ", " + address().city + ", " + address().state + " " + address().postalCode + ", " + address().country }}</p>
+  </mat-card-content>
+</mat-card>

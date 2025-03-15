@@ -102,17 +102,17 @@
       </mat-form-field>
 
       <mat-form-field class="ms-2">
-        <mat-label>{{'profile.tabs.address.form.input.postal-code' | translate}}</mat-label>
-        <input id="postal-code" matInput [formControl]="postalCodeFormControl" />
+        <mat-label>{{'profile.tabs.address.form.input.postalCode' | translate}}</mat-label>
+        <input id="postalCode" matInput [formControl]="postalCodeFormControl" />
         @if (postalCodeFormControl.hasError('required')) {
         <mat-error><app-mat-input-error
             [inputError]="
-                   'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.postal-code' | translate } " /></mat-error>
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.address.form.input.postalCode' | translate } " /></mat-error>
         }
         @else if (postalCodeFormControl.hasError('minlength') || postalCodeFormControl.hasError('maxlength')) {
         <mat-error><app-mat-input-error
             [inputError]="
-                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.postal-code' | translate } " /></mat-error>
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.address.form.input.postalCode' | translate } " /></mat-error>
         }
       </mat-form-field>
     </div>
@@ -133,7 +133,7 @@
       </mat-form-field>
     </div>
 
-    <p class="justify-content-end w-100" matDialogActions>
+    <p class="justify-content-end w-100 pe-0" matDialogActions>
       <button mat-raised-button type="submit">{{'general.button.submit' |
         translate}}</button>
       <button mat-button mat-dialog-close>{{'general.button.cancel' |

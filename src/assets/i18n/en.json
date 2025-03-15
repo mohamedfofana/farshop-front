@@ -106,6 +106,28 @@
   },
   "profile": {
     "tabs": {
+      "payment-methods": {
+        "title": "Payment cards",
+        "title-update": "Change the payment card",
+        "title-add": "Add a new payment card",
+        "form": {
+          "input": {
+            "cardName": "Card name",
+            "cardHolderName": "Card holder name",
+            "cardNumber": "Card number",
+            "ccv": "CCV",
+            "expiration": "Expiration date"
+          },
+          "successful": {
+            "update": "Payment card was changed!",
+            "add": "Payment card was saved!",
+            "delete": "Payment card was deleted!"
+          },
+          "failure": {
+            "delete": "Unable to delete the payment card!"
+          }
+        }
+      },
       "personal-info": {
         "title": "Personal information",
         "form": {
@@ -122,7 +144,7 @@
       "address": {
         "title": "Addresses",
         "title-update": "Change the address",
-        "title-add": "Add new address",
+        "title-add": "Add a new address",
         "form": {
           "input": {
             "name": "Name",
@@ -130,7 +152,7 @@
             "addressLine2": "Additional info",
             "state": "Province or State",
             "city": "City",
-            "postal-code": "Postal code",
+            "postalCode": "Postal code",
             "country": "Country",
             "type": "Type"
           },
@@ -139,7 +161,7 @@
             "delivery": "Delivery",
             "billing": "Billing"
           },
-          "suuccessful": {
+          "successful": {
             "update": "Address was changed!",
             "add": "Address was saved!",
             "delete": "Address was deleted!"
@@ -148,6 +170,36 @@
             "delete": "Unable to delete the address!"
           }
         }
+      }
+    }
+  },
+  "checkout": {
+    "step": {
+      "contact": {
+        "badge-title": "Personal informations"
+      },
+      "addresses": {
+        "delivery": {
+          "title": "Choose a delivery address",
+          "badge-title": "Delivery Address"
+        },
+        "billing": {
+          "title": "Choose a billing address",
+          "badge-title": "Billing Address"
+        },
+        "error": {
+          "delivery": "Delivery Address",
+          "billing": "Billing Address"
+        }
+      },
+      "payment": {
+        "error": {
+          "delivery": "Delivery Address",
+          "billing": "Billing Address",
+          "informations": "Personnal information",
+          "payment": "The payment ended with errors. Please try later."
+        },
+        "success": "Paiement ended successfuly!"
       }
     }
   },
@@ -184,7 +236,10 @@
       "signin": "Sign in",
       "register": "Sign up",
       "buy-now": "Buy now",
-      "checkout": "Proceed to checkout"
+      "checkout": "Proceed to checkout",
+      "payment": "Proceed to payment",
+      "next": "Next",
+      "back": "Back"
     },
     "sort": {
       "title": "Sort by",
@@ -207,7 +262,7 @@
     },
     "error": {
       "validation": {
-        "title": "The following errors were found:",
+        "plural": "The following errors were found:",
         "single": "The following error was found:",
         "required": "{{field}} is required",
         "invalid": "{{field}} is invalid",

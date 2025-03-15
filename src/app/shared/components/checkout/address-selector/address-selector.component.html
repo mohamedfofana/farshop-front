@@ -1,12 +1,8 @@
-@if (!isLoading()) {
-<div class="row p-1">
+<div class="row p-1 pb-4">
     <div>
         <form class="delivery-form">
-            @if(hasInputError()){
-            <app-form-input-error [errorPrefix]="'profile.tabs.address.form.input'" [errors]="errors()" />
-            }
-            <mat-form-field class="w-100">
-                <mat-label>Choisir une address</mat-label>
+            <mat-form-field class="w-100 pb-1">
+                <mat-label>{{title()}}</mat-label>
                 <input type="text" matInput [formControl]="addressFormControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
                     (optionSelected)="addressSelected()">
@@ -18,13 +14,6 @@
         </form>
     </div>
     @if (showSelectedAddress) {
-    <app-address-view [address]="selectedAddress" />
+    <app-address-preview [address]="selectedAddress()" />
     }
-    <div class="d-flex justify-content-end">
-        <button mat-button (click)="back()">Back</button>
-        <button mat-button (click)="next()">Next</button>
-    </div>
 </div>
-}@else {
-<app-loader />
-}

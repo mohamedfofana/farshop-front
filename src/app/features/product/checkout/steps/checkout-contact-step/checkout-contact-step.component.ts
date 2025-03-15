@@ -20,12 +20,13 @@ import { nameInputPatternValidator } from '@app/core/validators/nameInputPattern
 import { TranslateModule } from '@ngx-translate/core';
 import { OrderDto } from '@app/core/model/dto/order/orderDto';
 import { AuthService } from '@auth0/auth0-angular';
-import { switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
 import { phonenumberInputPatternValidator } from '@app/core/validators/phonenumberInputPatternValidator';
 import { LoaderComponent } from '../../../../../shared/components/common/loader/loader.component';
 import { FormInputErrorComponent } from '../../../../../shared/components/common/form/form-input-error/form-input-error.component';
 import { MatInputErrorComponent } from '../../../../../shared/components/common/form/mat-input-error/mat-input-error.component';
+import { Customer } from '@app/core/model/db/customer';
 
 @Component({
   selector: 'app-checkout-contact-step',
@@ -43,7 +44,6 @@ import { MatInputErrorComponent } from '../../../../../shared/components/common/
     MatInputErrorComponent,
   ],
   templateUrl: './checkout-contact-step.component.html',
-  styleUrl: './checkout-contact-step.component.css',
 })
 export class CheckoutContactStepComponent implements OnInit {
   isLoading = signal(false);
@@ -80,17 +80,20 @@ export class CheckoutContactStepComponent implements OnInit {
     Validators.minLength(this.MIN_LENGTH_PHONENUMBER),
   ]);
 
-  sumbitSuccessful = signal<boolean>(false);
   hasInputError = signal<boolean>(false);
-  hasHttpError = signal<boolean>(false);
   errors = signal<ControlError[]>([]);
 
-  customer$ = this.auth0Service.user$.pipe(
-    switchMap((user) => this.customerService.findByEmail(user?.email!))
-  );
+  customer$: Observable<Customer | undefined>;
 
   constructor() {
     this.initForm();
+    if (this.auth0Service.user$) {
+      this.customer$ = this.auth0Service.user$.pipe(
+        switchMap((user) => this.customerService.findByEmail(user?.email!))
+      );
+    } else {
+      this.customer$ = of(undefined);
+    }
   }
 
   initForm() {
@@ -103,24 +106,32 @@ export class CheckoutContactStepComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.auth0Service.user$) {
+      this.customer$ = this.auth0Service.user$.pipe(
+        switchMap((user) => this.customerService.findByEmail(user?.email!))
+      );
+    }
+
     if (!this.orderDto().email) {
       // Order is not initialized yet
       this.isLoading.set(true);
       this.customer$.subscribe((customer) => {
-        this.firstnameFormControl.setValue(customer.firstname);
-        this.lastnameFormControl.setValue(customer.lastname);
-        this.emailFormControl.setValue(customer.email);
-        this.phonenumberFormControl.setValue(customer.phoneNumber || '');
-        this.isLoading.set(false);
-        this.orderDto.update((value) => {
-          return {
-            ...value,
-            firstname: customer.firstname,
-            lastname: customer.lastname,
-            email: customer.email,
-            phonenumber: customer.phoneNumber,
-          };
-        });
+        if (customer) {
+          this.firstnameFormControl.setValue(customer!.firstname);
+          this.lastnameFormControl.setValue(customer!.lastname);
+          this.emailFormControl.setValue(customer!.email);
+          this.phonenumberFormControl.setValue(customer!.phoneNumber || '');
+          this.isLoading.set(false);
+          this.orderDto.update((value) => {
+            return {
+              ...value,
+              firstname: customer!.firstname,
+              lastname: customer!.lastname,
+              email: customer!.email,
+              phonenumber: customer!.phoneNumber,
+            };
+          });
+        }
       });
     } else {
       this.firstnameFormControl.setValue(this.orderDto().firstname!);
@@ -132,8 +143,6 @@ export class CheckoutContactStepComponent implements OnInit {
 
   next(): void {
     this.hasInputError.set(false);
-    this.hasHttpError.set(false);
-    this.sumbitSuccessful.set(false);
     if (this.profileForm.valid) {
       let order: OrderDto = {
         firstname: this.firstnameFormControl.value!,

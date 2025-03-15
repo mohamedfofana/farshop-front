@@ -104,6 +104,28 @@
   },
   "profile": {
     "tabs": {
+      "payment-methods": {
+        "title": "Carte de paiement",
+        "title-update": "Modifier une carte de paiement",
+        "title-add": "Ajouter une carte de paiement",
+        "form": {
+          "input": {
+            "cardName": "Nom de la carde",
+            "cardHolderName": "Nom du proriétaire la carte",
+            "cardNumber": "Numéro",
+            "ccv": "CCV",
+            "expiration": "Date d'expiration"
+          },
+          "successful": {
+            "update": "La carte de paiement a été mise à jour!",
+            "add": "La carte de paiement a été ajoutée!",
+            "delete": "La carte de paiement a été supprimée!"
+          },
+          "failure": {
+            "delete": "Impossible de supprimer la carte de paiement!"
+          }
+        }
+      },
       "personal-info": {
         "title": "Informations personnelles",
         "form": {
@@ -128,7 +150,7 @@
             "addressLine2": "Complément",
             "state": "Province ou État",
             "city": "Ville",
-            "postal-code": "Code postal",
+            "postalCode": "Code postal",
             "country": "Pays",
             "type": "Type"
           },
@@ -146,6 +168,36 @@
             "delete": "Impossible de supprimer l'adresse!"
           }
         }
+      }
+    }
+  },
+  "checkout": {
+    "step": {
+      "contact": {
+        "badge-title": "Informations personnelles"
+      },
+      "addresses": {
+        "delivery": {
+          "title": "Choisir une adresse de livraison",
+          "badge-title": "Adresse de livraison"
+        },
+        "billing": {
+          "title": "Choisir une adresse de facturation",
+          "badge-title": "Adresse de facturation"
+        },
+        "error": {
+          "delivery": "Addresse de livraison",
+          "billing": "Addresse de facturation"
+        }
+      },
+      "payment": {
+        "error": {
+          "delivery": "Addresse de livraison",
+          "billing": "Addresse de facturation",
+          "informations": "Contact",
+          "payment": "Le paiement n'a pas abouti. Veuillez reessayer plus tard."
+        },
+        "success": "Paiement effectué avec succès"
       }
     }
   },
@@ -182,7 +234,10 @@
       "signin": "Connexion",
       "register": "S'incscrire",
       "buy-now": "Achetez maintenant",
-      "checkout": "Passer la commande"
+      "checkout": "Passer au panier",
+      "payment": "Passer la commande",
+      "next": "Suivant",
+      "back": "Retour"
     },
     "sort": {
       "title": "Trier par",
@@ -205,7 +260,7 @@
     },
     "error": {
       "validation": {
-        "title": "Les erreurs suivantes ont été detéctés:",
+        "plural": "Les erreurs suivantes ont été detéctés:",
         "single": "Une erreur a été détecté sur le champ suivant:",
         "required": "{{field}} est obligatoire",
         "invalid": "{{field}} est invalide",

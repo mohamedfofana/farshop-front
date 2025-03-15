@@ -12,11 +12,12 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { StorageService } from '@core/services/storage/storage.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgClass } from '@angular/common';
+import { LoaderComponent } from "../../common/loader/loader.component";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartProductComponent, CartSummaryComponent, TranslateModule, NgClass],
+  imports: [CartProductComponent, CartSummaryComponent, TranslateModule, NgClass, LoaderComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })

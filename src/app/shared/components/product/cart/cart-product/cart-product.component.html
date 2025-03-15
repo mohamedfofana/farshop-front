@@ -1,5 +1,5 @@
 @if (!hide) {
-<div class="product-card p-3 shadow-sm" *ngIf="product$ | async as product; else loader">
+<div class="product-card p-3 shadow-sm" *ngIf="product$ | async as product">
     <div class="row align-items-center">
         <div class="col-md-2">
             <img src="https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
@@ -31,7 +31,4 @@
         </div>
     </div>
 </div>
-<ng-template #loader>
-    <app-loader />
-</ng-template>
 }

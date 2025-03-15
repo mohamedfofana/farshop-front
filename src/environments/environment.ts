@@ -15,4 +15,8 @@ export const environment = {
     },
     errorPath: '',
   },
+  stripe: {
+    PUBLIC_KEY: '',
+    CLIENT_SECRET: '',
+  },
 };

@@ -284,4 +284,8 @@ export class StorageService {
 
     return obj;
   }
+
+  clearCart() {
+    this.setProductList([]);
+  }
 }

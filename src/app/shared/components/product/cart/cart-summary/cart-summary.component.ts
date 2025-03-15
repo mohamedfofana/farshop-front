@@ -41,7 +41,7 @@ export class CartSummaryComponent extends AbstractOnDestroy implements OnInit {
   totalAmountToPay = signal(0);
   totalSaved = signal(0);
   shippingAmount = signal(5);
-  totalAmount = computed(() => this.totalAmountToPay() + this.shippingAmount());
+  totalAmount = computed(() => this.totalAmountToPay() - this.shippingAmount());
   firstRun: boolean;
   constructor() {
     super();
