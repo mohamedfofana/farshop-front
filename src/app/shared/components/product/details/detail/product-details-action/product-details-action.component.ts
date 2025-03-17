@@ -38,12 +38,15 @@ export class ProductDetailsActionComponent {
   }
 
   addToCart() {
-    const cartProductDto = this.storageService.updateDetails(this.product(), {
-      id: this.product().id,
-      quantity: this.quantity(),
-      selectedColor: this.selectedColor(),
-      selectedSize: this.selectedSize(),
-    });
+    const cartProductDto = this.storageService.updateSizeAndColor(
+      this.product(),
+      {
+        id: this.product().id,
+        quantity: this.quantity(),
+        selectedColor: this.selectedColor(),
+        selectedSize: this.selectedSize(),
+      }
+    );
     this.storageService.addProduct(cartProductDto);
   }
 

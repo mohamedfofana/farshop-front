@@ -142,7 +142,12 @@ export class CheckoutPaymentStepComponent
     let orderProducts: OrderProductDto[] = [];
 
     orderProducts = this.cartProducts().flatMap<OrderProductDto>((p) => [
-      { idProduct: p.id, quantity: p.quantity },
+      {
+        idProduct: p.id,
+        quantity: p.quantity,
+        selectedColor: p.selectedColor,
+        selectedSize: p.selectedSize,
+      },
     ]);
     const paymentDto: PaymentDto = {
       amount: amount,

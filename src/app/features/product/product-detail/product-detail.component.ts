@@ -16,7 +16,6 @@ import { ProductDetailsActionComponent } from '@shared/components/product/detail
 import { TranslateModule } from '@ngx-translate/core';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { LoaderComponent } from '@shared/components/common/loader/loader.component';
-import { StorageService } from '@app/core/services/storage/storage.service';
 import { ProductColor } from '@app/core/model/db/productColor';
 import { ProductSize } from '@app/core/model/db/productSize';
 
@@ -42,11 +41,10 @@ import { ProductSize } from '@app/core/model/db/productSize';
 export class ProductDetailsComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly productService = inject(ProductService);
-  private readonly storageService = inject(StorageService);
   reviewsCount = signal<number>(0);
   id$ = this.activatedRoute.params.pipe(map((params) => params['id']));
   product$ = this.id$.pipe(switchMap((id) => this.productService.findById(id)));
 
-  selectedColor : ProductColor | undefined;
-  selectedSize : ProductSize | undefined;
+  selectedColor: ProductColor | undefined;
+  selectedSize: ProductSize | undefined;
 }

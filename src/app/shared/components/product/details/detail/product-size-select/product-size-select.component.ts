@@ -17,7 +17,9 @@ export class ProductSizeSelectComponent {
   selectedSize = model<ProductSize>();
 
   ngOnInit(): void {
-    let currentSize = this.storageService.findCurrentSize(this.productId());
+    let currentSize = this.storageService.findCurrentSizeProductId(
+      this.productId()
+    );
     if (!currentSize) {
       currentSize = this.sizes()[0];
     }

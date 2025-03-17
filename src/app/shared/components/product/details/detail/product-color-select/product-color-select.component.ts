@@ -18,7 +18,9 @@ export class ProductColorSelectComponent implements OnInit {
   selectedColor = model<ProductColor>();
 
   ngOnInit(): void {
-    let currentColor = this.storageService.findCurrentColor(this.productId());
+    let currentColor = this.storageService.findCurrentColorByProductId(
+      this.productId()
+    );
     if (!currentColor) {
       currentColor = this.colors()[0];
     }

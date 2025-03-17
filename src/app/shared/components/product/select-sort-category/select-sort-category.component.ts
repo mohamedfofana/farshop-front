@@ -17,6 +17,7 @@ import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '@core/model/db/category';
 import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
+import { PAGINATION_DEFAULT } from '@app/core/model/enum/paginationConst';
 
 interface SortByField {
   label: string;
@@ -77,7 +78,7 @@ export class SelectSortCategoryComponent
   }
 
   onSortByFieldRemoved() {
-    this.updateSort(0);
+    this.updateSort(PAGINATION_DEFAULT.categoryId);
   }
 
   onSelectFieldChange() {

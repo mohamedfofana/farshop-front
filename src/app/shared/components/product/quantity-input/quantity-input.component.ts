@@ -40,10 +40,13 @@ export class QuantityInputComponent {
   increase() {
     this.quantity.update((value) => value + 1);
 
-    const cartProductDto = this.storageService.updateQuantity(this.product(), {
-      id: this.product().id,
-      quantity: this.quantity(),
-    });
+    const cartProductDto = this.storageService.updateProductDetails(
+      this.product(),
+      {
+        id: this.product().id,
+        quantity: this.quantity(),
+      }
+    );
     this.storageService.addProduct(cartProductDto);
   }
 }

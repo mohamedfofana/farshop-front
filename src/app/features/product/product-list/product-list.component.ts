@@ -28,6 +28,7 @@ import { PriceRangeComponent } from '@shared/components/common/price-range/price
 import { SelectSortProductsComponent } from '@shared/components/product/select-sort-products/select-sort-products.component';
 import { SelectSortCategoryComponent } from '@shared/components/product/select-sort-category/select-sort-category.component';
 import { ProductListDetailsComponent } from '@shared/components/product/product-list-details/product-list-details.component';
+import { LoaderComponent } from '../../../shared/components/common/loader/loader.component';
 
 @Component({
   selector: 'app-product-list',
@@ -43,6 +44,7 @@ import { ProductListDetailsComponent } from '@shared/components/product/product-
     SelectSortProductsComponent,
     SelectSortCategoryComponent,
     ProductListDetailsComponent,
+    LoaderComponent,
   ],
   templateUrl: './product-list.component.html',
 })
@@ -64,7 +66,7 @@ export class ProductListComponent extends AbstractOnDestroy implements OnInit {
   priceMin = signal<number>(PAGINATION_DEFAULT.priceMin);
   priceMax = signal<number>(PAGINATION_DEFAULT.priceMax);
   products = signal<Product[]>([]);
-  categoryIdParam = model<number>(0);
+  categoryIdParam = model<number>(PAGINATION_DEFAULT.categoryId);
   categoryId = signal<number>(PAGINATION_DEFAULT.categoryId);
   categories: Signal<Category[] | undefined> = toSignal(
     this.categoryService.findAll()
@@ -85,19 +87,27 @@ export class ProductListComponent extends AbstractOnDestroy implements OnInit {
         .subscribe((count) => this.productCount.set(count));
 
       let subscription: Subscription;
-      const findByPageDto: FindByPageDto = {
+      let findByPageDto: FindByPageDto = {
         page: this.pageIndex(),
         size: this.pageSize(),
         sortField: this.sortField(),
         sortDirection: this.sortDirection(),
         priceMin: this.priceMin(),
         priceMax: this.priceMax(),
-        categoryId: this.categoryId(),
       };
+
+      if (this.categoryId() === PAGINATION_DEFAULT.categoryId) {
+        findByPageDto = {
+          ...findByPageDto,
+          categoryId: this.categoryId(),
+        };
+      }
 
       subscription = this.productService
         .findAllByPage(findByPageDto)
-        .subscribe((products) => this.products.set(products));
+        .subscribe((products) => {
+          this.products.set(products);
+        });
 
       cleanUp(() => {
         subscription.unsubscribe();

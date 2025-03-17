@@ -1,3 +1,4 @@
 export interface ProductSize {
-    title: string
+  id: number;
+  title: string;
 }

@@ -29,7 +29,7 @@ export class StorageService {
 
   // color
 
-  findCurrentColor(id: number): ProductColor | undefined {
+  findCurrentColorByProductId(id: number): ProductColor | undefined {
     const cartProduct = this.findObject<CartProductDto>(
       id,
       StorageConstant.CART_PRODUCTS
@@ -42,7 +42,7 @@ export class StorageService {
 
   // size
 
-  findCurrentSize(id: number): ProductSize | undefined {
+  findCurrentSizeProductId(id: number): ProductSize | undefined {
     const cartProduct = this.findObject<CartProductDto>(
       id,
       StorageConstant.CART_PRODUCTS
@@ -53,7 +53,7 @@ export class StorageService {
     return undefined;
   }
 
-  updateDetails(
+  updateSizeAndColor(
     product: Product,
     cartProductDto: CartProductDto
   ): CartProductDto {
@@ -67,19 +67,19 @@ export class StorageService {
     return cartProductDto;
   }
 
-  updateQuantity(
+  updateProductDetails(
     product: Product,
     cartProductDto: CartProductDto
   ): CartProductDto {
     if (product.category.colors) {
-      let currentColor = this.findCurrentColor(product.id);
+      let currentColor = this.findCurrentColorByProductId(product.id);
       if (!currentColor) {
         currentColor = product.category.colors[0];
       }
       cartProductDto.selectedColor = currentColor;
     }
     if (product.category.sizes) {
-      let currentSize = this.findCurrentSize(product.id);
+      let currentSize = this.findCurrentSizeProductId(product.id);
       if (!currentSize) {
         currentSize = product.category.sizes[0];
       }
@@ -100,25 +100,6 @@ export class StorageService {
     const listObjects: T[] = JSON.parse(list);
 
     return listObjects;
-  }
-
-  private storedObject<T extends BaseEntityStore>(object: T, key: string) {
-    let list = this.getList<T>(key);
-    const current = this.findObject<T>(object.id, key);
-    if (!list) {
-      list = [];
-    }
-    if (!current) {
-      list = [...list, object];
-    } else {
-      list = list.map((p) => {
-        if (p.id === object.id) {
-          return object;
-        }
-        return p;
-      });
-    }
-    this.localStorageService.store(key, list);
   }
 
   private findObject<T extends BaseEntityStore>(
@@ -167,8 +148,8 @@ export class StorageService {
     }
     // add color and size
     cartList.map((p) => {
-      p.selectedColor = this.findCurrentColor(p.id);
-      p.selectedSize = this.findCurrentSize(p.id);
+      p.selectedColor = this.findCurrentColorByProductId(p.id);
+      p.selectedSize = this.findCurrentSizeProductId(p.id);
     });
 
     return cartList;
@@ -252,12 +233,6 @@ export class StorageService {
     const item = this.localStorageService.retrieve(key);
     const value = item && item.length > 0 ? item : '';
     return this.decrypt(value);
-  }
-
-  private decryptCartList(value: string) {
-    const decryptedValue = this.decrypt(value);
-    const cartList: CartProductDto[] = JSON.parse(decryptedValue);
-    return;
   }
 
   private encrypt(value: string): string {
