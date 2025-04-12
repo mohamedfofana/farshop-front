@@ -14,7 +14,6 @@ import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf, PercentPipe } from '@angular/common';
 import { QuantityInputComponent } from '../../quantity-input/quantity-input.component';
 import { ProductPriceViewComponent } from '../../product-price-rating/product-price-view.component';
-import { LoaderComponent } from '../../../common/loader/loader.component';
 import { StorageService } from '@core/services/storage/storage.service';
 import { AbstractOnDestroy } from '@app/core/directives/unsubscriber/abstract.ondestroy';
 
@@ -27,7 +26,6 @@ import { AbstractOnDestroy } from '@app/core/directives/unsubscriber/abstract.on
     QuantityInputComponent,
     PercentPipe,
     ProductPriceViewComponent,
-    LoaderComponent,
   ],
   templateUrl: './cart-product.component.html',
   styleUrl: './cart-product.component.scss',

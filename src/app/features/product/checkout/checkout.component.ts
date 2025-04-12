@@ -18,7 +18,7 @@ import { SecureCheckoutComponent } from '../../../shared/components/common/secur
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { OrderDto } from '@app/core/model/dto/order/orderDto';
+import { OrderDto } from '@app/core/model/dto/order/out/orderDto';
 
 @Component({
   selector: 'app-checkout',

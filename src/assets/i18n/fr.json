@@ -104,26 +104,15 @@
   },
   "profile": {
     "tabs": {
-      "payment-methods": {
-        "title": "Carte de paiement",
-        "title-update": "Modifier une carte de paiement",
-        "title-add": "Ajouter une carte de paiement",
-        "form": {
-          "input": {
-            "cardName": "Nom de la carde",
-            "cardHolderName": "Nom du proriétaire la carte",
-            "cardNumber": "Numéro",
-            "ccv": "CCV",
-            "expiration": "Date d'expiration"
-          },
-          "successful": {
-            "update": "La carte de paiement a été mise à jour!",
-            "add": "La carte de paiement a été ajoutée!",
-            "delete": "La carte de paiement a été supprimée!"
-          },
-          "failure": {
-            "delete": "Impossible de supprimer la carte de paiement!"
-          }
+      "orders": {
+        "title": "Mes commandes",
+        "cancel-order": {
+          "success": "Votre commande a été annulée",
+          "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
+        },
+        "return-order": {
+          "success": "Votre demande de retour est enregistrée.",
+          "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
         }
       },
       "personal-info": {
@@ -220,7 +209,11 @@
     },
     "dialog": {
       "message": {
-        "remove": "Voulez-vous supprimer cette adresse?"
+        "remove-address": "Voulez-vous supprimer cette adresse?",
+        "order": {
+          "return-order": "Voulez-vous supprimer retourner la commande?",
+          "cancel-order": "Voulez-vous supprimer annuler la commande?"
+        }
       },
       "confirm": "Confirmation"
     },
@@ -229,8 +222,11 @@
       "add-to-cart": "Ajouter au panier",
       "submit": "Soumettre",
       "continue": "Continuer",
+      "invoice": "Facture",
       "cancel": "Annuler",
+      "cancel-order": "Annuler la commande",
       "delete": "Supprimer",
+      "return-order": "Retourner la commande",
       "signin": "Connexion",
       "register": "S'incscrire",
       "buy-now": "Achetez maintenant",

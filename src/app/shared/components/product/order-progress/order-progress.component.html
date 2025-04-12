@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between fs-4 ps-0 pe-0">
+    <i class="bi bi-cart-check"></i>
+    <i class="bi bi-truck"></i>
+    <i class="bi bi-check-circle" [ngClass]="{'bi-x-circle': colorDanger, 'bi-check-circle': !colorDanger}"></i>
+</div>
+<div class="progress ps-0 pe-0" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" [ngStyle]="{'width': progressStatusPercent()}" [ngClass]="{'bg-danger': colorDanger}">
+    </div>
+</div>

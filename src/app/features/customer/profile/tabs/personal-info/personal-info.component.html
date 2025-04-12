@@ -4,7 +4,7 @@
         <app-form-success [message]="'profile.tabs.personal-info.form.success' | translate " />
         }
         @if(hasHttpError()){
-        <app-form-error />
+        <app-form-error [message]="'general.form.error' | translate" />
         }
         @if(hasInputError()){
         <app-form-input-error [errorPrefix]="'profile.tabs.personal-info.form.input'" [errors]="errors()" />

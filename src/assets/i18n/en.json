@@ -106,26 +106,15 @@
   },
   "profile": {
     "tabs": {
-      "payment-methods": {
-        "title": "Payment cards",
-        "title-update": "Change the payment card",
-        "title-add": "Add a new payment card",
-        "form": {
-          "input": {
-            "cardName": "Card name",
-            "cardHolderName": "Card holder name",
-            "cardNumber": "Card number",
-            "ccv": "CCV",
-            "expiration": "Expiration date"
-          },
-          "successful": {
-            "update": "Payment card was changed!",
-            "add": "Payment card was saved!",
-            "delete": "Payment card was deleted!"
-          },
-          "failure": {
-            "delete": "Unable to delete the payment card!"
-          }
+      "orders": {
+        "title": "My orders",
+        "cancel": {
+          "success": "Your order was canceled.",
+          "error": "An error occurred while processing. Please try again later."
+        },
+        "return": {
+          "success": "Your return has been registered.",
+          "error": "An error occurred while processing. Please try again later."
         }
       },
       "personal-info": {
@@ -222,7 +211,11 @@
     },
     "dialog": {
       "message": {
-        "remove": "Are you sure you want to delete this adress?"
+        "remove-address": "Are you sure you want to delete this adress?",
+        "order": {
+          "return-order": "Are you sure you want to return this order?",
+          "cancel-order": "Are you sure you want to cancel this order?"
+        }
       },
       "confirm": "Confirm"
     },
@@ -231,8 +224,11 @@
       "add-to-cart": "Add to cart",
       "submit": "Submit",
       "continue": "Next",
+      "invoice": "Invoice",
       "cancel": "Cancel",
+      "cancel-order": "Cancel order",
       "delete": "Delete",
+      "return-order": "Return order",
       "signin": "Sign in",
       "register": "Sign up",
       "buy-now": "Buy now",

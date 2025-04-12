@@ -18,9 +18,9 @@ import {
 } from '@app/core/services/utils/utils/utils.service';
 import { nameInputPatternValidator } from '@app/core/validators/nameInputPatternValidator';
 import { TranslateModule } from '@ngx-translate/core';
-import { OrderDto } from '@app/core/model/dto/order/orderDto';
+import { OrderDto } from '@app/core/model/dto/order/out/orderDto';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { MatStepper } from '@angular/material/stepper';
 import { phonenumberInputPatternValidator } from '@app/core/validators/phonenumberInputPatternValidator';
 import { LoaderComponent } from '../../../../../shared/components/common/loader/loader.component';
@@ -88,9 +88,7 @@ export class CheckoutContactStepComponent implements OnInit {
   constructor() {
     this.initForm();
     if (this.auth0Service.user$) {
-      this.customer$ = this.auth0Service.user$.pipe(
-        switchMap((user) => this.customerService.findByEmail(user?.email!))
-      );
+      this.customer$ = this.customerService.findProfile();
     } else {
       this.customer$ = of(undefined);
     }
@@ -107,9 +105,7 @@ export class CheckoutContactStepComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.auth0Service.user$) {
-      this.customer$ = this.auth0Service.user$.pipe(
-        switchMap((user) => this.customerService.findByEmail(user?.email!))
-      );
+      this.customer$ = this.customerService.findProfile();
     }
 
     if (!this.orderDto().email) {

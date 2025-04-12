@@ -1,6 +1,6 @@
 import { Component, inject, input, model, OnInit, signal } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
-import { OrderDto } from '@app/core/model/dto/order/orderDto';
+import { OrderDto } from '@app/core/model/dto/order/out/orderDto';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

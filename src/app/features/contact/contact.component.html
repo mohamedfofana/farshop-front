@@ -4,7 +4,7 @@
         <form [formGroup]="contactForm" (submit)="submit()">
             <h2 class="mt-4 mb-4 text-center">{{'contact.form.title' | translate}}</h2>
             @if(hasHttpError()){
-            <app-form-error />
+            <app-form-error [message]="'general.form.error' | translate" />
             }
             @if(hasInputError()){
             <app-form-input-error [errorPrefix]="'contact.form.input'" [errors]="errors()" />

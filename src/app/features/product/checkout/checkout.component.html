@@ -7,16 +7,11 @@
             </mat-step>
             <mat-step [stepControl]="deliveryFormGroup" state="delivery">
                 <ng-template matStepLabel>Addresses</ng-template>
-                @defer () {
                 <app-checkout-addresses-step [stepper]="stepper" [(orderDto)]="orderDto" />
-                }
-
             </mat-step>
             <mat-step [stepControl]="paymentFormGroup" state="payment">
                 <ng-template matStepLabel>Payment</ng-template>
-                @defer () {
                 <app-checkout-payment-step [stepper]="stepper" [(orderDto)]="orderDto" />
-                }
             </mat-step>
 
             <!-- Icon overrides. -->

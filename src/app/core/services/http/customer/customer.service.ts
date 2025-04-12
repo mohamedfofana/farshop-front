@@ -13,10 +13,8 @@ export class CustomerService {
   httpClient = inject(HttpClient);
   customerUrl = environment.API_SECURED_ENDPOINT + '/customer';
 
-  findByEmail(email: string): Observable<Customer> {
-    return this.httpClient.get<Customer>(
-      this.customerUrl + '/findByEmail/' + email
-    );
+  findProfile(): Observable<Customer> {
+    return this.httpClient.get<Customer>(this.customerUrl + '/findProfile');
   }
 
   create(email: string): Observable<Customer> {

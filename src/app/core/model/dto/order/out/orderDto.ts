@@ -1,5 +1,5 @@
-import { Address } from '../../db/address';
-import { OrderProductDto } from '../orderproduct/orderProductDto';
+import { Address } from '../../../db/address';
+import { OrderProductDto } from '../../orderproduct/orderProductDto';
 
 export interface OrderDto {
   firstname?: string;

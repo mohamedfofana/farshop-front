@@ -40,7 +40,7 @@ export class AddressViewComponent extends AbstractOnDestroy {
     let message: string = '';
     let title: string = '';
     const subMessage$ = this.translate
-      .get('general.dialog.message.remove')
+      .get('general.dialog.message.remove-address')
       .subscribe((successMsg: string) => {
         message = successMsg;
       });

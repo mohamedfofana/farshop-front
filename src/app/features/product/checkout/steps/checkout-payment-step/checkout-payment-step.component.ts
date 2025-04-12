@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepper } from '@angular/material/stepper';
-import { OrderDto } from '@app/core/model/dto/order/orderDto';
+import { OrderDto } from '@app/core/model/dto/order/out/orderDto';
 import { LoaderComponent } from '@shared/components/common/loader/loader.component';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import {
@@ -42,7 +42,7 @@ import { OrderProductDto } from '@app/core/model/dto/orderproduct/orderProductDt
 import { PaymentDto } from '@app/core/model/dto/payment/paymentDto';
 import { FormErrorComponent } from '../../../../../shared/components/common/form/form-error/form-error.component';
 import { OrderService } from '@app/core/services/http/order/order.service';
-import { SaveOrderDto } from '@app/core/model/dto/order/saveOrderDto';
+import { SaveOrderDto } from '@app/core/model/dto/order/out/saveOrderDto';
 import { NotifierService } from '@app/core/services/utils/notifier/notifier.service';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '@app/core/config/routes/routesConfig';
@@ -150,7 +150,7 @@ export class CheckoutPaymentStepComponent
       },
     ]);
     const paymentDto: PaymentDto = {
-      amount: amount,
+      amount: parseFloat(amount.toFixed(2)),
       currency: 'cad',
       orderProducts: orderProducts,
     };

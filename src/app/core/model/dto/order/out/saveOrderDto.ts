@@ -1,4 +1,4 @@
-import { OrderProductDto } from '../orderproduct/orderProductDto';
+import { OrderProductDto } from '../../orderproduct/orderProductDto';
 
 export interface SaveOrderDto {
   stripePaymentId: string;

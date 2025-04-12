@@ -2,7 +2,7 @@
 <div class="row" matDialogContent>
   <form [formGroup]="addressForm" class="pt-2" (submit)="submit()" novalidate>
     @if(hasHttpError()){
-    <app-form-error #formHttpErrorElt />
+    <app-form-error #formHttpErrorElt [message]="'general.form.error' | translate" />
     }
     @if(hasInputError()){
     <app-form-input-error [errorPrefix]="'profile.tabs.address.form.input'" [errors]="errors()" #formErrorElt />

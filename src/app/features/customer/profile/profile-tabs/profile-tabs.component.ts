@@ -4,6 +4,7 @@ import { PersonalInfoComponent } from '../tabs/personal-info/personal-info.compo
 import { Customer } from '@core/model/db/customer';
 import { TranslateModule } from '@ngx-translate/core';
 import { AddressesComponent } from '../tabs/addresses/addresses.component';
+import { OrdersComponent } from '../tabs/orders/orders.component';
 
 @Component({
   selector: 'app-profile-tabs',
@@ -13,6 +14,7 @@ import { AddressesComponent } from '../tabs/addresses/addresses.component';
     PersonalInfoComponent,
     TranslateModule,
     AddressesComponent,
+    OrdersComponent,
   ],
   templateUrl: './profile-tabs.component.html',
   styleUrl: './profile-tabs.component.scss',
