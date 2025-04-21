@@ -50,7 +50,7 @@
     </button>
     }@else {
     <div>
-      <app-quantity-input [(quantity)]="quantity" [idProduct]="product().id" />
+      <app-quantity-input [(quantity)]="quantity" [product]="product()" />
     </div>
     }
   </mat-card-actions>

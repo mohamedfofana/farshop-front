@@ -28,7 +28,7 @@
           <hr class="dropdown-divider" />
         </li>
         <li class="text-center">
-          <app-logout-button></app-logout-button>
+          <app-logout-button />
         </li>
       </ul>
     </div>
@@ -43,7 +43,7 @@
   </ng-template>
 
   <div class="ps-3">
-    <a href="#">
+    <a href="javascript:void(0)" (click)="openCloseCart()" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
       <i class="bi bi-cart2 h4 text-dark">
         <span
           class="position-absolute top-0 start-100 translate-middle badge badge-lxs rounded-pill bg-app-theme-color">
@@ -53,3 +53,8 @@
     </a>
   </div>
 </div>
+<ng-template class="shadow-lg" cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="openCart()" [cdkConnectedOverlayDisableClose]="true"
+  [cdkConnectedOverlayHasBackdrop]="true" (backdropClick)="openCart.set(false)">
+  <app-cart (openCart)="openCart.set(false)" />
+</ng-template>

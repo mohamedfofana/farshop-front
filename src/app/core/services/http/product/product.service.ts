@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '@env/environment';
 import { Product } from '../../../model/db/product';
 import { Observable } from 'rxjs';
 import { CountAvailableDto } from '../../../model/dto/product/countAvailableDto';
@@ -11,7 +11,7 @@ import { FindByPageDto } from '../../../model/dto/product/findByPageDto';
 })
 export class ProductService {
   private httpClient = inject(HttpClient);
-  private productUrl = environment.API_WHITE_LIST_ENDPOINT + '/product';
+  private productUrl = environment.API_PUBLIC_ENDPOINT + '/product';
 
   search(findByPage: FindByPageDto): Observable<Product[]> {
     const endpoint = this.productUrl.concat('/search');
@@ -19,7 +19,7 @@ export class ProductService {
     return this.httpClient.post<Product[]>(endpoint, findByPage);
   }
 
-  find(id: number): Observable<Product> {
+  findById(id: number): Observable<Product> {
     const endpoint = this.productUrl.concat('/findById');
 
     return this.httpClient.post<Product>(endpoint, { id: id });

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { StarRatingComponent } from '../../common/star-rating/star-rating.component';
-import { Review } from '../../../../core/model/db/review';
-import { ReviewRatePipe } from '../../../../core/pipe/review-rate.pipe';
+import { Review } from '@core/model/db/review';
+import { ReviewRatePipe } from '@core/pipe/review-rate.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

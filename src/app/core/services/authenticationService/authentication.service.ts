@@ -1,21 +1,19 @@
-import { toSignal } from '@angular/core/rxjs-interop';
 import { inject, Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { TranslationService } from '../translationService/translation.service';
 import { DOCUMENT } from '@angular/common';
-import { map, Observable } from 'rxjs';
-import { CustomerRole } from '../../model/enum/customerRole';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private auth = inject(AuthService);
+  private auth0 = inject(AuthService);
   private translationService = inject(TranslationService);
   private doc = inject(DOCUMENT);
 
   login(): void {
-    this.auth.loginWithRedirect({
+    this.auth0.loginWithRedirect({
       appState: {
         target: window.location.pathname,
       },
@@ -26,7 +24,7 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    this.auth.logout({
+    this.auth0.logout({
       logoutParams: {
         returnTo: this.doc.location.origin,
       },
@@ -34,7 +32,7 @@ export class AuthenticationService {
   }
 
   signup(): void {
-    this.auth.loginWithRedirect({
+    this.auth0.loginWithRedirect({
       appState: {
         target: window.location.pathname,
       },
@@ -46,10 +44,10 @@ export class AuthenticationService {
   }
 
   hasRole$(role: string): Observable<boolean> {
-    return this.auth.idTokenClaims$.pipe(
+    return this.auth0.idTokenClaims$.pipe(
       map((idToken) => {
         if (idToken) {
-          const roles: [string] = idToken['https://farshop.com/roles'];         
+          const roles: [string] = idToken['https://farshop.com/roles'];
           const roleAuth0 = roles.find((r) => r === role);
           if (roleAuth0) {
             return true;
@@ -61,16 +59,19 @@ export class AuthenticationService {
   }
 
   isNewCustomer$(): Observable<boolean> {
-    return this.auth.idTokenClaims$.pipe(
-      map((idToken) => {
-        if (idToken) {
-          const newCustomer = idToken['https://farshop.com/newCustomer'];
-          if (newCustomer && newCustomer === true) {
-            return true;
+    if (this.auth0.idTokenClaims$) {
+      return this.auth0.idTokenClaims$.pipe(
+        map((idToken) => {
+          if (idToken) {
+            const newCustomer = idToken['https://farshop.com/newCustomer'];
+            if (newCustomer && newCustomer === true) {
+              return true;
+            }
           }
-        }
-        return false;
-      })
-    );
+          return false;
+        })
+      );
+    }
+    return of(false);
   }
 }

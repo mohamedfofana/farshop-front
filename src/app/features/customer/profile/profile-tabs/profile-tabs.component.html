@@ -5,9 +5,13 @@
         </div>
     </mat-tab>
     <mat-tab label="{{'profile.tabs.address.title' | translate}}">
-
         <div class="mt-3 mb-3 ms-5 me-5">
             <app-addresses [customer]="customer()" />
+        </div>
+    </mat-tab>
+    <mat-tab label="{{'profile.tabs.orders.title' | translate}}">
+        <div class="mt-3 mb-3 ms-5 me-5">
+            <app-orders />
         </div>
     </mat-tab>
 </mat-tab-group>

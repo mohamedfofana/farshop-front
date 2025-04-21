@@ -1,0 +1,20 @@
+@import "../../../../../../../variables";
+
+.product_favorite {
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+i.product_favorite_heart {
+  color: $app-theme-color;
+  font-size: 1.4rem;
+}
+
+i.product_favorite_heart:hover,
+i.product_favorite_heart:hover::after,
+i.product_favorite_heart:active,
+i.product_favorite_heart:active::after,
+i.product_favorite_heart:after {
+  color: $app-theme-color;
+  font-size: 1.7rem;
+}

@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '@env/environment';
 import { Customer } from '../../../model/db/customer';
 import { CustomerUpdateDto } from '../../../model/dto/customer/customerUpdateDto';
 
@@ -13,10 +13,8 @@ export class CustomerService {
   httpClient = inject(HttpClient);
   customerUrl = environment.API_SECURED_ENDPOINT + '/customer';
 
-  findByEmail(email: string): Observable<Customer> {
-    return this.httpClient.get<Customer>(
-      this.customerUrl + '/findByEmail/' + email
-    );
+  findProfile(): Observable<Customer> {
+    return this.httpClient.get<Customer>(this.customerUrl + '/findProfile');
   }
 
   create(email: string): Observable<Customer> {

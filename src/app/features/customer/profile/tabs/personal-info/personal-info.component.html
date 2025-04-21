@@ -4,7 +4,7 @@
         <app-form-success [message]="'profile.tabs.personal-info.form.success' | translate " />
         }
         @if(hasHttpError()){
-        <app-form-error />
+        <app-form-error [message]="'general.form.error' | translate" />
         }
         @if(hasInputError()){
         <app-form-input-error [errorPrefix]="'profile.tabs.personal-info.form.input'" [errors]="errors()" />
@@ -53,6 +53,21 @@
                 <mat-error><app-mat-input-error
                         [inputError]="
                            'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.birthdate' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="p pb-3">
+            <mat-form-field class="w-50">
+                <mat-label>{{'profile.tabs.personal-info.form.input.phonenumber' | translate}}</mat-label>
+                <input id="phonenumber" [maxlength]="MAX_LENGTH_PHONENUMBER" matInput
+                    [formControl]="phonenumberFormControl">
+                <!-- Errors names ares min and max if values are on the input -->
+                <!-- This case handle non mandatory field -->
+                @if (phonenumberFormControl.hasError('minlength') ||
+                lastnameFormControl.hasError('invalid')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                             'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.phonenumber' | translate } " /></mat-error>
                 }
             </mat-form-field>
         </div>

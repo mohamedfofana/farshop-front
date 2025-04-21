@@ -8,10 +8,10 @@ import { SearchDialogComponent } from '../../components/dialog/search-dialog/sea
 import { HeaderNavComponent } from '../header-nav/header-nav.component';
 import { HeaderNavButtonsComponent } from '../header-nav-buttons/header-nav-buttons.component';
 import { HeaderLogoComponent } from '../header-logo/header-logo.component';
-import { AuthenticationService } from '../../../core/services/authenticationService/authentication.service';
+import { AuthenticationService } from '@core/services/authenticationService/authentication.service';
 import { switchMap } from 'rxjs';
-import { CustomerService } from '../../../core/services/http/customer/customer.service';
-import { AbstractOnDestroy } from '../../../core/directives/unsubscriber/abstract.ondestroy';
+import { CustomerService } from '@core/services/http/customer/customer.service';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 
 @Component({
   selector: 'app-header',

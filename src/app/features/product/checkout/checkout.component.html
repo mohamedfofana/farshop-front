@@ -1,0 +1,64 @@
+<div class="row mb-3">
+    <div class="col-6">
+        <mat-stepper #stepper class="bg-white">
+            <mat-step [stepControl]="contactFormGroup" state="information">
+                <ng-template matStepLabel>Informations</ng-template>
+                <app-checkout-contact-step [stepper]="stepper" [(orderDto)]="orderDto" />
+            </mat-step>
+            <mat-step [stepControl]="deliveryFormGroup" state="delivery">
+                <ng-template matStepLabel>Addresses</ng-template>
+                <app-checkout-addresses-step [stepper]="stepper" [(orderDto)]="orderDto" />
+            </mat-step>
+            <mat-step [stepControl]="paymentFormGroup" state="payment">
+                <ng-template matStepLabel>Payment</ng-template>
+                <app-checkout-payment-step [stepper]="stepper" [(orderDto)]="orderDto" />
+            </mat-step>
+
+            <!-- Icon overrides. -->
+            <ng-template matStepperIcon="information">
+                <mat-icon>infos</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="delivery">
+                <mat-icon>contact_page</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="payment">
+                <mat-icon>payments</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="confirmation">
+                <mat-icon>check_circle</mat-icon>
+            </ng-template>
+        </mat-stepper>
+    </div>
+    <div class="col-6 border-start">
+        <div class="row">
+            <div class="row text-center">
+                <div class="col"></div>
+                <div class="col">
+                    <app-theme-button title="{{'general.button.order' | translate}}" />
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row text-center">
+                <app-secure-checkout />
+            </div>
+        </div>
+        <div class="row">
+            <app-cart mode="checkout" />
+        </div>
+
+        <div class="row">
+            <div class="row text-center pt-4">
+                <div class="col"></div>
+                <div class="col">
+                    <app-theme-button title="{{'general.button.order' | translate}}" />
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row text-center">
+                <app-secure-checkout />
+            </div>
+        </div>
+
+    </div>

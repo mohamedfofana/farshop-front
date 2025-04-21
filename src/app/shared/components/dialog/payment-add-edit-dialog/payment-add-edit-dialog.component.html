@@ -1,0 +1,96 @@
+<div class="text-center" matDialogTitle>{{'profile.tabs.payment-methods.title'+ suffix() | translate}}</div>
+<div class="row" matDialogContent>
+    <form [formGroup]="paymentForm" class="pt-2" (submit)="submit()" novalidate>
+        @if(hasHttpError()){
+        <app-form-error #formHttpErrorElt />
+        }
+        @if(hasInputError()){
+        <app-form-input-error [errorPrefix]="'profile.tabs.payment-methods.form.input'" [errors]="errors()"
+            #formErrorElt />
+        }
+        <div class="p pb-3">
+            <mat-form-field class="w-100">
+                <mat-label>{{'profile.tabs.payment-methods.form.input.cardName' | translate}}</mat-label>
+                <input id="cardName" matInput [formControl]="cardNameFormControl" />
+                @if (cardNameFormControl.hasError('required')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                 'general.error.validation.required' | translate : { field: 'profile.tabs.payment-methods.form.input.cardName' | translate } " /></mat-error>
+                }
+                @else if (cardNameFormControl.hasError('minlength') || cardNameFormControl.hasError('maxlength')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                 'general.error.validation.invalid' | translate : { field: 'profile.tabs.payment-methods.form.input.cardName' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="p pb-3">
+            <mat-form-field class="w-100">
+                <mat-label>{{'profile.tabs.payment-methods.form.input.cardHolderName' | translate}}</mat-label>
+                <input id="cardHolderName" matInput [formControl]="cardHolderNameFormControl" />
+                @if (cardHolderNameFormControl.hasError('required')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.payment-methods.form.input.cardHolderName' | translate } " /></mat-error>
+                }
+                @else if (cardHolderNameFormControl.hasError('minlength') ||
+                cardHolderNameFormControl.hasError('maxlength')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.payment-methods.form.input.cardHolderName' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="p pb-3">
+            <mat-form-field class="w-100">
+                <mat-label>{{'profile.tabs.payment-methods.form.input.cardNumber' | translate}}</mat-label>
+                <input id="cardNumber" matInput [formControl]="cardNumberFormControl" />
+                @if (cardNumberFormControl.hasError('required')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.payment-methods.form.input.cardNumber' | translate } " /></mat-error>
+                }
+                @else if (cardNumberFormControl.hasError('minlength') || cardNumberFormControl.hasError('maxlength')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.payment-methods.form.input.cardNumber' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="p pb-3 grid gap-0 column-gap-3">
+            <mat-form-field class="g-col-10">
+                <mat-label>{{'profile.tabs.payment-methods.form.input.expiration' | translate}}</mat-label>
+                <input id="expiration" matInput [formControl]="expirationFormControl" [matDatepicker]="picker" required>
+                <mat-datepicker-toggle matIconSuffix [for]="picker" />
+                <mat-datepicker #picker />
+                @if (expirationFormControl.hasError('invalid')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                           'general.error.validation.invalid' | translate : { field: 'profile.tabs.payment-methods.form.input.expiration' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="p-2 g-col-2">
+                <mat-label>{{'profile.tabs.payment-methods.form.input.ccv' | translate}}</mat-label>
+                <input id="ccv" matInput [formControl]="ccvFormControl" />
+                @if (cardNameFormControl.hasError('required')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                   'general.error.validation.required' | translate : { field: 'profile.tabs.payment-methods.form.input.ccv' | translate } " /></mat-error>
+                }
+                @else if (ccvFormControl.hasError('minlength') || ccvFormControl.hasError('maxlength')) {
+                <mat-error><app-mat-input-error
+                        [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.payment-methods.form.input.ccv' | translate } " /></mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <p class="justify-content-end w-100 pe-0" matDialogActions>
+            <button mat-raised-button type="submit">{{'general.button.submit' |
+                translate}}</button>
+            <button mat-button mat-dialog-close>{{'general.button.cancel' |
+                translate}}</button>
+        </p>
+    </form>
+</div>

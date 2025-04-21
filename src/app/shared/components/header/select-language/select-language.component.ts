@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { TranslationService } from '../../../../core/services/translationService/translation.service';
-import { CodeLanguage } from '../../../../core/model/enum/codeLanguage';
+import { TranslationService } from '@core/services/translationService/translation.service';
+import { CodeLanguage } from '@core/model/enum/codeLanguage';
 
 type Language = {
   code: string;

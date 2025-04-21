@@ -1,0 +1,30 @@
+@import "../../../../../../../variables";
+
+.product_details {
+  width: 100%;
+}
+.product_details_title {
+  font-weight: 500px;
+  line-height: 30px;
+}
+.original_price {
+  font-weight: 500;
+  color: #b9b4c7;
+  text-decoration: line-through;
+  line-height: 30px;
+  margin-top: 21px;
+}
+.product_price {
+  display: inline-block;
+  font-size: 24px;
+  color: $app-theme-color;
+  font-weight: 500;
+  line-height: 30px;
+  margin-top: 2px;
+}
+
+@media only screen and (max-width: 991px) {
+  .product_details {
+    margin-top: 71px;
+  }
+}

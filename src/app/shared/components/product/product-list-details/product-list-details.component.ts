@@ -1,14 +1,12 @@
 import { Component, input } from '@angular/core';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
-import { Product } from '../../../../core/model/db/product';
-import { LoaderComponent } from '../../common/loader/loader.component';
+import { Product } from '@core/model/db/product';
 
 @Component({
   selector: 'app-product-list-details',
   standalone: true,
-  imports: [ProductPreviewComponent, LoaderComponent],
+  imports: [ProductPreviewComponent],
   template: `
-    @if (products() && products().length > 0) {
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
       @for (product of products(); track $index) {
       <div class="product-item p-1 mt-4">
@@ -16,10 +14,6 @@ import { LoaderComponent } from '../../common/loader/loader.component';
       </div>
       }
     </div>
-
-    }@else {
-    <app-loader />
-    }
   `,
   styleUrl: './product-list-details.component.scss',
 })

@@ -1,0 +1,81 @@
+<div class="pt-3">
+  @if (!isLoading()) {
+  <div class="row p-1">
+    <form [formGroup]="profileForm" class="profileForm">
+      @if(hasInputError()){
+      <app-form-input-error [errorPrefix]="'profile.tabs.personal-info.form.input'" [errors]="errors()" />
+      }
+      <div class="p pb-3">
+        <mat-form-field class="w-100">
+          <mat-label>{{'profile.tabs.personal-info.form.input.firstname' | translate}}</mat-label>
+          <input id="firstname" type="text" matInput [formControl]="firstnameFormControl" required>
+          @if (firstnameFormControl.hasError('required')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                       'general.error.validation.required' | translate : { field: 'profile.tabs.personal-info.form.input.firstname' | translate } " /></mat-error>
+          }
+          @else if (firstnameFormControl.hasError('minlength') || firstnameFormControl.hasError('maxlength') ||
+          firstnameFormControl.hasError('invalid')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                       'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.firstname' | translate } " /></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="p pb-3">
+        <mat-form-field class="w-100">
+          <mat-label>{{'profile.tabs.personal-info.form.input.lastname' | translate}}</mat-label>
+          <input id="lastname" matInput [formControl]="lastnameFormControl" required>
+          @if (lastnameFormControl.hasError('required')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                       'general.error.validation.required' | translate : { field: 'profile.tabs.personal-info.form.input.lastname' | translate } " /></mat-error>
+          }
+          @else if (lastnameFormControl.hasError('minlength') || lastnameFormControl.hasError('maxlength') ||
+          lastnameFormControl.hasError('invalid')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                       'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.lastname' | translate } " /></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="p pb-3">
+        <mat-form-field class="w-100">
+          <mat-label>{{'profile.tabs.personal-info.form.input.phonenumber' | translate}}</mat-label>
+          <input id="phonenumber" [maxlength]="MAX_LENGTH_PHONENUMBER" matInput [formControl]="phonenumberFormControl">
+          <!-- Errors names ares min and max if values are on the input -->
+          <!-- This case handle non mandatory field -->
+          @if (phonenumberFormControl.hasError('minlength') ||
+          lastnameFormControl.hasError('invalid')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                   'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.phonenumber' | translate } " /></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="p pb-3">
+        <mat-form-field class="w-100">
+          <mat-label>{{'profile.tabs.personal-info.form.input.email' | translate}}</mat-label>
+          <input id="lastname" matInput [formControl]="emailFormControl" required>
+          @if (emailFormControl.hasError('required')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                       'general.error.validation.required' | translate : { field: 'profile.tabs.personal-info.form.input.email' | translate } " /></mat-error>
+          }
+          @else if (emailFormControl.hasError('minlength') || emailFormControl.hasError('maxlength') ||
+          emailFormControl.hasError('invalid')) {
+          <mat-error><app-mat-input-error
+              [inputError]="
+                       'general.error.validation.invalid' | translate : { field: 'profile.tabs.personal-info.form.input.email' | translate } " /></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button mat-flat-button (click)="next()">{{'general.button.next' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  }@else {
+  <app-loader />
+  }
+</div>

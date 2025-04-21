@@ -1,0 +1,32 @@
+<div class="alert alert-danger" role="alert" #formError>
+    <i class="bi bi-exclamation-circle-fill fs-5 pe-1 text-danger"></i>
+    @if (errors().length === 1) {
+
+
+    <span class="text-dark">{{'general.error.validation.single' | translate}}</span>
+    }@else {
+    <span class="text-dark">{{'general.error.validation.plural' | translate}}</span>
+    }
+    <ul class="list-group list-group-flush ">
+        @if (errors().length === 1) {
+        <li class="list-group-item list-group-item-danger ps-4 border-0"> <i class="bi bi-dot"></i>
+            <a class="cursor-hand link-underline-danger" routerLink="." [fragment]="errors()[0].control"
+                skipLocationChange>
+                <span class="ps-1 text-danger">{{'general.error.validation.'+ errors()[0].error |
+                    translate : { field: errorPrefix() + '.' + errors()[0].control | translate } }}</span>
+            </a>
+        </li>
+        }
+        @else {
+        @for (error of errors(); track $index) {
+        <li class="list-group-item list-group-item-danger ps-4 border-0"> <i class="bi bi-dot"></i>
+            <a class="cursor-hand link-underline-danger" routerLink="." [fragment]="error.control" skipLocationChange>
+                <span class="ps-1 text-danger">{{'general.error.validation.'+ error.error |
+                    translate : { field: errorPrefix() + '.' + error.control | translate } }}</span>
+            </a>
+        </li>
+        }
+        }
+
+    </ul>
+</div>

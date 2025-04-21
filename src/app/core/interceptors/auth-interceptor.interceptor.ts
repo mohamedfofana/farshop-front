@@ -4,7 +4,8 @@ import { SsrCookieService } from 'ngx-cookie-service-ssr';
 
 export const authInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const cookieService = inject(SsrCookieService);
-  if (req.url.includes('/wl/')) {
+
+  if (req.url.includes('/public/')) {
     return next(req);
   }
 

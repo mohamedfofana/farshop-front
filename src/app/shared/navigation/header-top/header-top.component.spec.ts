@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderTopComponent } from './header-top.component';
 import { TranslateService } from '@ngx-translate/core';
 import { translateServiceStub } from '../../../../tests/stubs/translateServiceStub';
-import { TranslationService } from '../../../core/services/translationService/translation.service';
+import { TranslationService } from '@core/services/translationService/translation.service';
 import { translationServiceStub } from '../../../../tests/stubs/translationServiceStub';
 import { provideRouter } from '@angular/router';
 import { By } from '@angular/platform-browser';
-import { CodeLanguage } from '../../../core/model/enum/codeLanguage';
+import { CodeLanguage } from '@core/model/enum/codeLanguage';
 import { DebugElement } from '@angular/core';
 
 describe('HeaderTopComponent', () => {

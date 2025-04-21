@@ -2,7 +2,7 @@
   <div class="address-action-buttons">
     <button mat-button (click)="accordion.openAll()">{{'general.label.profile.expand-all' | translate}}</button>
     <button mat-button (click)="accordion.closeAll()">{{'general.label.profile.collapse-all' | translate}}</button>
-    <button mat-mini-fab color="accent" class="ms-2" (click)="addNewAdress()">
+    <button mat-mini-fab color="accent" class="ms-2" (click)="addAdress()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -16,7 +16,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-address-list [addresses]="(residentialAddresses$ | async) || [] "
-        (reloadData)="reloadData()"></app-address-list>
+        (reloadData)="reloadData()"/>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -28,7 +28,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <app-address-list [addresses]="(deliveryAddresses$ | async) || [] "
-        (reloadData)="reloadData()"></app-address-list>
+        (reloadData)="reloadData()"/>
     </mat-expansion-panel>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -38,7 +38,7 @@
           <mat-icon>payments</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-address-list [addresses]="(billingAddresses$ | async) || [] " (reloadData)="reloadData()"></app-address-list>
+      <app-address-list [addresses]="(billingAddresses$ | async) || [] " (reloadData)="reloadData()"/>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

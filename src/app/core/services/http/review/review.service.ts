@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Review } from '../../../model/db/review';
@@ -9,7 +9,7 @@ import { Review } from '../../../model/db/review';
 })
 export class ReviewService {
   private httpClient = inject(HttpClient);
-  private reviewUrl = environment.API_WHITE_LIST_ENDPOINT + '/review';
+  private reviewUrl = environment.API_PUBLIC_ENDPOINT + '/review';
 
   findAllByProduct(idProduct: number): Observable<Review[]> {
     const endpoint = this.reviewUrl.concat('/findAllByProduct');

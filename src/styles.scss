@@ -92,6 +92,10 @@ a:hover {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
 }
+
+.fs-7 {
+  font-size: 0.7rem !important;
+}
 /*********************************
 Header
 *********************************/
@@ -191,6 +195,31 @@ Language
 .language_selection li:last-child a {
   border-bottom: none;
 }
+/*********************************
+Product preview
+*********************************/
+.product-card {
+  background: white;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-image {
+  padding: 0;
+  object-fit: cover;
+}
+
+.discount-badge {
+  background: #dcfce7;
+  color: #166534;
+  font-size: 0.875rem;
+  padding: 0.02rem 0.02rem;
+  border-radius: 6px;
+}
 
 /*********************************
 Account
@@ -283,6 +312,11 @@ Account
 .yellow_button {
   background: $app-button-color-yellow;
 }
+
+.green_button {
+  background: $app-button-color-green;
+}
+
 .input_border {
   border: solid 0.05em #797373;
 }

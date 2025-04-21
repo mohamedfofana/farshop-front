@@ -1,0 +1,23 @@
+<div class="pt-3">
+    @if (!isLoading()) {
+    @if(hasInputError()){
+    <app-form-input-error [errorPrefix]="'checkout.step.addresses.error'" [errors]="errors()" />
+    }
+    <section>
+        <h5>{{'checkout.step.addresses.delivery.badge-title' | translate}}</h5>
+        <app-address-selector [addresses]="addresses()" [(selectedAddress)]="selectedDeliveryAddress"
+            [title]="'checkout.step.addresses.delivery.title' | translate" />
+    </section>
+    <section>
+        <h5>{{'checkout.step.addresses.billing.badge-title' | translate}}</h5>
+        <app-address-selector [addresses]="addresses()" [(selectedAddress)]="selectedBillingAddress"
+            [title]="'checkout.step.addresses.billing.title' | translate" />
+        <div class="d-flex flex-row justify-content-end">
+            <button mat-stroked-button (click)="back()">{{'general.button.back' | translate}}</button>
+            <button mat-flat-button (click)="next()" class="ms-2">{{'general.button.next' | translate}}</button>
+        </div>
+    </section>
+    }@else {
+    <app-loader />
+    }
+</div>

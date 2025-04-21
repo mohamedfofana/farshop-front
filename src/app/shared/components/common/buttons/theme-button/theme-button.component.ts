@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-theme-button',
@@ -9,6 +9,7 @@ import { Component, input } from '@angular/core';
         type="button"
         class="custom_button theme-button trans_300 w-100 {{ buttonColor() }}"
         value="Submit"
+        (click)="onClick()"
       >
         {{ title() }}
       </button>
@@ -17,13 +18,18 @@ import { Component, input } from '@angular/core';
   styles: `
   .theme-button {
   border: none;
-  color: #0f1111;
+  color: #ffffff;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   cursor: pointer;
 }`,
 })
 export class ThemeButtonComponent {
-  title = input<string>('Submit');
+  title = input.required<string>();
   buttonColor = input<string>('theme_bg_color');
+  click = output();
+
+  onClick(){
+    this.click.emit();
+  }
 }

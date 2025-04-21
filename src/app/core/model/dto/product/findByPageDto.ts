@@ -5,6 +5,6 @@ export interface FindByPageDto {
   sortDirection: string;
   priceMin: number;
   priceMax: number;
-  categoryId: number;
+  categoryId?: number;
   searchText?: string;
 }

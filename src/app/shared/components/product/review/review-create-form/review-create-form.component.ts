@@ -29,7 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
           ></textarea>
         </div>
         <div class="text-left text-sm-right">
-          <app-theme-button />
+          <app-theme-button title="{{ 'general.button.submit' | translate }}" />
         </div>
       </form>
     </div>

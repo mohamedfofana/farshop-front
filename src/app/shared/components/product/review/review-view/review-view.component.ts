@@ -2,7 +2,7 @@ import { Component, computed, input } from '@angular/core';
 import moment from 'moment';
 import { LikeDislikeButtonComponent } from '../../../like-dislike-button/like-dislike-button.component';
 import { StarRatingComponent } from '../../../common/star-rating/star-rating.component';
-import { Review } from '../../../../../core/model/db/review';
+import { Review } from '@core/model/db/review';
 
 @Component({
   selector: 'app-review-view',

@@ -1,0 +1,10 @@
+<fieldset class="pt-2 d-flex flex-column flex-sm-row align-items-sm-center">
+  <span class="me-4">{{ 'product.section.color.title' | translate }}</span>
+  @for (color of colors(); track $index) {
+  <div class="button-group">
+    <input type="radio" id="id_{{ color.code }}" name="frameworks" [checked]="color.code === selectedColor()?.code"
+      (click)="changeColor(color)" />
+    <label for="id_{{ color.code }}" [ngStyle]="{ background: color.code }"></label>
+  </div>
+  }
+</fieldset>

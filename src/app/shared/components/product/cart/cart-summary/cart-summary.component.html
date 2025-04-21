@@ -1,0 +1,27 @@
+<div class="summary-card p-4 shadow-sm">
+    <h5 class="mb-4">{{'product.cart.summary.title' | translate}}</h5>
+
+    <div class="d-flex justify-content-between mb-3">
+        <span class="text-muted">{{'product.cart.summary.subtotal' | translate}}</span>
+        <span>{{totalAmountToPay() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <span class="text-muted">{{'product.cart.summary.discount' | translate}}</span>
+        <span class="text-success">-{{totalSaved() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <span class="text-muted">{{'product.cart.summary.shipping' | translate}}</span>
+        <span>{{shippingAmount() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between mb-4">
+        <span class="fw-bold">{{'product.cart.summary.total' | translate}}</span>
+        <span class="fw-bold">{{totalAmount() | currency : 'CAD' : 'symbol-narrow' : '1.2-2'}}</span>
+    </div>
+
+    @if (mode() === 'cart') {
+    <app-theme-button title="{{'general.button.checkout' | translate}}" (click)="checkout()" />
+    <app-secure-checkout />
+    }
+
+</div>

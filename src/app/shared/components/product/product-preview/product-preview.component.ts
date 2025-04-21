@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  effect,
   HostListener,
   inject,
   input,
@@ -16,10 +17,10 @@ import { Router } from '@angular/router';
 import { ProductPriceViewComponent } from '../product-price-rating/product-price-view.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { EmptyImageComponent } from '../../common/empty-image/empty-image.component';
-import { ROUTE_PATH } from '../../../../core/config/routes/routesConfig';
+import { ROUTE_PATH } from '@core/config/routes/routesConfig';
 import { QuantityInputComponent } from '../quantity-input/quantity-input.component';
-import { StorageService } from '../../../../core/services/storage/storage.service';
-import { Product } from '../../../../core/model/db/product';
+import { StorageService } from '@core/services/storage/storage.service';
+import { Product } from '@core/model/db/product';
 import { StarRatingReviewComponent } from '../star-rating-review/star-rating-review.component';
 
 @Component({
@@ -50,6 +51,34 @@ export class ProductPreviewComponent implements OnChanges {
   fieldList = ['Price', 'Rate', 'Name'];
   sortByField = signal('');
   showAddToCartButton: boolean = false;
+  cartProducts = computed(() => this.storageService.cartProducts());
+  cartProductCount = computed(() => this.storageService.cartProductCount());
+
+  constructor() {
+    effect(
+      () => {
+        // reset quantity when cart is empty
+        if (this.cartProductCount() === 0) {
+          this.quantity.set(0);
+          return;
+        }
+
+        if (this.product() && this.storageService.getCartProductCount()) {
+          const cartProduct = this.cartProducts().find(
+            (p) => p.id === this.product().id
+          );
+
+          if (!cartProduct) {
+            // reset quantity product is not in cart no more
+            this.quantity.set(0);
+            return;
+          }
+          this.quantity.set(cartProduct!.quantity);
+        }
+      },
+      { allowSignalWrites: true }
+    );
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.initializeQuantity();
@@ -84,7 +113,15 @@ export class ProductPreviewComponent implements OnChanges {
 
   initializeInCart() {
     this.quantity.set(1);
-    this.storageService.addSingleProduct(this.product().id);
+
+    const cartProductDto = this.storageService.updateProductDetails(
+      this.product(),
+      {
+        id: this.product().id,
+        quantity: 1,
+      }
+    );
+    this.storageService.addProduct(cartProductDto);
   }
 
   showDetail(id: number) {

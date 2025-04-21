@@ -79,22 +79,44 @@
       },
       "search": {
         "result": "Search results for:"
+      },
+      "review": {
+        "rating": {
+          "no-review-yet": "No review yet",
+          "reviews-count-label": "reviews"
+        },
+        "form": {
+          "title": "Add Review",
+          "rating": "Your Rating:",
+          "placeholder": "Your review ..."
+        }
       }
     },
-    "review": {
-      "rating": {
-        "no-review-yet": "No review yet",
-        "reviews-count-label": "reviews"
-      },
-      "form": {
-        "title": "Add Review",
-        "rating": "Your Rating:",
-        "placeholder": "Your review ..."
+
+    "cart": {
+      "title": "Shopping cart",
+      "summary": {
+        "title": "Order summary",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "shipping": "Shipping",
+        "total": "Total"
       }
     }
   },
   "profile": {
     "tabs": {
+      "orders": {
+        "title": "My orders",
+        "cancel": {
+          "success": "Your order was canceled.",
+          "error": "An error occurred while processing. Please try again later."
+        },
+        "return": {
+          "success": "Your return has been registered.",
+          "error": "An error occurred while processing. Please try again later."
+        }
+      },
       "personal-info": {
         "title": "Personal information",
         "form": {
@@ -102,7 +124,8 @@
             "firstname": "Firstname",
             "lastname": "Lastname",
             "birthdate": "Date of Birth",
-            "email": "Email"
+            "email": "Email",
+            "phonenumber": "Phone number"
           },
           "success": "Profile information is updated!"
         }
@@ -110,7 +133,7 @@
       "address": {
         "title": "Addresses",
         "title-update": "Change the address",
-        "title-add": "Add new address",
+        "title-add": "Add a new address",
         "form": {
           "input": {
             "name": "Name",
@@ -118,7 +141,7 @@
             "addressLine2": "Additional info",
             "state": "Province or State",
             "city": "City",
-            "postal-code": "Postal code",
+            "postalCode": "Postal code",
             "country": "Country",
             "type": "Type"
           },
@@ -127,7 +150,7 @@
             "delivery": "Delivery",
             "billing": "Billing"
           },
-          "suuccessful": {
+          "successful": {
             "update": "Address was changed!",
             "add": "Address was saved!",
             "delete": "Address was deleted!"
@@ -139,12 +162,43 @@
       }
     }
   },
+  "checkout": {
+    "step": {
+      "contact": {
+        "badge-title": "Personal informations"
+      },
+      "addresses": {
+        "delivery": {
+          "title": "Choose a delivery address",
+          "badge-title": "Delivery Address"
+        },
+        "billing": {
+          "title": "Choose a billing address",
+          "badge-title": "Billing Address"
+        },
+        "error": {
+          "delivery": "Delivery Address",
+          "billing": "Billing Address"
+        }
+      },
+      "payment": {
+        "error": {
+          "delivery": "Delivery Address",
+          "billing": "Billing Address",
+          "informations": "Personnal information",
+          "payment": "The payment ended with errors. Please try later."
+        },
+        "success": "Paiement ended successfuly!"
+      }
+    }
+  },
   "general": {
     "label": {
       "profile": {
         "expand-all": "Expand All",
         "collapse-all": "Collapse All"
-      }
+      },
+      "secure-checkout": "Secure checkout"
     },
     "form": {
       "error": "An error occurred while processing. Please try again later."
@@ -157,19 +211,31 @@
     },
     "dialog": {
       "message": {
-        "remove": "Are you sure you want to delete this adress?"
+        "remove-address": "Are you sure you want to delete this adress?",
+        "order": {
+          "return-order": "Are you sure you want to return this order?",
+          "cancel-order": "Are you sure you want to cancel this order?"
+        }
       },
       "confirm": "Confirm"
     },
     "button": {
+      "order": "Order",
+      "add-to-cart": "Add to cart",
       "submit": "Submit",
       "continue": "Next",
+      "invoice": "Invoice",
       "cancel": "Cancel",
+      "cancel-order": "Cancel order",
       "delete": "Delete",
+      "return-order": "Return order",
       "signin": "Sign in",
       "register": "Sign up",
-      "buy-now": "Checkout",
-      "checkout": "Buy now"
+      "buy-now": "Buy now",
+      "checkout": "Proceed to checkout",
+      "payment": "Proceed to payment",
+      "next": "Next",
+      "back": "Back"
     },
     "sort": {
       "title": "Sort by",
@@ -192,7 +258,7 @@
     },
     "error": {
       "validation": {
-        "title": "The following errors were found:",
+        "plural": "The following errors were found:",
         "single": "The following error was found:",
         "required": "{{field}} is required",
         "invalid": "{{field}} is invalid",

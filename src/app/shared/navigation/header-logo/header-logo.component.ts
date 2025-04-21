@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ROUTE_PATH } from '../../../core/config/routes/routesConfig';
+import { ROUTE_PATH } from '@core/config/routes/routesConfig';
 
 @Component({
   selector: 'app-header-logo',

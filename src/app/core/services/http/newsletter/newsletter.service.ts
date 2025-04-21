@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NewsletterService {
   private httpClient = inject(HttpClient);
-  private productUrl = environment.API_WHITE_LIST_ENDPOINT + '/newsletter';
+  private productUrl = environment.API_PUBLIC_ENDPOINT + '/newsletter';
 
   subscribe(email: string) {
     const endpoint = this.productUrl.concat('/subscribe');

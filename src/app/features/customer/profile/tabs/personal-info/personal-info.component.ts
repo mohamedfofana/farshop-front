@@ -12,25 +12,26 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import moment from 'moment';
-import { Customer } from '../../../../../core/model/db/customer';
-import { CustomerService } from '../../../../../core/services/http/customer/customer.service';
-import { AbstractOnDestroy } from '../../../../../core/directives/unsubscriber/abstract.ondestroy';
+import { Customer } from '@core/model/db/customer';
+import { CustomerService } from '@core/services/http/customer/customer.service';
+import { AbstractOnDestroy } from '@core/directives/unsubscriber/abstract.ondestroy';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   ControlError,
   UtilsService,
-} from '../../../../../core/services/utils/utils/utils.service';
-import { emailInputValidator } from '../../../../../core/validators/emailInputValidator';
+} from '@core/services/utils/utils/utils.service';
+import { emailInputValidator } from '@core/validators/emailInputValidator';
 import { catchError } from 'rxjs';
-import { HttpErrorHandlerService } from '../../../../../core/services/http/httpErrorHandler/http-error-handler.service';
-import { FormErrorComponent } from '../../../../../shared/components/common/form-error/form-error.component';
-import { FormInputErrorComponent } from '../../../../../shared/components/common/form-input-error/form-input-error.component';
-import { MatInputErrorComponent } from '../../../../../shared/components/common/form/mat-input-error/mat-input-error.component';
-import { birthdateValidator } from '../../../../../core/validators/birthdateValidator';
-import { nameInputPatternValidator } from '../../../../../core/validators/nameInputPatternValidator';
-import { CustomerUpdateDto } from '../../../../../core/model/dto/customer/customerUpdateDto';
-import { FormSuccessComponent } from '../../../../../shared/components/common/form-success/form-success.component';
-import { Constants } from '../../../../../core/model/enum/constants';
+import { HttpErrorHandlerService } from '@core/services/http/httpErrorHandler/http-error-handler.service';
+import { birthdateValidator } from '@core/validators/birthdateValidator';
+import { nameInputPatternValidator } from '@core/validators/nameInputPatternValidator';
+import { CustomerUpdateDto } from '@core/model/dto/customer/customerUpdateDto';
+import { Constants } from '@core/model/enum/constants';
+import { FormErrorComponent } from '@shared/components/common/form/form-error/form-error.component';
+import { FormInputErrorComponent } from '@shared/components/common/form/form-input-error/form-input-error.component';
+import { MatInputErrorComponent } from '@shared/components/common/form/mat-input-error/mat-input-error.component';
+import { FormSuccessComponent } from '@shared/components/common/form/form-success/form-success.component';
+import { phonenumberInputPatternValidator } from '@app/core/validators/phonenumberInputPatternValidator';
 
 @Component({
   selector: 'app-personal-info',
@@ -58,9 +59,10 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
   private readonly customerService = inject(CustomerService);
   private readonly httpErrorHandlerService = inject(HttpErrorHandlerService);
   private readonly utilsService = inject(UtilsService);
-  readonly startDate = new Date(1925, 0, 1);
 
   profileForm!: FormGroup;
+  readonly MIN_LENGTH_PHONENUMBER: number = 10;
+  readonly MAX_LENGTH_PHONENUMBER: number = 10;
   readonly MIN_LENGTH_NAME: number = 2;
   readonly MAX_LENGTH_NAME: number = 50;
   firstnameFormControl = new FormControl('', [
@@ -80,6 +82,9 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
     Validators.required,
     emailInputValidator,
   ]);
+  phonenumberFormControl = new FormControl<string>('', [
+    Validators.minLength(this.MIN_LENGTH_PHONENUMBER),
+  ]);
 
   sumbitSuccessful = signal<boolean>(false);
   hasInputError = signal<boolean>(false);
@@ -97,6 +102,7 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
       lastname: this.lastnameFormControl,
       birthdate: this.birthdateFormControl,
       email: this.emailFormControl,
+      phonenumber: this.phonenumberFormControl,
     });
   }
 
@@ -107,6 +113,9 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
     this.lastnameFormControl.setValue(this.customer().lastname);
     this.birthdateFormControl.setValue(birthdate);
     this.emailFormControl.setValue(this.customer().email);
+    if (this.customer().phoneNumber) {
+      this.phonenumberFormControl.setValue(this.customer().phoneNumber!);
+    }
   }
 
   submit(): void {
@@ -117,9 +126,30 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
       let customerDto: CustomerUpdateDto = {
         firstname: this.firstnameFormControl.value!,
         lastname: this.lastnameFormControl.value!,
-        birthdate: moment(this.birthdateFormControl.value).format('YYYY-MM-DD'),
+        birthdate: moment(this.birthdateFormControl.value).format(
+          Constants.DATE_FORMAT
+        ),
         email: this.emailFormControl.value!,
       };
+      const phonenumber = this.phonenumberFormControl.value;
+      if (phonenumber && phonenumber !== '') {
+        this.phonenumberFormControl.addValidators(
+          phonenumberInputPatternValidator
+        );
+        this.phonenumberFormControl.updateValueAndValidity();
+        if (this.phonenumberFormControl.valid) {
+          customerDto = {
+            ...customerDto,
+            phonenumber: phonenumber,
+          };
+        } else {
+          this.handleInputError();
+          this.phonenumberFormControl.removeValidators(
+            phonenumberInputPatternValidator
+          );
+          return;
+        }
+      }
 
       const subSend = this.customerService
         .update(customerDto)
@@ -134,11 +164,13 @@ export class PersonalInfoComponent extends AbstractOnDestroy implements OnInit {
         });
       this.subscriptions.push(subSend);
     } else {
-      this.hasInputError.set(true);
-
-      this.errors.set(
-        this.utilsService.getErrosFromFormGroup(this.profileForm)
-      );
+      this.handleInputError();
     }
+  }
+
+  private handleInputError() {
+    this.hasInputError.set(true);
+
+    this.errors.set(this.utilsService.getErrosFromFormGroup(this.profileForm));
   }
 }

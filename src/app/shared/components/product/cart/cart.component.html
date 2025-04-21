@@ -1,0 +1,25 @@
+<div class="cart-wrapper shadow-lg">
+    <button type="button" class="btn-close position-absolute top-0 end-0" aria-label="Close"
+        (click)="closeCart()"></button>
+    <div class="container">
+        <div class="row g-4">
+            <div [ngClass]="{ 'col-lg-8': mode() === 'cart' }">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="mb-0">{{'product.cart.title' | translate}}</h4>
+                </div>
+                <div class="d-flex flex-column gap-3">
+                    @defer () {
+                    @for (cartProduct of cartProducts(); track $index) {
+                    <app-cart-product [cartProduct]="cartProduct" (refreshCart)="refreshCart()" />
+                    }
+                    }@loading {
+                    <app-loader />
+                    }
+                </div>
+            </div>
+            <div [ngClass]="mode() === 'cart'? 'col-lg-4': 'pt-2'">
+                <app-cart-summary [mode]="mode()" (closeCart)="closeCart()" />
+            </div>
+        </div>
+    </div>
+</div>

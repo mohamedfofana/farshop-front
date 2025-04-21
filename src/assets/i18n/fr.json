@@ -90,10 +90,31 @@
           "placeholder": "Votre revue ..."
         }
       }
+    },
+    "cart": {
+      "title": "Mon Panier",
+      "summary": {
+        "title": "Sommaire",
+        "subtotal": "Sous total",
+        "discount": "Réduction",
+        "shipping": "Livraison",
+        "total": "Total"
+      }
     }
   },
   "profile": {
     "tabs": {
+      "orders": {
+        "title": "Mes commandes",
+        "cancel-order": {
+          "success": "Votre commande a été annulée",
+          "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
+        },
+        "return-order": {
+          "success": "Votre demande de retour est enregistrée.",
+          "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
+        }
+      },
       "personal-info": {
         "title": "Informations personnelles",
         "form": {
@@ -101,7 +122,8 @@
             "firstname": "Prénom",
             "lastname": "Nom",
             "birthdate": "Date de naissance",
-            "email": "Courriel"
+            "email": "Courriel",
+            "phonenumber": "Numéro de téléphone"
           },
           "success": "Votre profil a été mis à jour!"
         }
@@ -117,7 +139,7 @@
             "addressLine2": "Complément",
             "state": "Province ou État",
             "city": "Ville",
-            "postal-code": "Code postal",
+            "postalCode": "Code postal",
             "country": "Pays",
             "type": "Type"
           },
@@ -138,12 +160,43 @@
       }
     }
   },
+  "checkout": {
+    "step": {
+      "contact": {
+        "badge-title": "Informations personnelles"
+      },
+      "addresses": {
+        "delivery": {
+          "title": "Choisir une adresse de livraison",
+          "badge-title": "Adresse de livraison"
+        },
+        "billing": {
+          "title": "Choisir une adresse de facturation",
+          "badge-title": "Adresse de facturation"
+        },
+        "error": {
+          "delivery": "Addresse de livraison",
+          "billing": "Addresse de facturation"
+        }
+      },
+      "payment": {
+        "error": {
+          "delivery": "Addresse de livraison",
+          "billing": "Addresse de facturation",
+          "informations": "Contact",
+          "payment": "Le paiement n'a pas abouti. Veuillez reessayer plus tard."
+        },
+        "success": "Paiement effectué avec succès"
+      }
+    }
+  },
   "general": {
     "label": {
       "profile": {
         "expand-all": "Tout afficher",
         "collapse-all": "Tout cacher"
-      }
+      },
+      "secure-checkout": "Paiement sécurisé"
     },
     "form": {
       "error": "Une erreur est survenue lors du traitement. Veuillez reessayer plus tard"
@@ -156,19 +209,31 @@
     },
     "dialog": {
       "message": {
-        "remove": "Voulez-vous supprimer cette adresse?"
+        "remove-address": "Voulez-vous supprimer cette adresse?",
+        "order": {
+          "return-order": "Voulez-vous supprimer retourner la commande?",
+          "cancel-order": "Voulez-vous supprimer annuler la commande?"
+        }
       },
       "confirm": "Confirmation"
     },
     "button": {
+      "order": "Commander",
+      "add-to-cart": "Ajouter au panier",
       "submit": "Soumettre",
       "continue": "Continuer",
+      "invoice": "Facture",
       "cancel": "Annuler",
+      "cancel-order": "Annuler la commande",
       "delete": "Supprimer",
+      "return-order": "Retourner la commande",
       "signin": "Connexion",
       "register": "S'incscrire",
       "buy-now": "Achetez maintenant",
-      "checkout": "Passer la commande"
+      "checkout": "Passer au panier",
+      "payment": "Passer la commande",
+      "next": "Suivant",
+      "back": "Retour"
     },
     "sort": {
       "title": "Trier par",
@@ -191,7 +256,7 @@
     },
     "error": {
       "validation": {
-        "title": "Les erreurs suivantes ont été detéctés:",
+        "plural": "Les erreurs suivantes ont été detéctés:",
         "single": "Une erreur a été détecté sur le champ suivant:",
         "required": "{{field}} est obligatoire",
         "invalid": "{{field}} est invalide",

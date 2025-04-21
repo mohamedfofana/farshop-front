@@ -1,0 +1,19 @@
+<div class="row p-1 pb-4">
+    <div>
+        <form class="delivery-form">
+            <mat-form-field class="w-100 pb-1">
+                <mat-label>{{title()}}</mat-label>
+                <input type="text" matInput [formControl]="addressFormControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                    (optionSelected)="addressSelected()">
+                    @for (address of filteredAddresses | async ; track address) {
+                    <mat-option [value]="address">{{address.inline}}</mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
+    @if (showSelectedAddress) {
+    <app-address-preview [address]="selectedAddress()" />
+    }
+</div>

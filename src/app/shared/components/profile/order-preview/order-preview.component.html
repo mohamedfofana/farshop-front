@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="d-style btn w-100 my-2 py-3 pt-3 shadow-lg border-2">
+        <div class="row ">
+            <app-order-progress [status]="order().status" />
+        </div>
+        <div class="row pt-3">
+            <div class="col-12 col-md-2 text-start">
+                <h6 class="text-decoration-underline">
+                    Num #: {{order().invoice.invoiceNumber}}
+                </h6>
+                <div>
+                    <span class="app-theme-color fw-bold">
+                        {{ order().amount | currency : 'CAD' : 'symbol-narrow' : '1.2-2' }}
+                    </span>
+                </div>
+                <div>
+                    <span>{{order().createdAt | date: 'mediumDate'}}</span>
+                </div>
+                <div>
+                    <span class="badge fs-6" [class]="badgeStatusType()">{{order().status}}</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 text-align-center">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        @for (orderProduct of order().orderProducts; track $index) {
+                        <app-order-product [orderProduct]="orderProduct" />
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-2 text-center">
+                <ul class="ps-0">
+                    <li>
+                        <button class="mb-2 w-100" mat-flat-button
+                            (click)="downloadInvoice()">{{'general.button.invoice' |
+                            translate}}</button>
+                    </li>
+                    <li>
+                        <button class="mb-2 w-100" mat-flat-button (click)="return()"
+                            [disabled]="!canBeReturned()">{{'general.button.return-order' |
+                            translate}}</button>
+                    </li>
+                    <li>
+                        <button class="mb-2 w-100" mat-flat-button (click)="cancel()"
+                            [disabled]="!canBeCancelled()">{{'general.button.cancel-order' |
+                            translate}}</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
