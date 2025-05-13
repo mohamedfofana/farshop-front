@@ -107,6 +107,7 @@
   "profile": {
     "tabs": {
       "orders": {
+        "no-data-yet": "You don't have any order yet",
         "title": "My orders",
         "cancel": {
           "success": "Your order was canceled.",

@@ -29,6 +29,7 @@ import { SelectSortProductsComponent } from '@shared/components/product/select-s
 import { SelectSortCategoryComponent } from '@shared/components/product/select-sort-category/select-sort-category.component';
 import { ProductListDetailsComponent } from '@shared/components/product/product-list-details/product-list-details.component';
 import { LoaderComponent } from '../../../shared/components/common/loader/loader.component';
+import { NoDataFoundComponent } from '../../no-data-found/no-data-found.component';
 
 @Component({
   selector: 'app-product-list',
@@ -45,6 +46,7 @@ import { LoaderComponent } from '../../../shared/components/common/loader/loader
     SelectSortCategoryComponent,
     ProductListDetailsComponent,
     LoaderComponent,
+    NoDataFoundComponent,
   ],
   templateUrl: './product-list.component.html',
 })
@@ -96,7 +98,7 @@ export class ProductListComponent extends AbstractOnDestroy implements OnInit {
         priceMax: this.priceMax(),
       };
 
-      if (this.categoryId() === PAGINATION_DEFAULT.categoryId) {
+      if (this.categoryId() !== PAGINATION_DEFAULT.categoryId) {
         findByPageDto = {
           ...findByPageDto,
           categoryId: this.categoryId(),

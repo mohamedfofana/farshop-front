@@ -23,6 +23,7 @@ import { PriceRangeComponent } from '@shared/components/common/price-range/price
 import { SelectSortProductsComponent } from '@shared/components/product/select-sort-products/select-sort-products.component';
 import { SelectSortCategoryComponent } from '@shared/components/product/select-sort-category/select-sort-category.component';
 import { ProductListDetailsComponent } from '@shared/components/product/product-list-details/product-list-details.component';
+import { NoDataFoundComponent } from '../../no-data-found/no-data-found.component';
 
 @Component({
   selector: 'app-product-search-result',
@@ -35,6 +36,7 @@ import { ProductListDetailsComponent } from '@shared/components/product/product-
     SelectSortCategoryComponent,
     ProductListDetailsComponent,
     TranslateModule,
+    NoDataFoundComponent,
   ],
   templateUrl: './product-search-result.component.html',
   styles: ``,

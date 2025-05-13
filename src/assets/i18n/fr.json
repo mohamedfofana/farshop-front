@@ -192,6 +192,7 @@
   },
   "general": {
     "label": {
+      "no-data-yet": "Vous n'avez pas encore de {{feature}}",
       "profile": {
         "expand-all": "Tout afficher",
         "collapse-all": "Tout cacher"

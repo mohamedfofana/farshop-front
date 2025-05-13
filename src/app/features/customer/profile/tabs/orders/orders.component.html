@@ -1,3 +1,12 @@
-@for (order of orders$ | async; track $index) {
-<app-order-preview [order]="order" />
-}
+<ng-container *ngIf="orders$ | async as orders">
+    <ng-container *ngIf="orders.length; else noOrders">
+        <ng-container *ngFor="let order of orders; let i = index">
+            <app-order-preview [order]="order"></app-order-preview>
+        </ng-container>
+    </ng-container>
+
+    <ng-template #noOrders>
+        <p class="text-center">{{ 'profile.tabs.orders.no-data-yet'
+            | translate }}</p>
+    </ng-template>
+</ng-container>

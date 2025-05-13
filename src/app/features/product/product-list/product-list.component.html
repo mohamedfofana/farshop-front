@@ -16,6 +16,8 @@
   </div>
   @if (products() && products().length > 0) {
   <app-product-list-details [products]="products()" />
+  }@else if (products() && products().length == 0) {
+  <app-no-data-found />
   }@else {
   <app-loader />
   }
