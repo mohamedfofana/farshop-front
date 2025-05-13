@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { TranslationService } from '@core/services/translationService/translation.service';
-import { CodeLanguage } from '@core/model/enum/codeLanguage';
+import { CodeLanguage } from '@app/core/model/enum/codeLanguage';
 import { TranslateModule } from '@ngx-translate/core';
 import { SocialMediaComponent } from '../../components/product/social-media/social-media.component';
 import { AuthenticationService } from '@core/services/authenticationService/authentication.service';
